@@ -1,14 +1,17 @@
-import { useMemo, useState } from 'react';
+import { lazy, Suspense, useMemo, useState } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import FlagImage from '../components/FlagImage';
 import FreeTextInput from '../components/FreeTextInput';
-import MapPicker from '../components/MapPicker';
 import MultipleChoice from '../components/MultipleChoice';
 import ScoreBar from '../components/ScoreBar';
 import { checkAnswer } from '../engine/check';
 import type { Answer, Question } from '../engine/types';
 import { getModeById } from '../modes';
 import { useGameStore } from '../store/useGameStore';
+
+// Chargé à la demande : MapLibre + géométrie monde ne pèsent sur le bundle
+// que pour les modes carte.
+const MapPicker = lazy(() => import('../components/MapPicker'));
 
 export default function Game() {
   const { modeId } = useParams();
@@ -90,12 +93,20 @@ export default function Game() {
 
       {question.inputType === 'map-pin' && (
         <div className="space-y-4">
-          <MapPicker
-            picked={picked}
-            target={question.target}
-            revealed={revealed}
-            onPick={setPicked}
-          />
+          <Suspense
+            fallback={
+              <div className="flex h-[55vh] min-h-[320px] w-full items-center justify-center rounded-xl bg-slate-800 text-slate-400">
+                Chargement de la carte…
+              </div>
+            }
+          >
+            <MapPicker
+              picked={picked}
+              target={question.target}
+              revealed={revealed}
+              onPick={setPicked}
+            />
+          </Suspense>
           {!revealed ? (
             <button
               type="button"

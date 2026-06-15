@@ -1,6 +1,7 @@
-import maplibregl, { type StyleSpecification } from 'maplibre-gl';
+import maplibregl from 'maplibre-gl';
 import { useEffect, useRef } from 'react';
 import type { MapTarget } from '../engine/types';
+import { offlineWorldStyle } from '../lib/worldStyle';
 
 interface Props {
   picked?: { lat: number; lng: number };
@@ -8,21 +9,6 @@ interface Props {
   revealed: boolean;
   onPick: (p: { lat: number; lng: number }) => void;
 }
-
-// Fond de carte raster OpenStreetMap (sans clé). Un fond vectoriel hors-ligne
-// complet est une amélioration ultérieure (cf. plan).
-const OSM_STYLE: StyleSpecification = {
-  version: 8,
-  sources: {
-    osm: {
-      type: 'raster',
-      tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
-      tileSize: 256,
-      attribution: '© OpenStreetMap',
-    },
-  },
-  layers: [{ id: 'osm', type: 'raster', source: 'osm' }],
-};
 
 function makeMarker(color: string): HTMLDivElement {
   const el = document.createElement('div');
@@ -45,10 +31,10 @@ export default function MapPicker({ picked, target, revealed, onPick }: Props) {
     if (!containerRef.current) return;
     const map = new maplibregl.Map({
       container: containerRef.current,
-      style: OSM_STYLE,
+      style: offlineWorldStyle,
       center: [10, 25],
       zoom: 1,
-      attributionControl: { compact: true },
+      attributionControl: false,
     });
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
     map.on('click', (e) => {

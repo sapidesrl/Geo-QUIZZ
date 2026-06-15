@@ -24,8 +24,8 @@ D'autres modes s'ajoutent facilement (voir « Ajouter un mode »).
 | Style | Tailwind CSS |
 | Navigation | React Router (HashRouter) |
 | État / scores | Zustand (persisté en localStorage) |
-| Cartes | MapLibre GL JS |
-| Données pays / drapeaux | `world-countries` + `flag-icons` (embarqués) |
+| Cartes | MapLibre GL JS (fond vectoriel hors-ligne) |
+| Données pays / drapeaux / géométrie | `world-countries` + `flag-icons` + `world-atlas` (embarqués) |
 | Tests | Vitest + Testing Library |
 
 L'app web pourra être empaquetée en application native iOS/Android via **Capacitor**
@@ -65,10 +65,16 @@ L'écran de sélection et le moteur de partie le prennent en compte automatiquem
 La validation des réponses est générique (`engine/check.ts`) selon `inputType`
 (`multiple-choice`, `free-text`, `map-pin`).
 
-## Limites connues / pistes
+## Hors-ligne
 
-- Le fond de carte utilise les tuiles raster OpenStreetMap (réseau requis pour
-  l'affichage de la carte). Les **données du quiz** sont 100 % locales ; un fond
-  de carte vectoriel entièrement hors-ligne est une amélioration prévue.
-- Le bundle initial inclut MapLibre ; un découpage (lazy-load des modes carte)
-  réduirait le poids au premier chargement.
+- Le fond de carte est **vectoriel et embarqué** (géométrie Natural Earth 110m via
+  `world-atlas`, rendue par MapLibre) : aucune connexion ni serveur de tuiles requis.
+- MapLibre et la géométrie monde sont **chargés à la demande** (lazy-load) : ils
+  ne pèsent sur le téléchargement que lorsqu'on lance un mode carte.
+- Toutes les données (pays, capitales, drapeaux, villes) sont locales et précachées
+  par le service worker.
+
+## Pistes
+
+- Frontières plus détaillées (50m) pour un placement plus précis.
+- Empaquetage natif iOS/Android via Capacitor.
