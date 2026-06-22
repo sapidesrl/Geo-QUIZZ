@@ -8,7 +8,9 @@ describe('gameModes', () => {
       // Plusieurs tirages pour couvrir l'aléatoire.
       for (let i = 0; i < 20; i++) {
         const q = mode.generate();
-        expect(q.inputType).toBe(mode.inputType);
+        // Les modes variadiques (mixte, défi) mélangent les types : on ne fige
+        // pas leur inputType, mais la question reste cohérente et auto-validable.
+        if (!mode.variadic) expect(q.inputType).toBe(mode.inputType);
         expect(q.answerLabel).toBeTruthy();
 
         if (q.inputType === 'multiple-choice') {

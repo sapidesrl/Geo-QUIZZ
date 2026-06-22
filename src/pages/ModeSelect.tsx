@@ -79,7 +79,9 @@ export default function ModeSelect() {
       <h2 className="mb-4 text-2xl font-bold">Choisis un mode</h2>
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        {gameModes.map((mode) => (
+        {gameModes
+          .filter((mode) => mode.id !== 'daily')
+          .map((mode) => (
           <button
             key={mode.id}
             type="button"

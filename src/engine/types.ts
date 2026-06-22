@@ -12,6 +12,9 @@ export interface Country {
   continent: string; // continent en français
   area: number; // superficie en km²
   population: number; // nombre d'habitants
+  borders: string[]; // pays frontaliers (codes ISO alpha-2 minuscules)
+  currency: string; // monnaie principale (nom)
+  language: string; // langue principale (nom anglais)
 }
 
 /** Une ville (pour le mode « situer les villes »). */
@@ -70,6 +73,9 @@ export interface GameMode {
   description: string;
   icon: string; // emoji
   inputType: InputType;
+  /** Mode « variadique » : ses questions peuvent mélanger plusieurs inputType
+   * (ex. mode mixte, défi du jour). `inputType` n'est alors qu'indicatif. */
+  variadic?: boolean;
   /** génère une question aléatoire dans le sous-ensemble fourni. */
   generate: (options?: GenerateOptions) => Question;
 }
