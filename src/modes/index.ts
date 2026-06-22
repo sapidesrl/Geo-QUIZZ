@@ -1,36 +1,15 @@
 import type { GameMode } from '../engine/types';
-import { capitalMc } from './capital-mc';
-import { capitalText } from './capital-text';
-import { capitalToCountryMc } from './capital-to-country-mc';
-import { continentMc } from './continent-mc';
-import { flagMc } from './flag-mc';
-import { flagText } from './flag-text';
-import { largestAreaMc } from './largest-area-mc';
-import { leastPopulatedMc } from './least-populated-mc';
-import { locateCity } from './locate-city';
-import { locateCountry } from './locate-country';
-import { mostPopulatedMc } from './most-populated-mc';
-import { worldCup2026 } from './worldcup-2026';
+import { baseModes } from './base';
+import { daily } from './daily';
+import { mixed } from './mixed';
 
 /**
  * Registre des modes de jeu. Pour ajouter un mode : créer un fichier qui exporte
- * un `GameMode` puis l'ajouter ici — l'écran de sélection et le moteur de partie
- * le prennent en compte automatiquement.
+ * un `GameMode`, l'ajouter à `baseModes` (`base.ts`) — l'écran de sélection et le
+ * moteur de partie le prennent en compte automatiquement. Les modes mixte et défi
+ * du jour piochent dans `baseModes`.
  */
-export const gameModes: GameMode[] = [
-  capitalMc,
-  capitalText,
-  capitalToCountryMc,
-  flagMc,
-  flagText,
-  continentMc,
-  largestAreaMc,
-  mostPopulatedMc,
-  leastPopulatedMc,
-  locateCountry,
-  locateCity,
-  worldCup2026,
-];
+export const gameModes: GameMode[] = [...baseModes, mixed, daily];
 
 export function getModeById(id: string | undefined): GameMode | undefined {
   return gameModes.find((m) => m.id === id);

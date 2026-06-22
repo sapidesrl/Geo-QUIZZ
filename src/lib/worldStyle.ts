@@ -1,9 +1,10 @@
 import type { StyleSpecification } from 'maplibre-gl';
 import { feature } from 'topojson-client';
 import type { Topology } from 'topojson-specification';
-// Géométrie mondiale embarquée (Natural Earth 110m, ~100 Ko) → carte 100 % hors-ligne,
-// sans serveur de tuiles.
-import topology from 'world-atlas/countries-110m.json';
+// Géométrie mondiale embarquée (Natural Earth 50m) → carte 100 % hors-ligne, sans
+// serveur de tuiles. Le 50m offre des frontières plus précises que le 110m pour
+// un placement plus juste (chargé à la demande avec MapLibre).
+import topology from 'world-atlas/countries-50m.json';
 
 const countriesGeo = feature(
   topology as unknown as Topology,

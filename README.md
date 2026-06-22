@@ -11,17 +11,34 @@ Application de quizz géographique (PWA) jouable au navigateur et sur smartphone
 - **Drapeau — QCM** : reconnaître le drapeau d'un pays parmi 4.
 - **Drapeau — Saisie** : nommer le pays à partir de son drapeau.
 - **Continent — QCM** : trouver le continent d'un pays.
+- **Pays frontalier — QCM** : parmi 4 pays, lequel partage une frontière avec le pays donné.
+- **Monnaie — QCM** : retrouver la monnaie d'un pays.
+- **Langue — QCM** : retrouver la langue principale d'un pays.
 - **Le plus grand — QCM** : parmi 4 pays, désigner le plus vaste.
 - **Le plus peuplé — QCM** : parmi 4 pays, désigner le plus peuplé.
 - **Le moins peuplé — QCM** : parmi 4 pays, désigner le moins peuplé.
 - **Situer un pays** : placer un pays sur la carte du monde.
 - **Situer une ville** : placer une ville sur la carte du monde.
 - **Coupe du monde 2026** : situer les villes hôtes du Mondial (USA, Canada, Mexique).
+- **Mode mixte — révision** : un mélange de toutes les questions, tous modes confondus.
+- **Défi du jour** : un quiz quotidien déterministe, identique pour tous (rejouable à l'identique).
 
 Les données de population sont embarquées (`src/data/populations.ts`, généré par
 `scripts/generate-populations.mjs` à partir du jeu de données ouvert `country-json`).
+Les frontières, monnaies et langues proviennent de `world-countries` (embarqué).
 
 D'autres modes s'ajoutent facilement (voir « Ajouter un mode »).
+
+## Progression & gamification
+
+- **Défi du jour** : tirage rendu déterministe par un générateur seedé sur la date
+  (`src/lib/rng.ts` ; `withSeed` enveloppe la génération de la partie). Même quiz pour
+  tout le monde un jour donné.
+- **Succès / trophées** : catalogue dans `src/lib/achievements.ts`, évalué à la fin de
+  chaque partie ; les succès débloqués s'affichent sur l'écran de résultats et la page
+  **Trophées** (`/stats`) qui récapitule aussi parties jouées, précision, modes essayés.
+- **Sons de feedback** : synthétisés via l'API Web Audio (`src/lib/sound.ts`, aucun
+  fichier audio → hors-ligne), activables/désactivables depuis l'accueil.
 
 ## Stack technique
 
@@ -59,16 +76,17 @@ src/
   engine/      types.ts (GameMode, Question…), generate.ts, check.ts
   modes/       un fichier par mode + index.ts (registre)
   components/  MultipleChoice, FreeTextInput, MapPicker, FlagImage, ScoreBar
-  pages/       Home, ModeSelect, Game, Results
+  pages/       Home, ModeSelect, Game, Results, Stats
   store/       useGameStore (Zustand)
-  lib/         normalize, levenshtein, shuffle, geo (haversine)
+  lib/         normalize, levenshtein, shuffle, geo (haversine), rng, sound, achievements
 ```
 
 ## Ajouter un mode
 
 1. Créer `src/modes/mon-mode.ts` qui exporte un objet `GameMode`
    (`id`, `label`, `description`, `icon`, `inputType`, `generate()`).
-2. L'ajouter au tableau `gameModes` dans `src/modes/index.ts`.
+2. L'ajouter au tableau `baseModes` dans `src/modes/base.ts` (il est alors
+   automatiquement inclus dans le catalogue, le mode mixte et le défi du jour).
 
 L'écran de sélection et le moteur de partie le prennent en compte automatiquement.
 La validation des réponses est générique (`engine/check.ts`) selon `inputType`

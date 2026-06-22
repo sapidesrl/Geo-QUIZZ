@@ -5,10 +5,16 @@ import FreeTextInput from '../components/FreeTextInput';
 import MultipleChoice from '../components/MultipleChoice';
 import ScoreBar from '../components/ScoreBar';
 import { checkAnswer } from '../engine/check';
+import { defaultGenerateOptions } from '../engine/generate';
 import { buildGenerateOptions } from '../engine/pool';
 import type { Answer, Question, QuestionRecap } from '../engine/types';
+import { dailyKey, dailySeed, withSeed } from '../lib/rng';
+import { playCorrect, playFinish, playWrong } from '../lib/sound';
 import { getModeById } from '../modes';
 import { useGameStore } from '../store/useGameStore';
+
+/** Nombre de questions du défi du jour (fixe, identique pour tous). */
+const DAILY_QUESTIONS = 10;
 
 // Chargé à la demande : MapLibre + géométrie monde ne pèsent sur le bundle
 // que pour les modes carte.
@@ -21,14 +27,22 @@ export default function Game() {
   const questionsPerGame = useGameStore((s) => s.questionsPerGame);
   const continent = useGameStore((s) => s.continent);
   const difficulty = useGameStore((s) => s.difficulty);
-  const recordScore = useGameStore((s) => s.recordScore);
-  const recordStreak = useGameStore((s) => s.recordStreak);
+  const soundOn = useGameStore((s) => s.soundOn);
+  const recordGame = useGameStore((s) => s.recordGame);
+
+  const isDaily = mode?.id === 'daily';
 
   const session = useMemo<Question[]>(() => {
     if (!mode) return [];
+    // Défi du jour : tirage déterministe (même quiz pour tous), filtres ignorés.
+    if (isDaily) {
+      return withSeed(dailySeed(), () =>
+        Array.from({ length: DAILY_QUESTIONS }, () => mode.generate(defaultGenerateOptions)),
+      );
+    }
     const opts = buildGenerateOptions(continent, difficulty);
     return Array.from({ length: questionsPerGame }, () => mode.generate(opts));
-  }, [mode, questionsPerGame, continent, difficulty]);
+  }, [mode, isDaily, questionsPerGame, continent, difficulty]);
 
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -65,8 +79,10 @@ export default function Game() {
       const newStreak = streak + 1;
       setStreak(newStreak);
       setBestStreak((b) => Math.max(b, newStreak));
+      if (soundOn) playCorrect();
     } else {
       setStreak(0);
+      if (soundOn) playWrong();
     }
     setHistory((h) => [
       ...h,
@@ -83,8 +99,15 @@ export default function Game() {
 
   function next() {
     if (index + 1 >= session.length) {
-      recordScore(mode!.id, score);
-      recordStreak(mode!.id, bestStreak);
+      const newlyUnlocked = recordGame({
+        modeId: mode!.id,
+        score,
+        total: session.length,
+        bestStreak,
+        isDaily,
+        dailyKey: isDaily ? dailyKey() : undefined,
+      });
+      if (soundOn) playFinish();
       navigate(`/results/${mode!.id}`, {
         state: {
           score,
@@ -92,6 +115,7 @@ export default function Game() {
           bestStreak,
           elapsedMs: Date.now() - startRef.current,
           history,
+          newlyUnlocked,
         },
       });
       return;

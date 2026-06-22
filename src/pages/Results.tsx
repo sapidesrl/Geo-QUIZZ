@@ -1,6 +1,7 @@
 import { Link, useLocation, useParams } from 'react-router-dom';
 import FlagImage from '../components/FlagImage';
 import type { QuestionRecap } from '../engine/types';
+import { getAchievement } from '../lib/achievements';
 import { getModeById } from '../modes';
 import { useGameStore } from '../store/useGameStore';
 
@@ -10,6 +11,7 @@ interface ResultState {
   bestStreak: number;
   elapsedMs: number;
   history: QuestionRecap[];
+  newlyUnlocked?: string[];
 }
 
 function formatTime(ms: number): string {
@@ -36,9 +38,10 @@ export default function Results() {
     );
   }
 
-  const { score, total, bestStreak, elapsedMs, history } = state;
+  const { score, total, bestStreak, elapsedMs, history, newlyUnlocked = [] } = state;
   const pct = Math.round((score / total) * 100);
   const emoji = pct >= 80 ? '🏆' : pct >= 50 ? '👍' : '📚';
+  const unlocked = newlyUnlocked.map(getAchievement).filter(Boolean);
 
   return (
     <div className="py-6">
@@ -65,6 +68,25 @@ export default function Results() {
           <div className="text-xs text-slate-400">Record</div>
         </div>
       </div>
+
+      {unlocked.length > 0 && (
+        <div className="animate-pop mb-6 rounded-xl border border-amber-500/40 bg-amber-500/10 p-4">
+          <h3 className="mb-2 text-sm font-semibold text-amber-300">
+            🎉 Succès débloqué{unlocked.length > 1 ? 's' : ''}
+          </h3>
+          <ul className="space-y-2">
+            {unlocked.map((a) => (
+              <li key={a!.id} className="flex items-center gap-3">
+                <span className="text-2xl">{a!.icon}</span>
+                <span>
+                  <span className="block font-semibold">{a!.label}</span>
+                  <span className="block text-sm text-slate-300">{a!.description}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {history.length > 0 && (
         <div className="mb-6">
