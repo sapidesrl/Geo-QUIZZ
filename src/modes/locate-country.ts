@@ -1,4 +1,4 @@
-import { randomCountry } from '../engine/generate';
+import { defaultGenerateOptions, randomCountry } from '../engine/generate';
 import type { GameMode, Question } from '../engine/types';
 
 export const locateCountry: GameMode = {
@@ -7,8 +7,8 @@ export const locateCountry: GameMode = {
   description: 'Place le pays demandé sur la carte du monde.',
   icon: '🌍',
   inputType: 'map-pin',
-  generate(): Question {
-    const country = randomCountry();
+  generate(o = defaultGenerateOptions): Question {
+    const country = randomCountry(o.countries);
     return {
       inputType: 'map-pin',
       prompt: `Où se situe ${country.name} ?`,

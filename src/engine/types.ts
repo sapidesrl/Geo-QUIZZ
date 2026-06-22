@@ -9,6 +9,9 @@ export interface Country {
   capitalLat?: number;
   capitalLng?: number;
   region: string;
+  continent: string; // continent en français
+  area: number; // superficie en km²
+  population: number; // nombre d'habitants
 }
 
 /** Une ville (pour le mode « situer les villes »). */
@@ -54,6 +57,12 @@ export interface Question {
   answerLabel: string;
 }
 
+/** Sous-ensemble de données dans lequel un mode tire ses questions (filtres UX). */
+export interface GenerateOptions {
+  countries: Country[];
+  cities: City[];
+}
+
 /** Contrat d'un mode de jeu. Ajouter un mode = ajouter un fichier qui exporte un GameMode. */
 export interface GameMode {
   id: string;
@@ -61,8 +70,17 @@ export interface GameMode {
   description: string;
   icon: string; // emoji
   inputType: InputType;
-  /** génère une question aléatoire. */
-  generate: () => Question;
+  /** génère une question aléatoire dans le sous-ensemble fourni. */
+  generate: (options?: GenerateOptions) => Question;
+}
+
+/** Récapitulatif d'une question pour l'écran de résultats. */
+export interface QuestionRecap {
+  prompt: string;
+  answerLabel: string;
+  correct: boolean;
+  flag?: string;
+  distanceKm?: number;
 }
 
 /** Réponse fournie par le joueur, selon le type d'entrée. */

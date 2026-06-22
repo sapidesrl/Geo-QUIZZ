@@ -1,4 +1,4 @@
-import { randomCountry } from '../engine/generate';
+import { defaultGenerateOptions, randomCountry } from '../engine/generate';
 import type { GameMode, Question } from '../engine/types';
 
 export const flagText: GameMode = {
@@ -7,8 +7,8 @@ export const flagText: GameMode = {
   description: 'Identifie le pays à partir de son drapeau.',
   icon: '🏳️',
   inputType: 'free-text',
-  generate(): Question {
-    const country = randomCountry();
+  generate(o = defaultGenerateOptions): Question {
+    const country = randomCountry(o.countries);
     return {
       inputType: 'free-text',
       prompt: 'À quel pays appartient ce drapeau ?',
