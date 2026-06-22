@@ -21,6 +21,7 @@
     "@capacitor/cli": "^8.4.1",
     "@capacitor/core": "^8.4.1",
     "@capacitor/ios": "^8.4.1",
+    "@capacitor/splash-screen": "^8.0.1",
     "flag-icons": "^7.2.3",
     "maplibre-gl": "^4.7.1",
     "react": "^18.3.1",
@@ -32,6 +33,7 @@
     "zustand": "^5.0.2"
   },
   "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@types/node": "^22.10.2",

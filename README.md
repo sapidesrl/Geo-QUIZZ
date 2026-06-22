@@ -92,6 +92,22 @@ npm run cap:ios             # build + sync + ouvre Xcode (macOS)
 App id : `com.geoquizz.app` (voir `capacitor.config.ts`). Le routage utilise
 `HashRouter`, compatible avec le service de fichiers natif de Capacitor.
 
+### Icônes et écran de démarrage
+
+Les images sources (logo globe) sont générées par script, puis déclinées pour
+chaque plateforme par `@capacitor/assets` :
+
+```bash
+node scripts/generate-source-assets.mjs   # (re)génère assets/*.png et public/pwa-*.png
+npx capacitor-assets generate --ios --android   # décline icônes + splash natifs
+```
+
+- `scripts/generate-source-assets.mjs` produit les sources (icône, avant-plan/
+  arrière-plan adaptatifs Android, splash clair/sombre) et les icônes PWA.
+- Le splash natif est masqué à la fin du chargement (`@capacitor/splash-screen`,
+  `launchAutoHide: false` + `SplashScreen.hide()` dans `src/main.tsx`).
+- Modifier le logo = éditer le script puis relancer ces deux commandes.
+
 ## Pistes
 
 - Frontières plus détaillées (50m) pour un placement plus précis.
