@@ -21,6 +21,6 @@ npm-debug.log*
 .env.local
 .env.*.local
 
-# Capacitor (added later)
-ios
-android
+# Capacitor
+# Les projets natifs (android/, ios/) sont versionnés ; leurs propres .gitignore
+# excluent les artefacts de build (assets copiés, Pods, /build, configs générées).

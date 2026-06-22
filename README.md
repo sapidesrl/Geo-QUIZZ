@@ -74,7 +74,25 @@ La validation des réponses est générique (`engine/check.ts`) selon `inputType
 - Toutes les données (pays, capitales, drapeaux, villes) sont locales et précachées
   par le service worker.
 
+## Applications natives (Capacitor)
+
+Les projets natifs `android/` et `ios/` sont versionnés ; le code web buildé (`dist/`)
+y est injecté par Capacitor. Pré-requis : Android Studio (Android) et Xcode + CocoaPods
+sur macOS (iOS).
+
+```bash
+# Après une modification du code web :
+npm run cap:sync            # build web + copie dans les projets natifs
+
+# Ouvrir le projet natif dans l'IDE pour compiler / lancer / publier :
+npm run cap:android         # build + sync + ouvre Android Studio
+npm run cap:ios             # build + sync + ouvre Xcode (macOS)
+```
+
+App id : `com.geoquizz.app` (voir `capacitor.config.ts`). Le routage utilise
+`HashRouter`, compatible avec le service de fichiers natif de Capacitor.
+
 ## Pistes
 
 - Frontières plus détaillées (50m) pour un placement plus précis.
-- Empaquetage natif iOS/Android via Capacitor.
+- Icônes / écran de démarrage natifs (`@capacitor/assets`).

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Geo-QUIZZ</string>
+    <string name="title_activity_main">Geo-QUIZZ</string>
+    <string name="package_name">com.geoquizz.app</string>
+    <string name="custom_url_scheme">com.geoquizz.app</string>
+</resources>
