@@ -11,6 +11,7 @@ export interface Country {
   region: string;
   continent: string; // continent en français
   area: number; // superficie en km²
+  population: number; // nombre d'habitants
 }
 
 /** Une ville (pour le mode « situer les villes »). */

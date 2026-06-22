@@ -1,5 +1,6 @@
 import worldCountries from 'world-countries';
 import type { Country } from '../engine/types';
+import { populations } from './populations';
 
 interface RawCountry {
   cca2: string;
@@ -42,5 +43,6 @@ export const countries: Country[] = (worldCountries as unknown as RawCountry[])
     region: c.region,
     continent: CONTINENT_FR[c.region] ?? c.region,
     area: c.area,
+    population: populations[c.cca2.toLowerCase()] ?? 0,
   }))
   .sort((a, b) => a.name.localeCompare(b.name, 'fr'));

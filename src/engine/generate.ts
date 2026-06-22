@@ -18,3 +18,9 @@ export function distractors(pool: Country[], correct: Country, count = 3): Count
     count,
   );
 }
+
+/** Restreint un pool aux pays dont la population est connue (avec garde-fou ≥ 4). */
+export function withPopulation(pool: Country[]): Country[] {
+  const known = pool.filter((c) => c.population > 0);
+  return known.length >= 4 ? known : countries.filter((c) => c.population > 0);
+}

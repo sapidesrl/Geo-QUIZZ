@@ -12,8 +12,14 @@ Application de quizz géographique (PWA) jouable au navigateur et sur smartphone
 - **Drapeau — Saisie** : nommer le pays à partir de son drapeau.
 - **Continent — QCM** : trouver le continent d'un pays.
 - **Le plus grand — QCM** : parmi 4 pays, désigner le plus vaste.
+- **Le plus peuplé — QCM** : parmi 4 pays, désigner le plus peuplé.
+- **Le moins peuplé — QCM** : parmi 4 pays, désigner le moins peuplé.
 - **Situer un pays** : placer un pays sur la carte du monde.
 - **Situer une ville** : placer une ville sur la carte du monde.
+- **Coupe du monde 2026** : situer les villes hôtes du Mondial (USA, Canada, Mexique).
+
+Les données de population sont embarquées (`src/data/populations.ts`, généré par
+`scripts/generate-populations.mjs` à partir du jeu de données ouvert `country-json`).
 
 D'autres modes s'ajoutent facilement (voir « Ajouter un mode »).
 
