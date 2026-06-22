@@ -7,11 +7,22 @@ interface RawCountry {
   unMember: boolean;
   capital: string[];
   region: string;
+  population: number;
   latlng: [number, number];
   name: { common: string };
   translations: Record<string, { common: string }>;
   capitalInfo: { latlng?: [number, number] };
 }
+
+// Traduction des régions world-countries en continents français.
+const CONTINENT_FR: Record<string, string> = {
+  Africa: 'Afrique',
+  Americas: 'Amériques',
+  Asia: 'Asie',
+  Europe: 'Europe',
+  Oceania: 'Océanie',
+  Antarctic: 'Antarctique',
+};
 
 /**
  * Pays jouables : membres de l'ONU disposant d'une capitale et de coordonnées.
@@ -29,5 +40,7 @@ export const countries: Country[] = (worldCountries as unknown as RawCountry[])
     capitalLat: c.capitalInfo?.latlng?.[0],
     capitalLng: c.capitalInfo?.latlng?.[1],
     region: c.region,
+    continent: CONTINENT_FR[c.region] ?? c.region,
+    population: c.population,
   }))
   .sort((a, b) => a.name.localeCompare(b.name, 'fr'));

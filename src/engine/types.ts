@@ -9,6 +9,8 @@ export interface Country {
   capitalLat?: number;
   capitalLng?: number;
   region: string;
+  continent: string; // continent en français
+  population: number;
 }
 
 /** Une ville (pour le mode « situer les villes »). */
