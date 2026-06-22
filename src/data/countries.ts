@@ -7,7 +7,7 @@ interface RawCountry {
   unMember: boolean;
   capital: string[];
   region: string;
-  population: number;
+  area: number;
   latlng: [number, number];
   name: { common: string };
   translations: Record<string, { common: string }>;
@@ -41,6 +41,6 @@ export const countries: Country[] = (worldCountries as unknown as RawCountry[])
     capitalLng: c.capitalInfo?.latlng?.[1],
     region: c.region,
     continent: CONTINENT_FR[c.region] ?? c.region,
-    population: c.population,
+    area: c.area,
   }))
   .sort((a, b) => a.name.localeCompare(b.name, 'fr'));

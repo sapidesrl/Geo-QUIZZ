@@ -4,9 +4,17 @@ interface Props {
   current: number; // index de la question (1-based)
   total: number;
   score: number;
+  streak: number;
+  elapsedMs: number;
 }
 
-export default function ScoreBar({ current, total, score }: Props) {
+function formatTime(ms: number): string {
+  const s = Math.floor(ms / 1000);
+  const m = Math.floor(s / 60);
+  return `${m}:${String(s % 60).padStart(2, '0')}`;
+}
+
+export default function ScoreBar({ current, total, score, streak, elapsedMs }: Props) {
   const progress = Math.round(((current - 1) / total) * 100);
   return (
     <div className="mb-6">
@@ -14,16 +22,15 @@ export default function ScoreBar({ current, total, score }: Props) {
         <Link to="/modes" className="hover:text-white">
           ← Modes
         </Link>
+        <span className="tabular-nums">⏱ {formatTime(elapsedMs)}</span>
         <span>
-          Question {current}/{total}
+          {current}/{total}
         </span>
+        {streak >= 2 && <span className="font-semibold text-amber-400">🔥 {streak}</span>}
         <span className="font-semibold text-emerald-400">Score {score}</span>
       </div>
       <div className="h-2 w-full overflow-hidden rounded-full bg-slate-700">
-        <div
-          className="h-full bg-brand transition-all"
-          style={{ width: `${progress}%` }}
-        />
+        <div className="h-full bg-brand transition-all" style={{ width: `${progress}%` }} />
       </div>
     </div>
   );

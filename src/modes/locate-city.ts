@@ -1,4 +1,4 @@
-import { cities } from '../data/cities';
+import { defaultGenerateOptions } from '../engine/generate';
 import type { GameMode, Question } from '../engine/types';
 import { pick } from '../lib/shuffle';
 
@@ -8,8 +8,8 @@ export const locateCity: GameMode = {
   description: 'Place la ville demandée sur la carte du monde.',
   icon: '📍',
   inputType: 'map-pin',
-  generate(): Question {
-    const city = pick(cities);
+  generate(o = defaultGenerateOptions): Question {
+    const city = pick(o.cities);
     return {
       inputType: 'map-pin',
       prompt: `Où se situe ${city.name} (${city.country}) ?`,

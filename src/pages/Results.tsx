@@ -1,10 +1,21 @@
 import { Link, useLocation, useParams } from 'react-router-dom';
+import FlagImage from '../components/FlagImage';
+import type { QuestionRecap } from '../engine/types';
 import { getModeById } from '../modes';
 import { useGameStore } from '../store/useGameStore';
 
 interface ResultState {
   score: number;
   total: number;
+  bestStreak: number;
+  elapsedMs: number;
+  history: QuestionRecap[];
+}
+
+function formatTime(ms: number): string {
+  const s = Math.round(ms / 1000);
+  const m = Math.floor(s / 60);
+  return m > 0 ? `${m} min ${s % 60} s` : `${s} s`;
 }
 
 export default function Results() {
@@ -25,32 +36,78 @@ export default function Results() {
     );
   }
 
-  const { score, total } = state;
+  const { score, total, bestStreak, elapsedMs, history } = state;
   const pct = Math.round((score / total) * 100);
   const emoji = pct >= 80 ? '🏆' : pct >= 50 ? '👍' : '📚';
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center text-center">
-      <div className="mb-4 text-7xl">{emoji}</div>
-      <h2 className="mb-2 text-2xl font-bold">{mode.label}</h2>
-      <p className="mb-1 text-5xl font-extrabold text-emerald-400">
-        {score}/{total}
-      </p>
-      <p className="mb-8 text-slate-400">{pct}% de bonnes réponses</p>
-      {best != null && (
-        <p className="mb-8 text-sm text-slate-400">Meilleur score : {best}</p>
+    <div className="py-6">
+      <div className="mb-6 flex flex-col items-center text-center">
+        <div className="mb-3 text-7xl">{emoji}</div>
+        <h2 className="mb-1 text-2xl font-bold">{mode.label}</h2>
+        <p className="text-5xl font-extrabold text-emerald-400">
+          {score}/{total}
+        </p>
+        <p className="mt-1 text-slate-400">{pct}% de bonnes réponses</p>
+      </div>
+
+      <div className="mb-6 grid grid-cols-3 gap-3 text-center">
+        <div className="rounded-xl bg-slate-800 p-3">
+          <div className="text-xl font-bold text-amber-400">🔥 {bestStreak}</div>
+          <div className="text-xs text-slate-400">Meilleure série</div>
+        </div>
+        <div className="rounded-xl bg-slate-800 p-3">
+          <div className="text-xl font-bold">⏱ {formatTime(elapsedMs)}</div>
+          <div className="text-xs text-slate-400">Temps</div>
+        </div>
+        <div className="rounded-xl bg-slate-800 p-3">
+          <div className="text-xl font-bold text-emerald-400">{best ?? score}</div>
+          <div className="text-xs text-slate-400">Record</div>
+        </div>
+      </div>
+
+      {history.length > 0 && (
+        <div className="mb-6">
+          <h3 className="mb-2 text-sm font-semibold text-slate-300">Récapitulatif</h3>
+          <ul className="space-y-2">
+            {history.map((q, i) => (
+              <li
+                key={i}
+                className={`flex items-center gap-3 rounded-lg border-l-4 p-3 text-sm ${
+                  q.correct
+                    ? 'border-emerald-500 bg-emerald-500/10'
+                    : 'border-rose-500 bg-rose-500/10'
+                }`}
+              >
+                <span>{q.correct ? '✅' : '❌'}</span>
+                {q.flag && <FlagImage code={q.flag} className="text-xl shrink-0" />}
+                <span className="flex-1">
+                  <span className="block text-slate-300">{q.prompt}</span>
+                  <span className="block font-semibold">
+                    {q.answerLabel}
+                    {q.distanceKm != null && (
+                      <span className="ml-1 font-normal text-slate-400">
+                        ({Math.round(q.distanceKm)} km)
+                      </span>
+                    )}
+                  </span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
 
-      <div className="flex w-full max-w-xs flex-col gap-3">
+      <div className="mx-auto flex w-full max-w-xs flex-col gap-3">
         <Link
           to={`/game/${mode.id}`}
-          className="rounded-xl bg-brand px-6 py-4 font-semibold transition hover:bg-brand-dark"
+          className="rounded-xl bg-brand px-6 py-4 text-center font-semibold transition hover:bg-brand-dark"
         >
           Rejouer
         </Link>
         <Link
           to="/modes"
-          className="rounded-xl border border-slate-600 px-6 py-4 font-semibold transition hover:bg-slate-800"
+          className="rounded-xl border border-slate-600 px-6 py-4 text-center font-semibold transition hover:bg-slate-800"
         >
           Autres modes
         </Link>

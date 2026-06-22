@@ -11,7 +11,7 @@ Application de quizz géographique (PWA) jouable au navigateur et sur smartphone
 - **Drapeau — QCM** : reconnaître le drapeau d'un pays parmi 4.
 - **Drapeau — Saisie** : nommer le pays à partir de son drapeau.
 - **Continent — QCM** : trouver le continent d'un pays.
-- **Le plus peuplé — QCM** : parmi 4 pays, désigner le plus peuplé.
+- **Le plus grand — QCM** : parmi 4 pays, désigner le plus vaste.
 - **Situer un pays** : placer un pays sur la carte du monde.
 - **Situer une ville** : placer une ville sur la carte du monde.
 

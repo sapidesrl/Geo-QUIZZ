@@ -1,4 +1,4 @@
-import { randomCountry } from '../engine/generate';
+import { defaultGenerateOptions, randomCountry } from '../engine/generate';
 import type { GameMode, Question } from '../engine/types';
 
 export const capitalText: GameMode = {
@@ -7,8 +7,8 @@ export const capitalText: GameMode = {
   description: 'Écris le nom de la capitale du pays.',
   icon: '✍️',
   inputType: 'free-text',
-  generate(): Question {
-    const country = randomCountry();
+  generate(o = defaultGenerateOptions): Question {
+    const country = randomCountry(o.countries);
     return {
       inputType: 'free-text',
       prompt: `Quelle est la capitale de ${country.name} ?`,

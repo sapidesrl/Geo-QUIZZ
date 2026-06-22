@@ -1,4 +1,4 @@
-import { distractors, randomCountry } from '../engine/generate';
+import { defaultGenerateOptions, distractors, randomCountry } from '../engine/generate';
 import type { GameMode, Question } from '../engine/types';
 import { shuffle } from '../lib/shuffle';
 
@@ -8,9 +8,9 @@ export const flagMc: GameMode = {
   description: 'Reconnais le drapeau du pays parmi 4 propositions.',
   icon: '🚩',
   inputType: 'multiple-choice',
-  generate(): Question {
-    const country = randomCountry();
-    const options = shuffle([country, ...distractors(country)]);
+  generate(o = defaultGenerateOptions): Question {
+    const country = randomCountry(o.countries);
+    const options = shuffle([country, ...distractors(o.countries, country)]);
     return {
       inputType: 'multiple-choice',
       prompt: `Quel est le drapeau de ${country.name} ?`,

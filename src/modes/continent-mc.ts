@@ -1,5 +1,5 @@
 import { countries } from '../data/countries';
-import { randomCountry } from '../engine/generate';
+import { defaultGenerateOptions, randomCountry } from '../engine/generate';
 import type { GameMode, Question } from '../engine/types';
 import { sample, shuffle } from '../lib/shuffle';
 
@@ -11,8 +11,8 @@ export const continentMc: GameMode = {
   description: "Trouve le continent d'un pays.",
   icon: '🗺️',
   inputType: 'multiple-choice',
-  generate(): Question {
-    const country = randomCountry();
+  generate(o = defaultGenerateOptions): Question {
+    const country = randomCountry(o.countries);
     const others = sample(
       allContinents.filter((c) => c !== country.continent),
       3,
