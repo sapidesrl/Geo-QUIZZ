@@ -18,7 +18,7 @@ export default function MultipleChoice({
 }: Props) {
   return (
     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-      {choices.map((choice) => {
+      {choices.map((choice, i) => {
         const isCorrect = choice.id === correctId;
         const isSelected = choice.id === selectedId;
 
@@ -37,8 +37,16 @@ export default function MultipleChoice({
             type="button"
             disabled={revealed}
             onClick={() => onSelect(choice.id)}
-            className={`flex items-center gap-3 rounded-xl border-2 p-4 text-left text-base font-medium transition ${state}`}
+            className={`flex items-center gap-3 rounded-xl border-2 p-4 text-left text-base font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand ${state}`}
           >
+            {!revealed && (
+              <span
+                aria-hidden
+                className="hidden h-6 w-6 shrink-0 items-center justify-center rounded border border-slate-600 text-xs text-slate-400 sm:flex"
+              >
+                {i + 1}
+              </span>
+            )}
             {choice.flag && <FlagImage code={choice.flag} className="text-3xl shrink-0" />}
             <span>{choice.label}</span>
           </button>
