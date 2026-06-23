@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { buildGenerateOptions, CONTINENTS } from './pool';
+import { cities } from '../data/cities';
+import { countries } from '../data/countries';
 import type { Difficulty } from '../store/useGameStore';
 
 const DIFFICULTIES: Difficulty[] = ['facile', 'moyen', 'difficile'];
@@ -33,5 +35,11 @@ describe('buildGenerateOptions', () => {
 
   it('fournit au moins une ville', () => {
     expect(buildGenerateOptions('Monde', 'moyen').cities.length).toBeGreaterThan(0);
+  });
+
+  it('chaque ville référence un nom de pays connu (filtre par continent)', () => {
+    const names = new Set(countries.map((c) => c.name));
+    const unknown = [...new Set(cities.map((c) => c.country))].filter((n) => !names.has(n));
+    expect(unknown).toEqual([]);
   });
 });

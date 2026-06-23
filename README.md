@@ -39,6 +39,16 @@ D'autres modes s'ajoutent facilement (voir « Ajouter un mode »).
   **Trophées** (`/stats`) qui récapitule aussi parties jouées, précision, modes essayés.
 - **Sons de feedback** : synthétisés via l'API Web Audio (`src/lib/sound.ts`, aucun
   fichier audio → hors-ligne), activables/désactivables depuis l'accueil.
+- **Retour haptique** : vibration légère sur réponse (API Vibration web, surtout Android).
+
+## Confort de jeu
+
+- **Clavier** : en QCM, touches **1–4** pour répondre (badges affichés) ; **Entrée / Espace / →**
+  pour passer à la question suivante. Focus visible au clavier.
+- **Carte** : zoom (molette / contrôles), placement précis du repère, cadrage automatique
+  sur la cible à la révélation.
+- **~140 villes** embarquées pour « situer une ville » (couverture mondiale, compatible
+  filtre par continent).
 
 ## Stack technique
 

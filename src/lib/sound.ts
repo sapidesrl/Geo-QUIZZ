@@ -45,3 +45,10 @@ export function playWrong(): void {
 export function playFinish(): void {
   [523, 659, 784, 1047].forEach((f, i) => tone(f, 160, 'triangle', i * 0.12));
 }
+
+/** Vibration tactile (API Vibration web, supportée surtout sur Android ; ignorée sinon). */
+export function vibrate(pattern: number | number[]): void {
+  if (typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function') {
+    navigator.vibrate(pattern);
+  }
+}

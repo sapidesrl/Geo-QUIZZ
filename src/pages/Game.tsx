@@ -9,7 +9,7 @@ import { defaultGenerateOptions } from '../engine/generate';
 import { buildGenerateOptions } from '../engine/pool';
 import type { Answer, Question, QuestionRecap } from '../engine/types';
 import { dailyKey, dailySeed, withSeed } from '../lib/rng';
-import { playCorrect, playFinish, playWrong } from '../lib/sound';
+import { playCorrect, playFinish, playWrong, vibrate } from '../lib/sound';
 import { getModeById } from '../modes';
 import { useGameStore } from '../store/useGameStore';
 
@@ -65,6 +65,36 @@ export default function Game() {
     return () => clearInterval(id);
   }, [session]);
 
+  // Raccourcis clavier : 1–4 pour répondre (QCM), Entrée/Espace/→ pour continuer.
+  // Alimenté par des refs pour rester branché sur l'état courant sans se ré-enregistrer.
+  const selectChoiceRef = useRef<(id: string) => void>(() => {});
+  const nextRef = useRef<() => void>(() => {});
+  const questionRef = useRef<Question>();
+  const revealedKbRef = useRef(revealed);
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      const q = questionRef.current;
+      if (!q) return;
+      if (!revealedKbRef.current) {
+        if (q.inputType === 'multiple-choice' && q.choices) {
+          const n = Number(e.key);
+          if (Number.isInteger(n) && n >= 1 && n <= q.choices.length) {
+            selectChoiceRef.current(q.choices[n - 1].id);
+          }
+        }
+        return;
+      }
+      // Question révélée : passer à la suivante (sauf si un bouton a déjà le focus).
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight') {
+        if (document.activeElement?.tagName === 'BUTTON') return;
+        e.preventDefault();
+        nextRef.current();
+      }
+    }
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
   if (!mode) return <Navigate to="/modes" replace />;
 
   const question = session[index];
@@ -80,9 +110,11 @@ export default function Game() {
       setStreak(newStreak);
       setBestStreak((b) => Math.max(b, newStreak));
       if (soundOn) playCorrect();
+      vibrate(30);
     } else {
       setStreak(0);
       if (soundOn) playWrong();
+      vibrate([60, 40, 60]);
     }
     setHistory((h) => [
       ...h,
@@ -128,6 +160,17 @@ export default function Game() {
     setDistanceKm(undefined);
   }
 
+  function selectChoice(id: string) {
+    setSelectedChoiceId(id);
+    submit({ kind: 'choice', choiceId: id });
+  }
+
+  // Branche les refs des raccourcis clavier sur les fonctions et l'état courants.
+  selectChoiceRef.current = selectChoice;
+  nextRef.current = next;
+  questionRef.current = question;
+  revealedKbRef.current = revealed;
+
   return (
     <div className="py-4">
       <ScoreBar
@@ -149,10 +192,7 @@ export default function Game() {
           selectedId={selectedChoiceId}
           correctId={question.correctChoiceId}
           revealed={revealed}
-          onSelect={(id) => {
-            setSelectedChoiceId(id);
-            submit({ kind: 'choice', choiceId: id });
-          }}
+          onSelect={selectChoice}
         />
       )}
 
