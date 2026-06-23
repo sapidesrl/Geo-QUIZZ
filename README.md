@@ -84,13 +84,15 @@ Le workflow `.github/workflows/deploy.yml` build et publie l'app sur GitHub Page
 chaque `push` sur `main` (et manuellement via *workflow_dispatch*).
 
 - **Activation (une fois)** : dans *Settings → Pages*, choisir **Source = GitHub Actions**.
-- Le build est produit avec `BASE_PATH=/geo-quizz/` (site projet), puis publié via les
-  actions officielles `upload-pages-artifact` / `deploy-pages`.
-- URL : **https://sapidesrl.github.io/geo-quizz/**
+- Le build est produit avec `BASE_PATH=./` (base relatif), puis publié via les actions
+  officielles `upload-pages-artifact` / `deploy-pages`.
+- URL : **https://sapidesrl.github.io/Geo-QUIZZ/**
 
-Le `base` est paramétrable par la variable d'environnement `BASE_PATH` (défaut `/`), ce qui
-laisse les builds locaux et **Capacitor** servir depuis la racine sans changement. Le routage
-en `HashRouter` reste compatible avec le sous-chemin GitHub Pages (pas de fallback 404 requis).
+Le `base` est paramétrable par la variable d'environnement `BASE_PATH` (défaut `/`). Le
+workflow utilise un **base relatif** (`./`) pour que les assets se résolvent par rapport à
+l'URL réelle de la page : insensible au sous-chemin et à la casse du nom de dépôt (le site
+est servi sous `/Geo-QUIZZ/`). Les builds locaux et **Capacitor** restent en racine sans
+changement. Le routage `HashRouter` reste compatible (pas de fallback 404 requis).
 
 ## Structure
 

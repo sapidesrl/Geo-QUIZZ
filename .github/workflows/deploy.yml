@@ -33,8 +33,9 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          # Site projet GitHub Pages : servi sous /geo-quizz/.
-          BASE_PATH: /geo-quizz/
+          # Base relatif : les assets se résolvent par rapport à l'URL de la page,
+          # quel que soit le sous-chemin/la casse du dépôt (ex. /Geo-QUIZZ/).
+          BASE_PATH: ./
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
