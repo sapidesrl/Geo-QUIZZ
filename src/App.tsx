@@ -1,7 +1,10 @@
 import { HashRouter, Route, Routes } from 'react-router-dom';
+import Campaign from './pages/Campaign';
+import CampaignChapter from './pages/CampaignChapter';
+import CampaignLevel from './pages/CampaignLevel';
+import Game from './pages/Game';
 import Home from './pages/Home';
 import ModeSelect from './pages/ModeSelect';
-import Game from './pages/Game';
 import Results from './pages/Results';
 import Stats from './pages/Stats';
 
@@ -15,6 +18,9 @@ export default function App() {
           <Route path="/stats" element={<Stats />} />
           <Route path="/game/:modeId" element={<Game />} />
           <Route path="/results/:modeId" element={<Results />} />
+          <Route path="/campaign" element={<Campaign />} />
+          <Route path="/campaign/:chapterId" element={<CampaignChapter />} />
+          <Route path="/campaign/:chapterId/:levelIndex" element={<CampaignLevel />} />
         </Routes>
       </div>
     </HashRouter>

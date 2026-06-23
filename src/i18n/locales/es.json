@@ -2,6 +2,7 @@
   "app": {
     "tagline": "Pon a prueba tu geografía: capitales, banderas, fronteras, monedas, idiomas y ubicación en el mapa del mundo.",
     "play": "Jugar",
+    "campaign": "Campaña",
     "daily": "Reto del día",
     "trophies": "Trofeos",
     "soundOn": "🔊 Sonido activado",
@@ -92,6 +93,23 @@
     "locateCountry": "¿Dónde está {{country}}?",
     "locateCity": "¿Dónde está {{city}} ({{country}})?",
     "worldcup": "Ubica {{city}} — ciudad anfitriona del Mundial 2026 ({{country}})"
+  },
+  "campaign": {
+    "title": "Campaña",
+    "tagline": "Aprende los países del mundo continente a continente.",
+    "levelOf": "Nivel {{n}} / {{total}}",
+    "levelProgress": "{{done}} / {{total}} niveles completados",
+    "countries": "países",
+    "discoverTitle": "Estudia estos países",
+    "startQuiz": "Iniciar el quiz",
+    "locked": "Bloqueado",
+    "completed": "¡Nivel superado! ✅",
+    "passThreshold": "Necesitas un 60 % de respuestas correctas para desbloquear el siguiente nivel.",
+    "score": "{{score}} / {{total}}",
+    "nextLevel": "Siguiente nivel →",
+    "chapterDone": "¡Capítulo completado! 🎉",
+    "replay": "Repetir este nivel",
+    "backToChapter": "← Volver al capítulo"
   },
   "modes": {
     "capital-mc": { "label": "Capital — Opción múltiple", "description": "Elige la capital del país entre 4 opciones." },

@@ -2,6 +2,7 @@
   "app": {
     "tagline": "Teste dein Geografiewissen: Hauptstädte, Flaggen, Grenzen, Währungen, Sprachen und Orte auf der Weltkarte.",
     "play": "Spielen",
+    "campaign": "Kampagne",
     "daily": "Tägliche Herausforderung",
     "trophies": "Trophäen",
     "soundOn": "🔊 Ton an",
@@ -92,6 +93,23 @@
     "locateCountry": "Wo liegt {{country}}?",
     "locateCity": "Wo liegt {{city}} ({{country}})?",
     "worldcup": "Verorte {{city}} — Austragungsort der WM 2026 ({{country}})"
+  },
+  "campaign": {
+    "title": "Kampagne",
+    "tagline": "Lerne die Länder der Welt Kontinent für Kontinent.",
+    "levelOf": "Level {{n}} / {{total}}",
+    "levelProgress": "{{done}} / {{total}} Level abgeschlossen",
+    "countries": "Länder",
+    "discoverTitle": "Lerne diese Länder",
+    "startQuiz": "Quiz starten",
+    "locked": "Gesperrt",
+    "completed": "Level bestanden! ✅",
+    "passThreshold": "Du brauchst 60 % richtige Antworten, um das nächste Level freizuschalten.",
+    "score": "{{score}} / {{total}}",
+    "nextLevel": "Nächstes Level →",
+    "chapterDone": "Kapitel abgeschlossen! 🎉",
+    "replay": "Dieses Level wiederholen",
+    "backToChapter": "← Zurück zum Kapitel"
   },
   "modes": {
     "capital-mc": { "label": "Hauptstadt — Auswahl", "description": "Wähle die Hauptstadt des Landes aus 4 Optionen." },

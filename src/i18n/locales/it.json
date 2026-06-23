@@ -2,6 +2,7 @@
   "app": {
     "tagline": "Metti alla prova la tua geografia: capitali, bandiere, confini, valute, lingue e localizzazione sulla mappa del mondo.",
     "play": "Gioca",
+    "campaign": "Campagna",
     "daily": "Sfida del giorno",
     "trophies": "Trofei",
     "soundOn": "🔊 Audio attivo",
@@ -92,6 +93,23 @@
     "locateCountry": "Dove si trova {{country}}?",
     "locateCity": "Dove si trova {{city}} ({{country}})?",
     "worldcup": "Localizza {{city}} — città ospitante del Mondiale 2026 ({{country}})"
+  },
+  "campaign": {
+    "title": "Campagna",
+    "tagline": "Impara i paesi del mondo continente per continente.",
+    "levelOf": "Livello {{n}} / {{total}}",
+    "levelProgress": "{{done}} / {{total}} livelli completati",
+    "countries": "paesi",
+    "discoverTitle": "Studia questi paesi",
+    "startQuiz": "Inizia il quiz",
+    "locked": "Bloccato",
+    "completed": "Livello superato! ✅",
+    "passThreshold": "Serve il 60 % di risposte corrette per sbloccare il livello successivo.",
+    "score": "{{score}} / {{total}}",
+    "nextLevel": "Livello successivo →",
+    "chapterDone": "Capitolo completato! 🎉",
+    "replay": "Rigioca questo livello",
+    "backToChapter": "← Torna al capitolo"
   },
   "modes": {
     "capital-mc": { "label": "Capitale — Quiz", "description": "Scegli la capitale del paese tra 4 opzioni." },

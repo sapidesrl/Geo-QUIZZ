@@ -26,6 +26,12 @@ export default function Home() {
           {t('app.play')}
         </Link>
         <Link
+          to="/campaign"
+          className="rounded-xl border border-slate-600 px-10 py-3 font-semibold transition hover:bg-slate-800"
+        >
+          🗺️ {t('app.campaign')}
+        </Link>
+        <Link
           to="/game/daily"
           className="rounded-xl border border-slate-600 px-10 py-3 font-semibold transition hover:bg-slate-800"
         >

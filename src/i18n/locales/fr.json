@@ -2,6 +2,7 @@
   "app": {
     "tagline": "Teste ta géographie : capitales, drapeaux, frontières, monnaies, langues et localisation sur la carte du monde.",
     "play": "Jouer",
+    "campaign": "Campagne",
     "daily": "Défi du jour",
     "trophies": "Trophées",
     "soundOn": "🔊 Sons activés",
@@ -76,6 +77,23 @@
   },
   "labels": {
     "cityCountry": "{{city}} ({{country}})"
+  },
+  "campaign": {
+    "title": "Campagne",
+    "tagline": "Apprends les pays du monde continent par continent.",
+    "levelOf": "Niveau {{n}} / {{total}}",
+    "levelProgress": "{{done}} / {{total}} niveaux réussis",
+    "countries": "pays",
+    "discoverTitle": "Apprends ces pays",
+    "startQuiz": "Lancer le quiz",
+    "locked": "Verrouillé",
+    "completed": "Niveau réussi ! ✅",
+    "passThreshold": "Il faut 60 % de bonnes réponses pour débloquer le niveau suivant.",
+    "score": "{{score}} / {{total}}",
+    "nextLevel": "Niveau suivant →",
+    "chapterDone": "Chapitre terminé ! 🎉",
+    "replay": "Rejouer ce niveau",
+    "backToChapter": "← Retour au chapitre"
   },
   "prompts": {
     "capital": "Quelle est la capitale de {{country}} ?",

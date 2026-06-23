@@ -4,7 +4,6 @@ import { evaluateAchievements } from '../lib/achievements';
 
 export type Difficulty = 'facile' | 'moyen' | 'difficile';
 
-/** Résumé d'une partie terminée, fourni à `recordGame`. */
 export interface GameSummary {
   modeId: string;
   score: number;
@@ -14,38 +13,35 @@ export interface GameSummary {
   dailyKey?: string;
 }
 
+export interface CampaignLevelResult {
+  completed: boolean;
+  bestScore: number;
+  total: number;
+}
+
 interface GameState {
-  /** nombre de questions par partie. */
   questionsPerGame: number;
   setQuestionsPerGame: (n: number) => void;
-  /** continent sélectionné ('Monde' = tous). */
   continent: string;
   setContinent: (c: string) => void;
-  /** difficulté (filtre par taille de pays). */
   difficulty: Difficulty;
   setDifficulty: (d: Difficulty) => void;
-  /** sons de feedback activés. */
   soundOn: boolean;
   toggleSound: () => void;
 
-  /** meilleur score par mode (clé = id du mode). */
   bestScores: Record<string, number>;
-  /** meilleure série par mode. */
   bestStreaks: Record<string, number>;
 
-  /** cumuls de progression. */
   gamesPlayed: number;
   totalCorrect: number;
   totalAnswered: number;
   modesPlayed: string[];
   unlocked: string[];
-  /** défis du jour réalisés (clé date AAAA-MM-JJ → score). */
   dailyHistory: Record<string, number>;
 
-  /**
-   * Enregistre une partie terminée (records, cumuls, succès). Renvoie la liste
-   * des succès nouvellement débloqués par cette partie.
-   */
+  campaignProgress: Record<string, CampaignLevelResult>;
+  recordCampaignLevel: (key: string, score: number, total: number) => void;
+
   recordGame: (summary: GameSummary) => string[];
 }
 
@@ -70,6 +66,19 @@ export const useGameStore = create<GameState>()(
       modesPlayed: [],
       unlocked: [],
       dailyHistory: {},
+
+      campaignProgress: {},
+      recordCampaignLevel: (key, score, total) =>
+        set((s) => ({
+          campaignProgress: {
+            ...s.campaignProgress,
+            [key]: {
+              completed: total > 0 && score / total >= 0.6,
+              bestScore: Math.max(score, s.campaignProgress[key]?.bestScore ?? 0),
+              total,
+            },
+          },
+        })),
 
       recordGame: (summary) => {
         const s = get();
