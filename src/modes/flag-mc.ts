@@ -16,7 +16,9 @@ export const flagMc: GameMode = {
     return {
       inputType: 'multiple-choice',
       prompt: i18n.t('prompts.flagOf', { country: countryName(country) }),
-      choices: options.map((c) => ({ id: c.cca2, label: countryName(c), flag: c.cca2 })),
+      // Seul le drapeau est affiché (label vide) : sinon le nom du pays
+      // donnerait directement la réponse.
+      choices: options.map((c) => ({ id: c.cca2, label: '', flag: c.cca2 })),
       correctChoiceId: country.cca2,
       answerLabel: countryName(country),
     };
