@@ -1,7 +1,8 @@
 import { countries } from '../data/countries';
 import type { Country } from '../engine/types';
+import { capitalName as capitalExonym } from './capitals';
 import { currencyNames, languageNames } from './fr';
-import i18n from './index';
+import i18n, { type Lang } from './index';
 
 /**
  * Résolution des noms de données (pays, monnaies, langues, continents) dans la
@@ -29,6 +30,11 @@ export function countryName(country: Country): string {
   } catch {
     return country.name;
   }
+}
+
+/** Nom de capitale localisé dans la langue d'interface courante (exonymes embarqués). */
+export function capitalName(capital: string): string {
+  return capitalExonym(capital, i18n.language as Lang);
 }
 
 /** Nom de monnaie localisé (ISO 4217), repli sur le dictionnaire français. */

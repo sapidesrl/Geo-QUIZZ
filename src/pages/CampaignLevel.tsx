@@ -12,7 +12,7 @@ import {
 } from '../data/campaign';
 import { checkAnswer } from '../engine/check';
 import type { Answer, Country, GenerateOptions, Question } from '../engine/types';
-import { continentLabel, countryName } from '../i18n/display';
+import { capitalName, continentLabel, countryName } from '../i18n/display';
 import { capitalMc } from '../modes/capital-mc';
 import { flagMc } from '../modes/flag-mc';
 import { locateCountry } from '../modes/locate-country';
@@ -84,7 +84,7 @@ function DiscoverPhase({
           <div key={c.cca2} className="rounded-xl bg-slate-800 p-3 text-center">
             <FlagImage code={c.cca2} className="mb-1 text-5xl" />
             <div className="mt-1 text-sm font-bold">{countryName(c)}</div>
-            <div className="text-xs text-slate-400">🏛️ {c.capital}</div>
+            <div className="text-xs text-slate-400">🏛️ {capitalName(c.capital)}</div>
           </div>
         ))}
       </div>
