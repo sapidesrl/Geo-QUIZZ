@@ -38,6 +38,7 @@ const raw = worldCountries as unknown as RawCountry[];
 const CAPITAL_OVERRIDES: Record<string, string> = {
   MN: 'Ulaanbaatar',
   SZ: 'Mbabane',
+  LK: 'Sri Jayawardenepura Kotte',
 };
 
 // Correspondance code ISO alpha-3 → alpha-2 (minuscules) pour résoudre les frontières.
