@@ -13,8 +13,10 @@ export interface Country {
   area: number; // superficie en km²
   population: number; // nombre d'habitants
   borders: string[]; // pays frontaliers (codes ISO alpha-2 minuscules)
-  currency: string; // monnaie principale (nom)
-  language: string; // langue principale (nom anglais)
+  currencyCode: string; // code ISO 4217 (ex. EUR, USD) — clé de traduction
+  currency: string; // monnaie principale (nom localisé)
+  languageCode: string; // code ISO 639-3 (ex. fra, eng) — clé de traduction
+  language: string; // langue principale (nom localisé)
 }
 
 /** Une ville (pour le mode « situer les villes »). */

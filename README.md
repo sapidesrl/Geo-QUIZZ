@@ -26,6 +26,9 @@ Application de quizz géographique (PWA) jouable au navigateur et sur smartphone
 Les données de population sont embarquées (`src/data/populations.ts`, généré par
 `scripts/generate-populations.mjs` à partir du jeu de données ouvert `country-json`).
 Les frontières, monnaies et langues proviennent de `world-countries` (embarqué).
+Les noms de monnaies et de langues (fournis en anglais par la source) sont traduits
+en français via `src/i18n/fr.ts` (clés sur les codes ISO 4217 / ISO 639-3), première
+brique d'un futur multi-langue (voir « Internationalisation »).
 
 D'autres modes s'ajoutent facilement (voir « Ajouter un mode »).
 
@@ -94,6 +97,19 @@ l'URL réelle de la page : insensible au sous-chemin et à la casse du nom de d�
 est servi sous `/Geo-QUIZZ/`). Les builds locaux et **Capacitor** restent en racine sans
 changement. Le routage `HashRouter` reste compatible (pas de fallback 404 requis).
 
+## Internationalisation (en cours)
+
+Toutes les **réponses** sont en français : noms de pays (`world-countries`, champ
+`translations.fra`), capitales, continents, et désormais monnaies et langues
+(traduites dans `src/i18n/fr.ts`, en clé sur les codes ISO portés par `Country`
+— `currencyCode`, `languageCode`).
+
+Cette séparation **code ISO ↔ libellé localisé** prépare le multi-langue :
+ajouter une langue d'interface reviendra à fournir un fichier `src/i18n/<locale>.ts`
+du même format, puis à résoudre les libellés selon la locale courante. L'i18n des
+textes d'interface (titres, libellés de modes, énoncés) reste à faire dans un second
+temps.
+
 ## Structure
 
 ```
@@ -105,6 +121,7 @@ src/
   pages/       Home, ModeSelect, Game, Results, Stats
   store/       useGameStore (Zustand)
   lib/         normalize, levenshtein, shuffle, geo (haversine), rng, sound, achievements
+  i18n/        fr.ts (noms de monnaies/langues en français, clés sur codes ISO)
 ```
 
 ## Ajouter un mode
