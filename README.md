@@ -78,6 +78,20 @@ npm run test       # tests unitaires
 npm run lint       # ESLint
 ```
 
+## Déploiement (GitHub Pages)
+
+Le workflow `.github/workflows/deploy.yml` build et publie l'app sur GitHub Pages à
+chaque `push` sur `main` (et manuellement via *workflow_dispatch*).
+
+- **Activation (une fois)** : dans *Settings → Pages*, choisir **Source = GitHub Actions**.
+- Le build est produit avec `BASE_PATH=/geo-quizz/` (site projet), puis publié via les
+  actions officielles `upload-pages-artifact` / `deploy-pages`.
+- URL : **https://sapidesrl.github.io/geo-quizz/**
+
+Le `base` est paramétrable par la variable d'environnement `BASE_PATH` (défaut `/`), ce qui
+laisse les builds locaux et **Capacitor** servir depuis la racine sans changement. Le routage
+en `HashRouter` reste compatible avec le sous-chemin GitHub Pages (pas de fallback 404 requis).
+
 ## Structure
 
 ```
