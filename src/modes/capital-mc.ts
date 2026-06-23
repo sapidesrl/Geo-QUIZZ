@@ -1,7 +1,7 @@
 import { defaultGenerateOptions, distractors, randomCountry } from '../engine/generate';
 import type { GameMode, Question } from '../engine/types';
 import i18n from '../i18n';
-import { countryName } from '../i18n/display';
+import { capitalName, countryName } from '../i18n/display';
 import { shuffle } from '../lib/shuffle';
 
 export const capitalMc: GameMode = {
@@ -17,9 +17,9 @@ export const capitalMc: GameMode = {
       inputType: 'multiple-choice',
       prompt: i18n.t('prompts.capital', { country: countryName(country) }),
       flag: country.cca2,
-      choices: options.map((c) => ({ id: c.cca2, label: c.capital })),
+      choices: options.map((c) => ({ id: c.cca2, label: capitalName(c.capital) })),
       correctChoiceId: country.cca2,
-      answerLabel: country.capital,
+      answerLabel: capitalName(country.capital),
     };
   },
 };

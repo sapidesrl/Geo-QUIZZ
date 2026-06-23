@@ -114,6 +114,10 @@ initiale via le navigateur).
   (`cca2`, `currencyCode` ISO 4217, `languageCode` ISO 639-3, `region`) ; le libellé
   affiché est calculé à la volée. Repli sur les dictionnaires français embarqués
   (`src/i18n/fr.ts`) pour les rares codes absents de CLDR.
+- **Noms de capitales** : `Intl.DisplayNames` ne gère pas les villes. Les exonymes
+  (ex. *Warsaw* → Varsovie / Varsovia / Warschau / Varsavia) vivent dans un dictionnaire
+  embarqué `src/i18n/capitals.ts`, indexé sur le nom source anglais ; à défaut d'exonyme,
+  on garde le nom source. Le mode « Capitale — Saisie » accepte l'exonyme **et** le nom source.
 
 Ajouter une langue = ajouter `src/i18n/locales/<locale>.json` et l'enregistrer dans
 `src/i18n/index.ts` ; les noms de données suivent automatiquement (CLDR).
