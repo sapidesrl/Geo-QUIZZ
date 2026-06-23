@@ -104,7 +104,7 @@
     "startQuiz": "Quiz starten",
     "locked": "Gesperrt",
     "completed": "Level bestanden! ✅",
-    "passThreshold": "Du brauchst 60 % richtige Antworten, um das nächste Level freizuschalten.",
+    "passThreshold": "Du brauchst 75 % richtige Antworten, um das nächste Level freizuschalten.",
     "score": "{{score}} / {{total}}",
     "nextLevel": "Nächstes Level →",
     "chapterDone": "Kapitel abgeschlossen! 🎉",

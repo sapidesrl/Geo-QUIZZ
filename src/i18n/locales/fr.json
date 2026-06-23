@@ -88,7 +88,7 @@
     "startQuiz": "Lancer le quiz",
     "locked": "Verrouillé",
     "completed": "Niveau réussi ! ✅",
-    "passThreshold": "Il faut 60 % de bonnes réponses pour débloquer le niveau suivant.",
+    "passThreshold": "Il faut 75 % de bonnes réponses pour débloquer le niveau suivant.",
     "score": "{{score}} / {{total}}",
     "nextLevel": "Niveau suivant →",
     "chapterDone": "Chapitre terminé ! 🎉",

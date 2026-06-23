@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { CAMPAIGN_PASS_THRESHOLD } from '../data/campaign';
 import { evaluateAchievements } from '../lib/achievements';
 
 export type Difficulty = 'facile' | 'moyen' | 'difficile';
@@ -73,7 +74,7 @@ export const useGameStore = create<GameState>()(
           campaignProgress: {
             ...s.campaignProgress,
             [key]: {
-              completed: total > 0 && score / total >= 0.6,
+              completed: total > 0 && score / total >= CAMPAIGN_PASS_THRESHOLD,
               bestScore: Math.max(score, s.campaignProgress[key]?.bestScore ?? 0),
               total,
             },

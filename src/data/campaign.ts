@@ -8,7 +8,7 @@ export interface CampaignChapter {
 }
 
 export const CAMPAIGN_QUESTIONS = 8;
-export const CAMPAIGN_PASS_THRESHOLD = 0.6;
+export const CAMPAIGN_PASS_THRESHOLD = 0.75;
 
 function buildLevels(region: string, levelSize = 7): string[][] {
   const pool = countries

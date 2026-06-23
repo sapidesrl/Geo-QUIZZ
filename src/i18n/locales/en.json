@@ -104,7 +104,7 @@
     "startQuiz": "Start quiz",
     "locked": "Locked",
     "completed": "Level passed! ✅",
-    "passThreshold": "You need 60% correct answers to unlock the next level.",
+    "passThreshold": "You need 75% correct answers to unlock the next level.",
     "score": "{{score}} / {{total}}",
     "nextLevel": "Next level →",
     "chapterDone": "Chapter complete! 🎉",
