@@ -21,6 +21,8 @@ export default function MultipleChoice({
       {choices.map((choice, i) => {
         const isCorrect = choice.id === correctId;
         const isSelected = choice.id === selectedId;
+        // Choix « drapeau seul » (sans libellé) : drapeau agrandi et centré.
+        const flagOnly = Boolean(choice.flag) && !choice.label;
 
         let state = 'border-slate-600 bg-slate-800 hover:border-brand hover:bg-slate-700';
         if (revealed && isCorrect) {
@@ -37,7 +39,9 @@ export default function MultipleChoice({
             type="button"
             disabled={revealed}
             onClick={() => onSelect(choice.id)}
-            className={`flex items-center gap-3 rounded-xl border-2 p-4 text-left text-base font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand ${state}`}
+            className={`flex items-center gap-3 rounded-xl border-2 p-4 text-left text-base font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand ${
+              flagOnly ? 'justify-center' : ''
+            } ${state}`}
           >
             {!revealed && (
               <span
@@ -47,8 +51,10 @@ export default function MultipleChoice({
                 {i + 1}
               </span>
             )}
-            {choice.flag && <FlagImage code={choice.flag} className="text-3xl shrink-0" />}
-            <span>{choice.label}</span>
+            {choice.flag && (
+              <FlagImage code={choice.flag} className={`shrink-0 ${flagOnly ? 'text-6xl' : 'text-3xl'}`} />
+            )}
+            {choice.label && <span>{choice.label}</span>}
           </button>
         );
       })}
