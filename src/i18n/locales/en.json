@@ -1,0 +1,125 @@
+{
+  "app": {
+    "tagline": "Test your geography: capitals, flags, borders, currencies, languages and locating places on the world map.",
+    "play": "Play",
+    "daily": "Daily challenge",
+    "trophies": "Trophies",
+    "soundOn": "🔊 Sound on",
+    "soundOff": "🔇 Sound off",
+    "language": "Language"
+  },
+  "nav": {
+    "home": "← Home",
+    "modes": "← Modes",
+    "replay": "Play again",
+    "otherModes": "Other modes",
+    "backToModes": "Back to modes"
+  },
+  "filters": {
+    "questions": "Questions",
+    "continent": "Continent",
+    "difficulty": "Difficulty",
+    "world": "World",
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard"
+  },
+  "modeselect": {
+    "title": "Choose a mode",
+    "record": "Best {{n}}"
+  },
+  "scorebar": {
+    "score": "Score {{n}}"
+  },
+  "game": {
+    "yourAnswer": "Your answer…",
+    "validate": "Submit",
+    "placePin": "Tap the map to drop your pin",
+    "wellPlaced": "✅ Well placed!",
+    "tooFar": "❌ Too far.",
+    "distance": "{{km}} km from the target.",
+    "next": "Next question →",
+    "seeResult": "See result",
+    "correct": "✅ Correct!",
+    "wrong": "❌ Wrong.",
+    "answer": "Answer:",
+    "loadingMap": "Loading map…"
+  },
+  "results": {
+    "none": "No result to display.",
+    "pct": "{{pct}}% correct",
+    "bestStreak": "Best streak",
+    "time": "Time",
+    "record": "Best",
+    "unlocked_one": "🎉 Achievement unlocked",
+    "unlocked_other": "🎉 Achievements unlocked",
+    "recap": "Summary",
+    "minSec": "{{m}} min {{s}} s",
+    "sec": "{{s}} s"
+  },
+  "stats": {
+    "title": "Trophies & progress",
+    "games": "Games",
+    "goodAnswers": "Correct answers",
+    "accuracy": "Accuracy",
+    "modesTried": "Modes tried",
+    "dailies": "Daily challenges",
+    "achievements": "Achievements",
+    "achievementsTitle": "Achievements"
+  },
+  "continents": {
+    "Africa": "Africa",
+    "Americas": "Americas",
+    "Asia": "Asia",
+    "Europe": "Europe",
+    "Oceania": "Oceania"
+  },
+  "labels": {
+    "cityCountry": "{{city}} ({{country}})"
+  },
+  "prompts": {
+    "capital": "What is the capital of {{country}}?",
+    "capitalToCountry": "{{capital}} is the capital of which country?",
+    "flagOf": "Which is the flag of {{country}}?",
+    "whichFlag": "Which country does this flag belong to?",
+    "continentOf": "On which continent is {{country}}?",
+    "border": "Which country shares a border with {{country}}?",
+    "currency": "What is the currency of {{country}}?",
+    "language": "What is the main language of {{country}}?",
+    "largest": "Which is the largest country?",
+    "mostPopulated": "Which is the most populous country?",
+    "leastPopulated": "Which is the least populous country?",
+    "locateCountry": "Where is {{country}}?",
+    "locateCity": "Where is {{city}} ({{country}})?",
+    "worldcup": "Locate {{city}} — host city of the 2026 World Cup ({{country}})"
+  },
+  "modes": {
+    "capital-mc": { "label": "Capital — MCQ", "description": "Choose the country's capital from 4 options." },
+    "capital-text": { "label": "Capital — Type", "description": "Type the name of the country's capital." },
+    "capital-to-country-mc": { "label": "Capital → Country — MCQ", "description": "Find the country from its capital." },
+    "flag-mc": { "label": "Flag — MCQ", "description": "Recognise the country's flag among 4." },
+    "flag-text": { "label": "Flag — Type", "description": "Identify the country from its flag." },
+    "continent-mc": { "label": "Continent — MCQ", "description": "Find a country's continent." },
+    "border-mc": { "label": "Bordering country — MCQ", "description": "Among 4 countries, which one shares a border with the given country?" },
+    "currency-mc": { "label": "Currency — MCQ", "description": "What is a country's currency?" },
+    "language-mc": { "label": "Language — MCQ", "description": "What is a country's main language?" },
+    "largest-area-mc": { "label": "Largest — MCQ", "description": "Among 4 countries, which has the largest area?" },
+    "most-populated-mc": { "label": "Most populous — MCQ", "description": "Among 4 countries, which has the most inhabitants?" },
+    "least-populated-mc": { "label": "Least populous — MCQ", "description": "Among 4 countries, which has the fewest inhabitants?" },
+    "locate-country": { "label": "Locate a country", "description": "Place the requested country on the world map." },
+    "locate-city": { "label": "Locate a city", "description": "Place the requested city on the world map." },
+    "worldcup-2026": { "label": "2026 World Cup", "description": "Locate the 2026 World Cup host cities (USA, Canada, Mexico)." },
+    "mixed": { "label": "Mixed — review", "description": "A mix of all questions, all modes combined." },
+    "daily": { "label": "Daily challenge", "description": "A daily quiz, the same for everyone, once a day." }
+  },
+  "achievements": {
+    "first-game": { "label": "First game", "description": "Finish your very first game." },
+    "perfect": { "label": "Flawless", "description": "Complete a game with 100%." },
+    "streak-10": { "label": "On fire", "description": "Get 10 correct answers in a row." },
+    "explorer": { "label": "Explorer", "description": "Play 5 different modes." },
+    "globe-trotter": { "label": "Globetrotter", "description": "Play 10 different modes." },
+    "centurion": { "label": "Centurion", "description": "Reach 100 correct answers in total." },
+    "veteran": { "label": "Veteran", "description": "Play 25 games." },
+    "daily": { "label": "Challenge met", "description": "Finish a daily challenge." }
+  }
+}

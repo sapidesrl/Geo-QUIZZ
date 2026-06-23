@@ -1,6 +1,8 @@
 import { countries } from '../data/countries';
 import { defaultGenerateOptions } from '../engine/generate';
 import type { Country, GameMode, Question } from '../engine/types';
+import i18n from '../i18n';
+import { countryName } from '../i18n/display';
 import { pick, sample } from '../lib/shuffle';
 
 const byCode = new Map(countries.map((c) => [c.cca2, c]));
@@ -35,11 +37,11 @@ export const borderMc: GameMode = {
     const options = sample([neighbor, ...distractors], 4);
     return {
       inputType: 'multiple-choice',
-      prompt: `Quel pays partage une frontière avec ${subject.name} ?`,
+      prompt: i18n.t('prompts.border', { country: countryName(subject) }),
       flag: subject.cca2,
-      choices: options.map((c) => ({ id: c.cca2, label: c.name, flag: c.cca2 })),
+      choices: options.map((c) => ({ id: c.cca2, label: countryName(c), flag: c.cca2 })),
       correctChoiceId: neighbor.cca2,
-      answerLabel: neighbor.name,
+      answerLabel: countryName(neighbor),
     };
   },
 };

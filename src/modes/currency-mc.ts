@@ -1,9 +1,12 @@
 import { countries } from '../data/countries';
 import { defaultGenerateOptions } from '../engine/generate';
 import type { GameMode, Question } from '../engine/types';
+import i18n from '../i18n';
+import { countryName, currencyName } from '../i18n/display';
 import { pick, sample } from '../lib/shuffle';
 
-const allCurrencies = [...new Set(countries.map((c) => c.currency).filter(Boolean))];
+// Codes ISO 4217 distincts (id stable) ; le libellé est résolu dans la langue courante.
+const allCurrencyCodes = [...new Set(countries.map((c) => c.currencyCode).filter(Boolean))];
 
 export const currencyMc: GameMode = {
   id: 'currency-mc',
@@ -12,21 +15,21 @@ export const currencyMc: GameMode = {
   icon: '💰',
   inputType: 'multiple-choice',
   generate(o = defaultGenerateOptions): Question {
-    const pool = o.countries.filter((c) => c.currency);
-    const subject = pick(pool.length > 0 ? pool : countries.filter((c) => c.currency));
+    const pool = o.countries.filter((c) => c.currencyCode);
+    const subject = pick(pool.length > 0 ? pool : countries.filter((c) => c.currencyCode));
 
     const others = sample(
-      allCurrencies.filter((c) => c !== subject.currency),
+      allCurrencyCodes.filter((code) => code !== subject.currencyCode),
       3,
     );
-    const options = sample([subject.currency, ...others], 4);
+    const options = sample([subject.currencyCode, ...others], 4);
     return {
       inputType: 'multiple-choice',
-      prompt: `Quelle est la monnaie de ${subject.name} ?`,
+      prompt: i18n.t('prompts.currency', { country: countryName(subject) }),
       flag: subject.cca2,
-      choices: options.map((c) => ({ id: c, label: c })),
-      correctChoiceId: subject.currency,
-      answerLabel: subject.currency,
+      choices: options.map((code) => ({ id: code, label: currencyName(code) })),
+      correctChoiceId: subject.currencyCode,
+      answerLabel: currencyName(subject.currencyCode),
     };
   },
 };

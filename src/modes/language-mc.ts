@@ -1,9 +1,12 @@
 import { countries } from '../data/countries';
 import { defaultGenerateOptions } from '../engine/generate';
 import type { GameMode, Question } from '../engine/types';
+import i18n from '../i18n';
+import { countryName, languageName } from '../i18n/display';
 import { pick, sample } from '../lib/shuffle';
 
-const allLanguages = [...new Set(countries.map((c) => c.language).filter(Boolean))];
+// Codes ISO 639-3 distincts (id stable) ; le libellé est résolu dans la langue courante.
+const allLanguageCodes = [...new Set(countries.map((c) => c.languageCode).filter(Boolean))];
 
 export const languageMc: GameMode = {
   id: 'language-mc',
@@ -12,21 +15,21 @@ export const languageMc: GameMode = {
   icon: '🗣️',
   inputType: 'multiple-choice',
   generate(o = defaultGenerateOptions): Question {
-    const pool = o.countries.filter((c) => c.language);
-    const subject = pick(pool.length > 0 ? pool : countries.filter((c) => c.language));
+    const pool = o.countries.filter((c) => c.languageCode);
+    const subject = pick(pool.length > 0 ? pool : countries.filter((c) => c.languageCode));
 
     const others = sample(
-      allLanguages.filter((l) => l !== subject.language),
+      allLanguageCodes.filter((code) => code !== subject.languageCode),
       3,
     );
-    const options = sample([subject.language, ...others], 4);
+    const options = sample([subject.languageCode, ...others], 4);
     return {
       inputType: 'multiple-choice',
-      prompt: `Quelle est la langue principale de ${subject.name} ?`,
+      prompt: i18n.t('prompts.language', { country: countryName(subject) }),
       flag: subject.cca2,
-      choices: options.map((l) => ({ id: l, label: l })),
-      correctChoiceId: subject.language,
-      answerLabel: subject.language,
+      choices: options.map((code) => ({ id: code, label: languageName(code) })),
+      correctChoiceId: subject.languageCode,
+      answerLabel: languageName(subject.languageCode),
     };
   },
 };

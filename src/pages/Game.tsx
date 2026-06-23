@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import FlagImage from '../components/FlagImage';
 import FreeTextInput from '../components/FreeTextInput';
@@ -21,6 +22,7 @@ const DAILY_QUESTIONS = 10;
 const MapPicker = lazy(() => import('../components/MapPicker'));
 
 export default function Game() {
+  const { t } = useTranslation();
   const { modeId } = useParams();
   const navigate = useNavigate();
   const mode = getModeById(modeId);
@@ -229,7 +231,7 @@ export default function Game() {
           <Suspense
             fallback={
               <div className="flex h-[55vh] min-h-[320px] w-full items-center justify-center rounded-xl bg-slate-800 text-slate-400">
-                Chargement de la carte…
+                {t('game.loadingMap')}
               </div>
             }
           >
@@ -247,7 +249,7 @@ export default function Game() {
               onClick={() => picked && submit({ kind: 'point', ...picked })}
               className="w-full rounded-xl bg-brand p-4 text-lg font-semibold transition hover:bg-brand-dark disabled:opacity-50"
             >
-              {picked ? 'Valider' : 'Touche la carte pour placer ton repère'}
+              {picked ? t('game.validate') : t('game.placePin')}
             </button>
           ) : (
             <div
@@ -255,8 +257,8 @@ export default function Game() {
                 lastCorrect ? 'bg-emerald-500/20 text-emerald-200' : 'bg-rose-500/20 text-rose-200'
               }`}
             >
-              {lastCorrect ? '✅ Bien situé !' : '❌ Trop loin.'}{' '}
-              {distanceKm != null && <>À {Math.round(distanceKm)} km de la cible.</>}
+              {lastCorrect ? t('game.wellPlaced') : t('game.tooFar')}{' '}
+              {distanceKm != null && t('game.distance', { km: Math.round(distanceKm) })}
             </div>
           )}
         </div>
@@ -268,7 +270,7 @@ export default function Game() {
           onClick={next}
           className="animate-pop mt-6 w-full rounded-xl bg-slate-200 p-4 text-lg font-semibold text-slate-900 transition hover:bg-white"
         >
-          {index + 1 >= session.length ? 'Voir le résultat' : 'Question suivante →'}
+          {index + 1 >= session.length ? t('game.seeResult') : t('game.next')}
         </button>
       )}
     </div>

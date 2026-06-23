@@ -1,5 +1,7 @@
 import { defaultGenerateOptions, randomCountry } from '../engine/generate';
 import type { GameMode, Question } from '../engine/types';
+import i18n from '../i18n';
+import { countryName } from '../i18n/display';
 
 export const locateCountry: GameMode = {
   id: 'locate-country',
@@ -9,16 +11,17 @@ export const locateCountry: GameMode = {
   inputType: 'map-pin',
   generate(o = defaultGenerateOptions): Question {
     const country = randomCountry(o.countries);
+    const name = countryName(country);
     return {
       inputType: 'map-pin',
-      prompt: `Où se situe ${country.name} ?`,
+      prompt: i18n.t('prompts.locateCountry', { country: name }),
       target: {
         lat: country.lat,
         lng: country.lng,
         toleranceKm: 700,
-        label: country.name,
+        label: name,
       },
-      answerLabel: country.name,
+      answerLabel: name,
     };
   },
 };

@@ -1,5 +1,7 @@
 import { defaultGenerateOptions, randomCountry } from '../engine/generate';
 import type { GameMode, Question } from '../engine/types';
+import i18n from '../i18n';
+import { countryName } from '../i18n/display';
 
 export const flagText: GameMode = {
   id: 'flag-text',
@@ -11,10 +13,11 @@ export const flagText: GameMode = {
     const country = randomCountry(o.countries);
     return {
       inputType: 'free-text',
-      prompt: 'À quel pays appartient ce drapeau ?',
+      prompt: i18n.t('prompts.whichFlag'),
       flag: country.cca2,
-      acceptedAnswers: [country.name, country.nameEn],
-      answerLabel: country.name,
+      // On accepte le nom dans la langue courante, plus français et anglais.
+      acceptedAnswers: [...new Set([countryName(country), country.name, country.nameEn])],
+      answerLabel: countryName(country),
     };
   },
 };

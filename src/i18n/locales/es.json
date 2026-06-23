@@ -1,0 +1,125 @@
+{
+  "app": {
+    "tagline": "Pon a prueba tu geografía: capitales, banderas, fronteras, monedas, idiomas y ubicación en el mapa del mundo.",
+    "play": "Jugar",
+    "daily": "Reto del día",
+    "trophies": "Trofeos",
+    "soundOn": "🔊 Sonido activado",
+    "soundOff": "🔇 Sonido apagado",
+    "language": "Idioma"
+  },
+  "nav": {
+    "home": "← Inicio",
+    "modes": "← Modos",
+    "replay": "Jugar de nuevo",
+    "otherModes": "Otros modos",
+    "backToModes": "Volver a los modos"
+  },
+  "filters": {
+    "questions": "Preguntas",
+    "continent": "Continente",
+    "difficulty": "Dificultad",
+    "world": "Mundo",
+    "easy": "Fácil",
+    "medium": "Medio",
+    "hard": "Difícil"
+  },
+  "modeselect": {
+    "title": "Elige un modo",
+    "record": "Récord {{n}}"
+  },
+  "scorebar": {
+    "score": "Puntos {{n}}"
+  },
+  "game": {
+    "yourAnswer": "Tu respuesta…",
+    "validate": "Enviar",
+    "placePin": "Toca el mapa para colocar tu marcador",
+    "wellPlaced": "✅ ¡Bien ubicado!",
+    "tooFar": "❌ Demasiado lejos.",
+    "distance": "A {{km}} km del objetivo.",
+    "next": "Siguiente pregunta →",
+    "seeResult": "Ver resultado",
+    "correct": "✅ ¡Correcto!",
+    "wrong": "❌ Fallaste.",
+    "answer": "Respuesta:",
+    "loadingMap": "Cargando el mapa…"
+  },
+  "results": {
+    "none": "No hay resultado que mostrar.",
+    "pct": "{{pct}} % de aciertos",
+    "bestStreak": "Mejor racha",
+    "time": "Tiempo",
+    "record": "Récord",
+    "unlocked_one": "🎉 Logro desbloqueado",
+    "unlocked_other": "🎉 Logros desbloqueados",
+    "recap": "Resumen",
+    "minSec": "{{m}} min {{s}} s",
+    "sec": "{{s}} s"
+  },
+  "stats": {
+    "title": "Trofeos y progreso",
+    "games": "Partidas",
+    "goodAnswers": "Aciertos",
+    "accuracy": "Precisión",
+    "modesTried": "Modos probados",
+    "dailies": "Retos del día",
+    "achievements": "Logros",
+    "achievementsTitle": "Logros"
+  },
+  "continents": {
+    "Africa": "África",
+    "Americas": "América",
+    "Asia": "Asia",
+    "Europe": "Europa",
+    "Oceania": "Oceanía"
+  },
+  "labels": {
+    "cityCountry": "{{city}} ({{country}})"
+  },
+  "prompts": {
+    "capital": "¿Cuál es la capital de {{country}}?",
+    "capitalToCountry": "{{capital}} es la capital de ¿qué país?",
+    "flagOf": "¿Cuál es la bandera de {{country}}?",
+    "whichFlag": "¿A qué país pertenece esta bandera?",
+    "continentOf": "¿En qué continente está {{country}}?",
+    "border": "¿Qué país comparte frontera con {{country}}?",
+    "currency": "¿Cuál es la moneda de {{country}}?",
+    "language": "¿Cuál es el idioma principal de {{country}}?",
+    "largest": "¿Cuál es el país más extenso?",
+    "mostPopulated": "¿Cuál es el país más poblado?",
+    "leastPopulated": "¿Cuál es el país menos poblado?",
+    "locateCountry": "¿Dónde está {{country}}?",
+    "locateCity": "¿Dónde está {{city}} ({{country}})?",
+    "worldcup": "Ubica {{city}} — ciudad anfitriona del Mundial 2026 ({{country}})"
+  },
+  "modes": {
+    "capital-mc": { "label": "Capital — Opción múltiple", "description": "Elige la capital del país entre 4 opciones." },
+    "capital-text": { "label": "Capital — Escribir", "description": "Escribe el nombre de la capital del país." },
+    "capital-to-country-mc": { "label": "Capital → País — Opción múltiple", "description": "Encuentra el país a partir de su capital." },
+    "flag-mc": { "label": "Bandera — Opción múltiple", "description": "Reconoce la bandera del país entre 4." },
+    "flag-text": { "label": "Bandera — Escribir", "description": "Identifica el país a partir de su bandera." },
+    "continent-mc": { "label": "Continente — Opción múltiple", "description": "Encuentra el continente de un país." },
+    "border-mc": { "label": "País fronterizo — Opción múltiple", "description": "Entre 4 países, ¿cuál comparte frontera con el país dado?" },
+    "currency-mc": { "label": "Moneda — Opción múltiple", "description": "¿Cuál es la moneda de un país?" },
+    "language-mc": { "label": "Idioma — Opción múltiple", "description": "¿Cuál es el idioma principal de un país?" },
+    "largest-area-mc": { "label": "El más extenso — Opción múltiple", "description": "Entre 4 países, ¿cuál tiene mayor superficie?" },
+    "most-populated-mc": { "label": "El más poblado — Opción múltiple", "description": "Entre 4 países, ¿cuál tiene más habitantes?" },
+    "least-populated-mc": { "label": "El menos poblado — Opción múltiple", "description": "Entre 4 países, ¿cuál tiene menos habitantes?" },
+    "locate-country": { "label": "Ubicar un país", "description": "Coloca el país solicitado en el mapa del mundo." },
+    "locate-city": { "label": "Ubicar una ciudad", "description": "Coloca la ciudad solicitada en el mapa del mundo." },
+    "worldcup-2026": { "label": "Mundial 2026", "description": "Ubica las ciudades anfitrionas del Mundial 2026 (EE. UU., Canadá, México)." },
+    "mixed": { "label": "Modo mixto — repaso", "description": "Una mezcla de todas las preguntas, todos los modos combinados." },
+    "daily": { "label": "Reto del día", "description": "Un cuestionario diario, igual para todos, una vez al día." }
+  },
+  "achievements": {
+    "first-game": { "label": "Primera partida", "description": "Termina tu primera partida." },
+    "perfect": { "label": "Sin fallos", "description": "Completa una partida al 100 %." },
+    "streak-10": { "label": "En racha", "description": "Encadena 10 aciertos seguidos." },
+    "explorer": { "label": "Explorador", "description": "Juega 5 modos diferentes." },
+    "globe-trotter": { "label": "Trotamundos", "description": "Juega 10 modos diferentes." },
+    "centurion": { "label": "Centurión", "description": "Acumula 100 aciertos en total." },
+    "veteran": { "label": "Veterano", "description": "Juega 25 partidas." },
+    "daily": { "label": "Reto superado", "description": "Termina un reto del día." }
+  }
+}
