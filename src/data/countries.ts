@@ -32,6 +32,14 @@ const CONTINENT_FR: Record<string, string> = {
 
 const raw = worldCountries as unknown as RawCountry[];
 
+// Corrections de capitales sur la source `world-countries` :
+//   - MN : "Ulan Bator" est une romanisation soviétique désuète → "Ulaanbaatar"
+//   - SZ : "Lobamba" est la résidence royale ; la capitale administrative est "Mbabane"
+const CAPITAL_OVERRIDES: Record<string, string> = {
+  MN: 'Ulaanbaatar',
+  SZ: 'Mbabane',
+};
+
 // Correspondance code ISO alpha-3 → alpha-2 (minuscules) pour résoudre les frontières.
 const cca3ToCca2: Record<string, string> = Object.fromEntries(
   raw.map((c) => [c.cca3, c.cca2.toLowerCase()]),
@@ -52,7 +60,7 @@ export const countries: Country[] = raw
       cca2: c.cca2.toLowerCase(),
       name: c.translations?.fra?.common ?? c.name.common,
       nameEn: c.name.common,
-      capital: c.capital[0],
+      capital: CAPITAL_OVERRIDES[c.cca2.toUpperCase()] ?? c.capital[0],
       lat: c.latlng[0],
       lng: c.latlng[1],
       capitalLat: c.capitalInfo?.latlng?.[0],
