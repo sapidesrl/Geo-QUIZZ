@@ -2,6 +2,7 @@
   "app": {
     "tagline": "Test your geography: capitals, flags, borders, currencies, languages and locating places on the world map.",
     "play": "Play",
+    "campaign": "Campaign",
     "daily": "Daily challenge",
     "trophies": "Trophies",
     "soundOn": "🔊 Sound on",
@@ -92,6 +93,23 @@
     "locateCountry": "Where is {{country}}?",
     "locateCity": "Where is {{city}} ({{country}})?",
     "worldcup": "Locate {{city}} — host city of the 2026 World Cup ({{country}})"
+  },
+  "campaign": {
+    "title": "Campaign",
+    "tagline": "Learn the world's countries continent by continent.",
+    "levelOf": "Level {{n}} / {{total}}",
+    "levelProgress": "{{done}} / {{total}} levels completed",
+    "countries": "countries",
+    "discoverTitle": "Study these countries",
+    "startQuiz": "Start quiz",
+    "locked": "Locked",
+    "completed": "Level passed! ✅",
+    "passThreshold": "You need 75% correct answers to unlock the next level.",
+    "score": "{{score}} / {{total}}",
+    "nextLevel": "Next level →",
+    "chapterDone": "Chapter complete! 🎉",
+    "replay": "Replay this level",
+    "backToChapter": "← Back to chapter"
   },
   "modes": {
     "capital-mc": { "label": "Capital — MCQ", "description": "Choose the country's capital from 4 options." },
