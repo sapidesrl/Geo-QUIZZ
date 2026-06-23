@@ -34,14 +34,33 @@ export default function Game() {
 
   const session = useMemo<Question[]>(() => {
     if (!mode) return [];
+
+    function buildSession(generate: () => Question, count: number): Question[] {
+      const questions: Question[] = [];
+      const seen = new Set<string>();
+      // Plafond : évite une boucle infinie si le pool est trop petit.
+      const maxAttempts = count * 10;
+      let attempts = 0;
+      while (questions.length < count && attempts < maxAttempts) {
+        const q = generate();
+        const key = `${q.prompt}||${q.answerLabel}`;
+        if (!seen.has(key)) {
+          seen.add(key);
+          questions.push(q);
+        }
+        attempts++;
+      }
+      return questions;
+    }
+
     // Défi du jour : tirage déterministe (même quiz pour tous), filtres ignorés.
     if (isDaily) {
       return withSeed(dailySeed(), () =>
-        Array.from({ length: DAILY_QUESTIONS }, () => mode.generate(defaultGenerateOptions)),
+        buildSession(() => mode.generate(defaultGenerateOptions), DAILY_QUESTIONS),
       );
     }
     const opts = buildGenerateOptions(continent, difficulty);
-    return Array.from({ length: questionsPerGame }, () => mode.generate(opts));
+    return buildSession(() => mode.generate(opts), questionsPerGame);
   }, [mode, isDaily, questionsPerGame, continent, difficulty]);
 
   const [index, setIndex] = useState(0);
