@@ -1,5 +1,7 @@
 import { defaultGenerateOptions, distractors, randomCountry } from '../engine/generate';
 import type { GameMode, Question } from '../engine/types';
+import i18n from '../i18n';
+import { countryName } from '../i18n/display';
 import { shuffle } from '../lib/shuffle';
 
 export const capitalMc: GameMode = {
@@ -13,7 +15,7 @@ export const capitalMc: GameMode = {
     const options = shuffle([country, ...distractors(o.countries, country)]);
     return {
       inputType: 'multiple-choice',
-      prompt: `Quelle est la capitale de ${country.name} ?`,
+      prompt: i18n.t('prompts.capital', { country: countryName(country) }),
       flag: country.cca2,
       choices: options.map((c) => ({ id: c.cca2, label: c.capital })),
       correctChoiceId: country.cca2,

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   revealed: boolean;
@@ -8,6 +9,7 @@ interface Props {
 }
 
 export default function FreeTextInput({ revealed, correct, answerLabel, onSubmit }: Props) {
+  const { t } = useTranslation();
   const [value, setValue] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -27,7 +29,7 @@ export default function FreeTextInput({ revealed, correct, answerLabel, onSubmit
         disabled={revealed}
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        placeholder="Ta réponse…"
+        placeholder={t('game.yourAnswer')}
         className="w-full rounded-xl border-2 border-slate-600 bg-slate-800 p-4 text-lg outline-none focus:border-brand disabled:opacity-70"
       />
 
@@ -37,7 +39,8 @@ export default function FreeTextInput({ revealed, correct, answerLabel, onSubmit
             correct ? 'bg-emerald-500/20 text-emerald-200' : 'bg-rose-500/20 text-rose-200'
           }`}
         >
-          {correct ? '✅ Correct !' : '❌ Raté.'} Réponse : <strong>{answerLabel}</strong>
+          {correct ? t('game.correct') : t('game.wrong')} {t('game.answer')}{' '}
+          <strong>{answerLabel}</strong>
         </div>
       ) : (
         <button
@@ -45,7 +48,7 @@ export default function FreeTextInput({ revealed, correct, answerLabel, onSubmit
           disabled={!value.trim()}
           className="w-full rounded-xl bg-brand p-4 text-lg font-semibold transition hover:bg-brand-dark disabled:opacity-50"
         >
-          Valider
+          {t('game.validate')}
         </button>
       )}
     </form>

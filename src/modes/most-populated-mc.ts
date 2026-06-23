@@ -1,5 +1,7 @@
 import { defaultGenerateOptions, withPopulation } from '../engine/generate';
 import type { GameMode, Question } from '../engine/types';
+import i18n from '../i18n';
+import { countryName } from '../i18n/display';
 import { sample } from '../lib/shuffle';
 
 export const mostPopulatedMc: GameMode = {
@@ -13,10 +15,10 @@ export const mostPopulatedMc: GameMode = {
     const winner = options.reduce((a, b) => (b.population > a.population ? b : a));
     return {
       inputType: 'multiple-choice',
-      prompt: 'Quel est le pays le plus peuplé ?',
-      choices: options.map((c) => ({ id: c.cca2, label: c.name, flag: c.cca2 })),
+      prompt: i18n.t('prompts.mostPopulated'),
+      choices: options.map((c) => ({ id: c.cca2, label: countryName(c), flag: c.cca2 })),
       correctChoiceId: winner.cca2,
-      answerLabel: winner.name,
+      answerLabel: countryName(winner),
     };
   },
 };

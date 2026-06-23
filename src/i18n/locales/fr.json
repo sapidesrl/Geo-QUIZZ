@@ -1,0 +1,96 @@
+{
+  "app": {
+    "tagline": "Teste ta géographie : capitales, drapeaux, frontières, monnaies, langues et localisation sur la carte du monde.",
+    "play": "Jouer",
+    "daily": "Défi du jour",
+    "trophies": "Trophées",
+    "soundOn": "🔊 Sons activés",
+    "soundOff": "🔇 Sons coupés",
+    "language": "Langue"
+  },
+  "nav": {
+    "home": "← Accueil",
+    "modes": "← Modes",
+    "replay": "Rejouer",
+    "otherModes": "Autres modes",
+    "backToModes": "Retour aux modes"
+  },
+  "filters": {
+    "questions": "Questions",
+    "continent": "Continent",
+    "difficulty": "Difficulté",
+    "world": "Monde",
+    "easy": "Facile",
+    "medium": "Moyen",
+    "hard": "Difficile"
+  },
+  "modeselect": {
+    "title": "Choisis un mode",
+    "record": "Record {{n}}"
+  },
+  "scorebar": {
+    "score": "Score {{n}}"
+  },
+  "game": {
+    "yourAnswer": "Ta réponse…",
+    "validate": "Valider",
+    "placePin": "Touche la carte pour placer ton repère",
+    "wellPlaced": "✅ Bien situé !",
+    "tooFar": "❌ Trop loin.",
+    "distance": "À {{km}} km de la cible.",
+    "next": "Question suivante →",
+    "seeResult": "Voir le résultat",
+    "correct": "✅ Correct !",
+    "wrong": "❌ Raté.",
+    "answer": "Réponse :",
+    "loadingMap": "Chargement de la carte…"
+  },
+  "results": {
+    "none": "Aucun résultat à afficher.",
+    "pct": "{{pct}} % de bonnes réponses",
+    "bestStreak": "Meilleure série",
+    "time": "Temps",
+    "record": "Record",
+    "unlocked_one": "🎉 Succès débloqué",
+    "unlocked_other": "🎉 Succès débloqués",
+    "recap": "Récapitulatif",
+    "minSec": "{{m}} min {{s}} s",
+    "sec": "{{s}} s"
+  },
+  "stats": {
+    "title": "Trophées & progression",
+    "games": "Parties",
+    "goodAnswers": "Bonnes réponses",
+    "accuracy": "Précision",
+    "modesTried": "Modes essayés",
+    "dailies": "Défis du jour",
+    "achievements": "Succès",
+    "achievementsTitle": "Succès"
+  },
+  "continents": {
+    "Africa": "Afrique",
+    "Americas": "Amériques",
+    "Asia": "Asie",
+    "Europe": "Europe",
+    "Oceania": "Océanie"
+  },
+  "labels": {
+    "cityCountry": "{{city}} ({{country}})"
+  },
+  "prompts": {
+    "capital": "Quelle est la capitale de {{country}} ?",
+    "capitalToCountry": "{{capital}} est la capitale de quel pays ?",
+    "flagOf": "Quel est le drapeau de {{country}} ?",
+    "whichFlag": "À quel pays appartient ce drapeau ?",
+    "continentOf": "Sur quel continent se trouve {{country}} ?",
+    "border": "Quel pays partage une frontière avec {{country}} ?",
+    "currency": "Quelle est la monnaie de {{country}} ?",
+    "language": "Quelle est la langue principale de {{country}} ?",
+    "largest": "Quel est le pays le plus vaste ?",
+    "mostPopulated": "Quel est le pays le plus peuplé ?",
+    "leastPopulated": "Quel est le pays le moins peuplé ?",
+    "locateCountry": "Où se situe {{country}} ?",
+    "locateCity": "Où se situe {{city}} ({{country}}) ?",
+    "worldcup": "Situe {{city}} — ville hôte du Mondial 2026 ({{country}})"
+  }
+}

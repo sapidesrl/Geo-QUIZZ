@@ -1,18 +1,21 @@
+import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import { CONTINENTS } from '../engine/pool';
+import { continentFilterLabel } from '../i18n/display';
 import { gameModes } from '../modes';
 import type { Difficulty } from '../store/useGameStore';
 import { useGameStore } from '../store/useGameStore';
 
-const DIFFICULTIES: { value: Difficulty; label: string }[] = [
-  { value: 'facile', label: 'Facile' },
-  { value: 'moyen', label: 'Moyen' },
-  { value: 'difficile', label: 'Difficile' },
+const DIFFICULTIES: { value: Difficulty; labelKey: string }[] = [
+  { value: 'facile', labelKey: 'filters.easy' },
+  { value: 'moyen', labelKey: 'filters.medium' },
+  { value: 'difficile', labelKey: 'filters.hard' },
 ];
 
 const selectClass = 'rounded-lg border border-slate-600 bg-slate-800 px-2 py-1 text-slate-100';
 
 export default function ModeSelect() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const bestScores = useGameStore((s) => s.bestScores);
   const bestStreaks = useGameStore((s) => s.bestStreaks);
@@ -27,13 +30,13 @@ export default function ModeSelect() {
     <div className="py-4">
       <div className="mb-4">
         <Link to="/" className="text-sm text-slate-300 hover:text-white">
-          ← Accueil
+          {t('nav.home')}
         </Link>
       </div>
 
       <div className="mb-6 grid grid-cols-3 gap-2 text-sm text-slate-300">
         <label className="flex flex-col gap-1">
-          Questions
+          {t('filters.questions')}
           <select
             value={questionsPerGame}
             onChange={(e) => setQuestionsPerGame(Number(e.target.value))}
@@ -47,7 +50,7 @@ export default function ModeSelect() {
           </select>
         </label>
         <label className="flex flex-col gap-1">
-          Continent
+          {t('filters.continent')}
           <select
             value={continent}
             onChange={(e) => setContinent(e.target.value)}
@@ -55,13 +58,13 @@ export default function ModeSelect() {
           >
             {CONTINENTS.map((c) => (
               <option key={c} value={c}>
-                {c}
+                {continentFilterLabel(c)}
               </option>
             ))}
           </select>
         </label>
         <label className="flex flex-col gap-1">
-          Difficulté
+          {t('filters.difficulty')}
           <select
             value={difficulty}
             onChange={(e) => setDifficulty(e.target.value as Difficulty)}
@@ -69,42 +72,48 @@ export default function ModeSelect() {
           >
             {DIFFICULTIES.map((d) => (
               <option key={d.value} value={d.value}>
-                {d.label}
+                {t(d.labelKey)}
               </option>
             ))}
           </select>
         </label>
       </div>
 
-      <h2 className="mb-4 text-2xl font-bold">Choisis un mode</h2>
+      <h2 className="mb-4 text-2xl font-bold">{t('modeselect.title')}</h2>
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         {gameModes
           .filter((mode) => mode.id !== 'daily')
           .map((mode) => (
-          <button
-            key={mode.id}
-            type="button"
-            onClick={() => navigate(`/game/${mode.id}`)}
-            className="flex items-start gap-4 rounded-xl border-2 border-slate-700 bg-slate-800 p-4 text-left transition hover:border-brand hover:bg-slate-700"
-          >
-            <span className="text-3xl">{mode.icon}</span>
-            <span className="flex-1">
-              <span className="block font-semibold">{mode.label}</span>
-              <span className="block text-sm text-slate-400">{mode.description}</span>
-              {(bestScores[mode.id] != null || bestStreaks[mode.id] != null) && (
-                <span className="mt-1 block text-xs text-slate-400">
-                  {bestScores[mode.id] != null && (
-                    <span className="text-emerald-400">Record {bestScores[mode.id]}</span>
-                  )}
-                  {bestStreaks[mode.id] ? (
-                    <span className="ml-2 text-amber-400">🔥 {bestStreaks[mode.id]}</span>
-                  ) : null}
+            <button
+              key={mode.id}
+              type="button"
+              onClick={() => navigate(`/game/${mode.id}`)}
+              className="flex items-start gap-4 rounded-xl border-2 border-slate-700 bg-slate-800 p-4 text-left transition hover:border-brand hover:bg-slate-700"
+            >
+              <span className="text-3xl">{mode.icon}</span>
+              <span className="flex-1">
+                <span className="block font-semibold">
+                  {t(`modes.${mode.id}.label`, { defaultValue: mode.label })}
                 </span>
-              )}
-            </span>
-          </button>
-        ))}
+                <span className="block text-sm text-slate-400">
+                  {t(`modes.${mode.id}.description`, { defaultValue: mode.description })}
+                </span>
+                {(bestScores[mode.id] != null || bestStreaks[mode.id] != null) && (
+                  <span className="mt-1 block text-xs text-slate-400">
+                    {bestScores[mode.id] != null && (
+                      <span className="text-emerald-400">
+                        {t('modeselect.record', { n: bestScores[mode.id] })}
+                      </span>
+                    )}
+                    {bestStreaks[mode.id] ? (
+                      <span className="ml-2 text-amber-400">🔥 {bestStreaks[mode.id]}</span>
+                    ) : null}
+                  </span>
+                )}
+              </span>
+            </button>
+          ))}
       </div>
     </div>
   );

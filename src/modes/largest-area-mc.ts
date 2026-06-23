@@ -1,5 +1,7 @@
 import { defaultGenerateOptions } from '../engine/generate';
 import type { GameMode, Question } from '../engine/types';
+import i18n from '../i18n';
+import { countryName } from '../i18n/display';
 import { sample } from '../lib/shuffle';
 
 export const largestAreaMc: GameMode = {
@@ -13,10 +15,10 @@ export const largestAreaMc: GameMode = {
     const winner = options.reduce((a, b) => (b.area > a.area ? b : a));
     return {
       inputType: 'multiple-choice',
-      prompt: 'Quel est le pays le plus vaste ?',
-      choices: options.map((c) => ({ id: c.cca2, label: c.name, flag: c.cca2 })),
+      prompt: i18n.t('prompts.largest'),
+      choices: options.map((c) => ({ id: c.cca2, label: countryName(c), flag: c.cca2 })),
       correctChoiceId: winner.cca2,
-      answerLabel: winner.name,
+      answerLabel: countryName(winner),
     };
   },
 };
