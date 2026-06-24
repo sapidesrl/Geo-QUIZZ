@@ -5,9 +5,10 @@ import en from './locales/en.json';
 import es from './locales/es.json';
 import fr from './locales/fr.json';
 import it from './locales/it.json';
+import nl from './locales/nl.json';
 
 /** Langues d'interface disponibles. */
-export const LANGS = ['fr', 'en', 'es', 'de', 'it'] as const;
+export const LANGS = ['fr', 'en', 'es', 'de', 'it', 'nl'] as const;
 export type Lang = (typeof LANGS)[number];
 
 /** Drapeau emoji pour le sélecteur de langue. */
@@ -17,6 +18,7 @@ export const LANG_FLAGS: Record<Lang, string> = {
   es: '🇪🇸',
   de: '🇩🇪',
   it: '🇮🇹',
+  nl: '🇳🇱',
 };
 
 const STORAGE_KEY = 'geoquizz.lang';
@@ -39,6 +41,7 @@ i18n.use(initReactI18next).init({
     es: { translation: es },
     de: { translation: de },
     it: { translation: it },
+    nl: { translation: nl },
   },
   lng: detectInitialLang(),
   fallbackLng: 'fr',

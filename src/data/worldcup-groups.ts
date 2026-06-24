@@ -42,17 +42,31 @@ interface ExtraTeam {
 const extraTeams: Record<string, ExtraTeam> = {
   'gb-eng': {
     flag: 'gb-eng',
-    names: { fr: 'Angleterre', en: 'England', es: 'Inglaterra', de: 'England', it: 'Inghilterra' },
+    names: {
+      fr: 'Angleterre',
+      en: 'England',
+      es: 'Inglaterra',
+      de: 'England',
+      it: 'Inghilterra',
+      nl: 'Engeland',
+    },
     capital: 'London',
   },
   'gb-sct': {
     flag: 'gb-sct',
-    names: { fr: 'Écosse', en: 'Scotland', es: 'Escocia', de: 'Schottland', it: 'Scozia' },
+    names: {
+      fr: 'Écosse',
+      en: 'Scotland',
+      es: 'Escocia',
+      de: 'Schottland',
+      it: 'Scozia',
+      nl: 'Schotland',
+    },
     capital: 'Edinburgh',
   },
   cw: {
     flag: 'cw',
-    names: { fr: 'Curaçao', en: 'Curaçao', es: 'Curazao', de: 'Curaçao', it: 'Curaçao' },
+    names: { fr: 'Curaçao', en: 'Curaçao', es: 'Curazao', de: 'Curaçao', it: 'Curaçao', nl: 'Curaçao' },
     capital: 'Willemstad',
   },
 };

@@ -69,7 +69,7 @@ D'autres modes s'ajoutent facilement (voir « Ajouter un mode »).
 | Style | Tailwind CSS |
 | Navigation | React Router (HashRouter) |
 | État / scores | Zustand (persisté en localStorage) |
-| Multi-langue | react-i18next + `Intl.DisplayNames` (FR, EN, ES, DE, IT) |
+| Multi-langue | react-i18next + `Intl.DisplayNames` (FR, EN, ES, DE, IT, NL) |
 | Cartes | MapLibre GL JS (fond vectoriel hors-ligne) |
 | Données pays / drapeaux / géométrie | `world-countries` + `flag-icons` + `world-atlas` (embarqués) |
 | Tests | Vitest + Testing Library |
@@ -106,7 +106,7 @@ changement. Le routage `HashRouter` reste compatible (pas de fallback 404 requis
 
 ## Internationalisation (multi-langue)
 
-L'application est disponible en **français, anglais, espagnol, allemand et italien**
+L'application est disponible en **français, anglais, espagnol, allemand, italien et néerlandais**
 (sélecteur de langue sur l'accueil, choix mémorisé en `localStorage`, détection
 initiale via le navigateur).
 

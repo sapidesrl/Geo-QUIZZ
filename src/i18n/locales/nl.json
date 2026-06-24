@@ -1,0 +1,169 @@
+{
+  "app": {
+    "tagline": "Test je aardrijkskunde: hoofdsteden, vlaggen, grenzen, valuta's, talen en het lokaliseren van plaatsen op de wereldkaart.",
+    "play": "Spelen",
+    "campaign": "Campagne",
+    "daily": "Dagelijkse uitdaging",
+    "trophies": "Trofeeën",
+    "soundOn": "🔊 Geluid aan",
+    "soundOff": "🔇 Geluid uit",
+    "language": "Taal"
+  },
+  "nav": {
+    "home": "← Start",
+    "modes": "← Modi",
+    "replay": "Opnieuw spelen",
+    "otherModes": "Andere modi",
+    "backToModes": "Terug naar modi"
+  },
+  "filters": {
+    "questions": "Vragen",
+    "continent": "Continent",
+    "difficulty": "Moeilijkheid",
+    "world": "Wereld",
+    "easy": "Makkelijk",
+    "medium": "Gemiddeld",
+    "hard": "Moeilijk"
+  },
+  "modeselect": {
+    "title": "Kies een modus",
+    "record": "Beste {{n}}"
+  },
+  "scorebar": {
+    "score": "Score {{n}}"
+  },
+  "game": {
+    "yourAnswer": "Jouw antwoord…",
+    "validate": "Bevestigen",
+    "placePin": "Tik op de kaart om je speld te plaatsen",
+    "selectCountry": "Tik het land op de kaart aan",
+    "rightCountry": "✅ Juist land!",
+    "wrongCountry": "❌ Niet het juiste land.",
+    "wellPlaced": "✅ Goed geplaatst!",
+    "tooFar": "❌ Te ver.",
+    "distance": "{{km}} km van het doel.",
+    "next": "Volgende vraag →",
+    "seeResult": "Resultaat bekijken",
+    "correct": "✅ Juist!",
+    "wrong": "❌ Fout.",
+    "answer": "Antwoord:",
+    "loadingMap": "Kaart laden…"
+  },
+  "results": {
+    "none": "Geen resultaat om te tonen.",
+    "pct": "{{pct}}% goed",
+    "bestStreak": "Beste reeks",
+    "time": "Tijd",
+    "record": "Beste",
+    "unlocked_one": "🎉 Prestatie ontgrendeld",
+    "unlocked_other": "🎉 Prestaties ontgrendeld",
+    "recap": "Samenvatting",
+    "minSec": "{{m}} min {{s}} s",
+    "sec": "{{s}} s"
+  },
+  "stats": {
+    "title": "Trofeeën & voortgang",
+    "games": "Spellen",
+    "goodAnswers": "Goede antwoorden",
+    "accuracy": "Nauwkeurigheid",
+    "modesTried": "Geprobeerde modi",
+    "dailies": "Dagelijkse uitdagingen",
+    "achievements": "Prestaties",
+    "achievementsTitle": "Prestaties"
+  },
+  "continents": {
+    "Africa": "Afrika",
+    "Americas": "Amerika",
+    "Asia": "Azië",
+    "Europe": "Europa",
+    "Oceania": "Oceanië"
+  },
+  "labels": {
+    "cityCountry": "{{city}} ({{country}})"
+  },
+  "categories": {
+    "capital": "Hoofdsteden",
+    "flag": "Vlaggen",
+    "cities": "Steden",
+    "population": "Bevolking & oppervlakte",
+    "currency": "Valuta",
+    "geography": "Geografie",
+    "worldcup": "Wereldkampioenschap",
+    "review": "Herhaling"
+  },
+  "match": {
+    "label": "WK — Koppelen",
+    "description": "Koppel elk land in elke groep aan zijn vlag en hoofdstad.",
+    "instructions": "Tik op een vlag of een hoofdstad en daarna op het bijbehorende land.",
+    "flags": "Vlaggen",
+    "countries": "Landen",
+    "capitals": "Hoofdsteden",
+    "groupOf": "Groep {{id}} — {{n}} / {{total}}",
+    "validate": "Groep controleren",
+    "nextGroup": "Volgende groep →",
+    "finalScore": "{{score}} / {{total}}",
+    "replay": "Opnieuw spelen"
+  },
+  "prompts": {
+    "capital": "Wat is de hoofdstad van {{country}}?",
+    "capitalToCountry": "{{capital}} is de hoofdstad van welk land?",
+    "flagOf": "Welke vlag hoort bij {{country}}?",
+    "whichFlag": "Bij welk land hoort deze vlag?",
+    "continentOf": "Op welk continent ligt {{country}}?",
+    "border": "Welk land grenst aan {{country}}?",
+    "currency": "Wat is de valuta van {{country}}?",
+    "language": "Wat is de belangrijkste taal van {{country}}?",
+    "largest": "Welk land is het grootst?",
+    "mostPopulated": "Welk land heeft de meeste inwoners?",
+    "leastPopulated": "Welk land heeft de minste inwoners?",
+    "locateCountry": "Waar ligt {{country}}?",
+    "locateCity": "Waar ligt {{city}} ({{country}})?",
+    "worldcup": "Lokaliseer {{city}} — gaststad van het WK 2026 ({{country}})"
+  },
+  "campaign": {
+    "title": "Campagne",
+    "tagline": "Leer de landen van de wereld continent voor continent.",
+    "levelOf": "Niveau {{n}} / {{total}}",
+    "levelProgress": "{{done}} / {{total}} niveaus voltooid",
+    "countries": "landen",
+    "discoverTitle": "Bestudeer deze landen",
+    "startQuiz": "Quiz starten",
+    "locked": "Vergrendeld",
+    "completed": "Niveau gehaald! ✅",
+    "passThreshold": "Je hebt 75% goede antwoorden nodig om het volgende niveau te ontgrendelen.",
+    "score": "{{score}} / {{total}}",
+    "nextLevel": "Volgend niveau →",
+    "chapterDone": "Hoofdstuk voltooid! 🎉",
+    "replay": "Dit niveau opnieuw spelen",
+    "backToChapter": "← Terug naar hoofdstuk"
+  },
+  "modes": {
+    "capital-mc": { "label": "Hoofdstad — Meerkeuze", "description": "Kies de hoofdstad van het land uit 4 opties." },
+    "capital-text": { "label": "Hoofdstad — Typen", "description": "Typ de naam van de hoofdstad van het land." },
+    "capital-to-country-mc": { "label": "Hoofdstad → Land — Meerkeuze", "description": "Vind het land op basis van zijn hoofdstad." },
+    "flag-mc": { "label": "Vlag — Meerkeuze", "description": "Herken de vlag van het land uit 4." },
+    "flag-text": { "label": "Vlag — Typen", "description": "Identificeer het land op basis van zijn vlag." },
+    "continent-mc": { "label": "Continent — Meerkeuze", "description": "Vind het continent van een land." },
+    "border-mc": { "label": "Buurland — Meerkeuze", "description": "Welk van de 4 landen grenst aan het gegeven land?" },
+    "currency-mc": { "label": "Valuta — Meerkeuze", "description": "Wat is de valuta van een land?" },
+    "language-mc": { "label": "Taal — Meerkeuze", "description": "Wat is de belangrijkste taal van een land?" },
+    "largest-area-mc": { "label": "Grootste — Meerkeuze", "description": "Welk van de 4 landen heeft de grootste oppervlakte?" },
+    "most-populated-mc": { "label": "Meeste inwoners — Meerkeuze", "description": "Welk van de 4 landen heeft de meeste inwoners?" },
+    "least-populated-mc": { "label": "Minste inwoners — Meerkeuze", "description": "Welk van de 4 landen heeft de minste inwoners?" },
+    "locate-country": { "label": "Land lokaliseren", "description": "Selecteer het gevraagde land op de wereldkaart." },
+    "locate-city": { "label": "Stad lokaliseren", "description": "Plaats de gevraagde stad op de wereldkaart." },
+    "worldcup-2026": { "label": "WK 2026", "description": "Lokaliseer de gaststeden van het WK 2026 (VS, Canada, Mexico)." },
+    "mixed": { "label": "Gemengd — herhaling", "description": "Een mix van alle vragen, alle modi door elkaar." },
+    "daily": { "label": "Dagelijkse uitdaging", "description": "Een dagelijkse quiz, voor iedereen hetzelfde, één keer per dag." }
+  },
+  "achievements": {
+    "first-game": { "label": "Eerste spel", "description": "Voltooi je allereerste spel." },
+    "perfect": { "label": "Vlekkeloos", "description": "Voltooi een spel met 100%." },
+    "streak-10": { "label": "Op dreef", "description": "Geef 10 goede antwoorden op rij." },
+    "explorer": { "label": "Ontdekkingsreiziger", "description": "Speel 5 verschillende modi." },
+    "globe-trotter": { "label": "Globetrotter", "description": "Speel 10 verschillende modi." },
+    "centurion": { "label": "Centurion", "description": "Behaal in totaal 100 goede antwoorden." },
+    "veteran": { "label": "Veteraan", "description": "Speel 25 spellen." },
+    "daily": { "label": "Uitdaging volbracht", "description": "Voltooi een dagelijkse uitdaging." }
+  }
+}
