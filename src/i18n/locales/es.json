@@ -81,6 +81,29 @@
   "labels": {
     "cityCountry": "{{city}} ({{country}})"
   },
+  "categories": {
+    "capital": "Capitales",
+    "flag": "Banderas",
+    "cities": "Ciudades",
+    "population": "Población y superficie",
+    "currency": "Moneda",
+    "geography": "Geografía",
+    "worldcup": "Mundial",
+    "review": "Repaso"
+  },
+  "match": {
+    "label": "Mundial — Emparejar",
+    "description": "Relaciona cada país de cada grupo con su bandera y su capital.",
+    "instructions": "Toca una bandera o una capital y luego el país correspondiente.",
+    "flags": "Banderas",
+    "countries": "Países",
+    "capitals": "Capitales",
+    "groupOf": "Grupo {{id}} — {{n}} / {{total}}",
+    "validate": "Comprobar grupo",
+    "nextGroup": "Grupo siguiente →",
+    "finalScore": "{{score}} / {{total}}",
+    "replay": "Jugar de nuevo"
+  },
   "prompts": {
     "capital": "¿Cuál es la capital de {{country}}?",
     "capitalToCountry": "{{capital}} es la capital de ¿qué país?",

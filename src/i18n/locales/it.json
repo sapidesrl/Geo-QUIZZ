@@ -81,6 +81,29 @@
   "labels": {
     "cityCountry": "{{city}} ({{country}})"
   },
+  "categories": {
+    "capital": "Capitali",
+    "flag": "Bandiere",
+    "cities": "Città",
+    "population": "Popolazione e superficie",
+    "currency": "Moneta",
+    "geography": "Geografia",
+    "worldcup": "Mondiali",
+    "review": "Ripasso"
+  },
+  "match": {
+    "label": "Mondiali — Abbinamento",
+    "description": "Collega ogni paese di ogni girone alla sua bandiera e alla sua capitale.",
+    "instructions": "Tocca una bandiera o una capitale, poi il paese corrispondente.",
+    "flags": "Bandiere",
+    "countries": "Paesi",
+    "capitals": "Capitali",
+    "groupOf": "Girone {{id}} — {{n}} / {{total}}",
+    "validate": "Verifica girone",
+    "nextGroup": "Girone successivo →",
+    "finalScore": "{{score}} / {{total}}",
+    "replay": "Gioca di nuovo"
+  },
   "prompts": {
     "capital": "Qual è la capitale di {{country}}?",
     "capitalToCountry": "{{capital}} è la capitale di quale paese?",

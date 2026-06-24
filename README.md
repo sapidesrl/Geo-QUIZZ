@@ -17,10 +17,16 @@ Application de quizz géographique (PWA) jouable au navigateur et sur smartphone
 - **Le plus grand — QCM** : parmi 4 pays, désigner le plus vaste.
 - **Le plus peuplé — QCM** : parmi 4 pays, désigner le plus peuplé.
 - **Le moins peuplé — QCM** : parmi 4 pays, désigner le moins peuplé.
-- **Situer un pays** : placer un pays sur la carte du monde.
-- **Situer une ville** : placer une ville sur la carte du monde.
+- **Situer un pays** : désigner le bon pays en touchant son territoire sur la carte
+  (sélection du polygone, validation tout-ou-rien — pas de score à la distance).
+- **Situer une ville** : placer une ville sur la carte du monde (score à la distance).
 - **Coupe du monde 2026** : situer les villes hôtes du Mondial (USA, Canada, Mexique).
+- **Coupe du monde — Association** : pour chacun des 12 groupes, relier chaque pays
+  à son drapeau et à sa capitale (tirage officiel embarqué).
 - **Mode mixte — révision** : un mélange de toutes les questions, tous modes confondus.
+
+L'écran de sélection regroupe les modes par catégorie (Capitales, Drapeaux, Villes,
+Population & superficie, Monnaie, Géographie, Coupe du monde, Révision).
 - **Défi du jour** : un quiz quotidien déterministe, identique pour tous (rejouable à l'identique).
 
 Les données de population sont embarquées (`src/data/populations.ts`, généré par

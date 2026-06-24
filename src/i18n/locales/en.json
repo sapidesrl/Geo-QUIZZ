@@ -81,6 +81,29 @@
   "labels": {
     "cityCountry": "{{city}} ({{country}})"
   },
+  "categories": {
+    "capital": "Capitals",
+    "flag": "Flags",
+    "cities": "Cities",
+    "population": "Population & area",
+    "currency": "Currency",
+    "geography": "Geography",
+    "worldcup": "World Cup",
+    "review": "Review"
+  },
+  "match": {
+    "label": "World Cup — Matching",
+    "description": "Match each country in every group to its flag and capital.",
+    "instructions": "Tap a flag or a capital, then the matching country.",
+    "flags": "Flags",
+    "countries": "Countries",
+    "capitals": "Capitals",
+    "groupOf": "Group {{id}} — {{n}} / {{total}}",
+    "validate": "Check group",
+    "nextGroup": "Next group →",
+    "finalScore": "{{score}} / {{total}}",
+    "replay": "Play again"
+  },
   "prompts": {
     "capital": "What is the capital of {{country}}?",
     "capitalToCountry": "{{capital}} is the capital of which country?",

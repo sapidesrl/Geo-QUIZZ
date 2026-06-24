@@ -30,6 +30,7 @@ export const capitalExonyms: Record<string, Partial<Record<Lang, string>>> = {
   Bern: { fr: 'Berne', es: 'Berna', it: 'Berna' },
   Kyiv: { fr: 'Kiev', es: 'Kiev', de: 'Kiew', it: 'Kiev' },
   London: { fr: 'Londres', es: 'Londres', it: 'Londra' },
+  Edinburgh: { fr: 'Édimbourg', es: 'Edimburgo', it: 'Edimburgo' },
 
   // ─── Amériques ──────────────────────────────────────────────────────────────
   Havana: { fr: 'La Havane', es: 'La Habana', de: 'Havanna', it: "L'Avana" },
