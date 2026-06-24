@@ -136,7 +136,8 @@
     "nextLevel": "Nächstes Level →",
     "chapterDone": "Kapitel abgeschlossen! 🎉",
     "replay": "Dieses Level wiederholen",
-    "backToChapter": "← Zurück zum Kapitel"
+    "backToChapter": "← Zurück zum Kapitel",
+    "matchButton": "Zuordnen: Flaggen & Hauptstädte"
   },
   "modes": {
     "capital-mc": { "label": "Hauptstadt — Auswahl", "description": "Wähle die Hauptstadt des Landes aus 4 Optionen." },

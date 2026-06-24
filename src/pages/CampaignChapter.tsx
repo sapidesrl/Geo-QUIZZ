@@ -81,6 +81,14 @@ export default function CampaignChapter() {
           );
         })}
       </div>
+
+      <Link
+        to={`/campaign/${chapter.id}/match`}
+        className="mt-4 flex items-center gap-3 rounded-xl border border-slate-600 p-4 font-semibold transition hover:bg-slate-800"
+      >
+        <span className="text-2xl">🔗</span>
+        <span>{t('campaign.matchButton')}</span>
+      </Link>
     </div>
   );
 }

@@ -136,7 +136,8 @@
     "nextLevel": "Siguiente nivel →",
     "chapterDone": "¡Capítulo completado! 🎉",
     "replay": "Repetir este nivel",
-    "backToChapter": "← Volver al capítulo"
+    "backToChapter": "← Volver al capítulo",
+    "matchButton": "Asociación: une banderas y capitales"
   },
   "modes": {
     "capital-mc": { "label": "Capital — Opción múltiple", "description": "Elige la capital del país entre 4 opciones." },

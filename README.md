@@ -23,6 +23,9 @@ Application de quizz géographique (PWA) jouable au navigateur et sur smartphone
 - **Coupe du monde 2026** : situer les villes hôtes du Mondial (USA, Canada, Mexique).
 - **Coupe du monde — Association** : pour chacun des 12 groupes, relier chaque pays
   à son drapeau et à sa capitale (tirage officiel embarqué).
+- **Association par continent** : même mécanique, par continent (accessible depuis
+  chaque chapitre de campagne) ; les bonnes associations alimentent la révision espacée.
+  Le jeu d'association est un composant réutilisable (`src/components/MatchGame.tsx`).
 - **Mode mixte — révision** : un mélange de toutes les questions, tous modes confondus.
 - **Révision — mes erreurs** : répétition espacée (boîtes de Leitner) ; re-quizze en
   priorité les pays les moins maîtrisés. Toutes les parties (y compris la campagne)

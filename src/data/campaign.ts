@@ -45,3 +45,25 @@ export function getChapterById(id: string | undefined): CampaignChapter | undefi
 export function campaignLevelKey(chapterId: string, levelIndex: number): string {
   return `${chapterId}-${levelIndex}`;
 }
+
+/**
+ * Groupes de 4 pays (par population décroissante) d'un continent, pour le mode
+ * « association par continent ». On évite un dernier groupe d'un seul pays en le
+ * rééquilibrant avec le précédent.
+ */
+export function continentMatchGroups(
+  region: string,
+  size = 4,
+): { id: string; codes: string[] }[] {
+  const pool = countries
+    .filter((c) => c.region === region)
+    .sort((a, b) => b.population - a.population)
+    .map((c) => c.cca2);
+
+  const groups: string[][] = [];
+  for (let i = 0; i < pool.length; i += size) groups.push(pool.slice(i, i + size));
+  if (groups.length > 1 && groups[groups.length - 1].length === 1) {
+    groups[groups.length - 1].unshift(groups[groups.length - 2].pop()!);
+  }
+  return groups.map((codes, i) => ({ id: String(i + 1), codes }));
+}

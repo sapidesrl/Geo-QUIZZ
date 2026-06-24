@@ -97,7 +97,8 @@
     "nextLevel": "Niveau suivant →",
     "chapterDone": "Chapitre terminé ! 🎉",
     "replay": "Rejouer ce niveau",
-    "backToChapter": "← Retour au chapitre"
+    "backToChapter": "← Retour au chapitre",
+    "matchButton": "Association : relier drapeaux & capitales"
   },
   "categories": {
     "capital": "Capitales",
