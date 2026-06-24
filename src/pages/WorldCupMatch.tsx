@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import FlagImage from '../components/FlagImage';
@@ -15,6 +15,15 @@ const POINTS_PER_GROUP = 8; // 4 drapeaux + 4 capitales
 const TOTAL_POINTS = worldCupGroups.length * POINTS_PER_GROUP;
 
 type Selection = { type: 'flag' | 'capital'; id: string } | undefined;
+type Line = { key: string; x1: number; y1: number; x2: number; y2: number; color: string };
+
+/** Crée un ref-callback qui stocke/retire l'élément dans une Map indexée par code. */
+function mapRef(map: Map<string, HTMLButtonElement>, code: string) {
+  return (el: HTMLButtonElement | null) => {
+    if (el) map.set(code, el);
+    else map.delete(code);
+  };
+}
 
 export default function WorldCupMatch() {
   const { t, i18n } = useTranslation();
@@ -63,6 +72,64 @@ export default function WorldCupMatch() {
   const allLinked =
     Object.keys(flagLink).length === group.teams.length &&
     Object.keys(capLink).length === group.teams.length;
+
+  // Tracé des lignes reliant les cases liées (drapeau↔pays, capitale↔pays).
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const flagRefs = useRef(new Map<string, HTMLButtonElement>());
+  const countryRefs = useRef(new Map<string, HTMLButtonElement>());
+  const capRefs = useRef(new Map<string, HTMLButtonElement>());
+  const [lines, setLines] = useState<Line[]>([]);
+
+  useLayoutEffect(() => {
+    function compute() {
+      const wrap = wrapRef.current;
+      if (!wrap) return;
+      const base = wrap.getBoundingClientRect();
+      const out: Line[] = [];
+      // Drapeau (gauche) → pays (milieu) : bord droit du drapeau vers bord gauche du pays.
+      for (const [flagCode, countryCode] of Object.entries(flagLink)) {
+        const f = flagRefs.current.get(flagCode);
+        const c = countryRefs.current.get(countryCode);
+        if (!f || !c) continue;
+        const fr = f.getBoundingClientRect();
+        const cr = c.getBoundingClientRect();
+        out.push({
+          key: `f-${flagCode}`,
+          x1: fr.right - base.left,
+          y1: fr.top + fr.height / 2 - base.top,
+          x2: cr.left - base.left,
+          y2: cr.top + cr.height / 2 - base.top,
+          color: PALETTE[colorOf.get(countryCode) ?? 0],
+        });
+      }
+      // Pays (milieu) → capitale (droite) : bord droit du pays vers bord gauche de la capitale.
+      for (const [capCode, countryCode] of Object.entries(capLink)) {
+        const p = capRefs.current.get(capCode);
+        const c = countryRefs.current.get(countryCode);
+        if (!p || !c) continue;
+        const pr = p.getBoundingClientRect();
+        const cr = c.getBoundingClientRect();
+        out.push({
+          key: `c-${capCode}`,
+          x1: cr.right - base.left,
+          y1: cr.top + cr.height / 2 - base.top,
+          x2: pr.left - base.left,
+          y2: pr.top + pr.height / 2 - base.top,
+          color: PALETTE[colorOf.get(countryCode) ?? 0],
+        });
+      }
+      setLines(out);
+    }
+    compute();
+    const wrap = wrapRef.current;
+    const ro = new ResizeObserver(compute);
+    if (wrap) ro.observe(wrap);
+    window.addEventListener('resize', compute);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', compute);
+    };
+  }, [flagLink, capLink, colorOf, groupIndex, teams]);
 
   function assignToCountry(countryCca2: string) {
     if (!selected || checked) return;
@@ -183,7 +250,7 @@ export default function WorldCupMatch() {
   }
 
   return (
-    <div className="py-4">
+    <div className="flex flex-1 flex-col py-4">
       <div className="mb-3">
         <Link to="/modes" className="text-sm text-slate-300 hover:text-white">
           {t('nav.modes')}
@@ -207,7 +274,24 @@ export default function WorldCupMatch() {
 
       <p className="mb-4 text-center text-sm text-slate-400">{t('match.instructions')}</p>
 
-      <div className="grid grid-cols-[1fr_auto_1fr] gap-2 sm:gap-3">
+      <div className="flex flex-1 flex-col justify-center">
+      <div ref={wrapRef} className="relative">
+        <svg className="pointer-events-none absolute inset-0 h-full w-full overflow-visible">
+          {lines.map((l) => (
+            <line
+              key={l.key}
+              x1={l.x1}
+              y1={l.y1}
+              x2={l.x2}
+              y2={l.y2}
+              stroke={l.color}
+              strokeWidth={3}
+              strokeLinecap="round"
+              opacity={0.9}
+            />
+          ))}
+        </svg>
+        <div className="grid grid-cols-[1fr_auto_1fr] gap-2 sm:gap-3">
         {/* Colonne gauche : drapeaux */}
         <div className="flex flex-col gap-2">
           <div className="mb-1 text-center text-xs font-semibold uppercase text-slate-500">
@@ -216,6 +300,7 @@ export default function WorldCupMatch() {
           {flagOrder.map((code) => (
             <button
               key={code}
+              ref={mapRef(flagRefs.current, code)}
               type="button"
               onClick={() => toggleSelect('flag', code)}
               disabled={checked}
@@ -235,6 +320,7 @@ export default function WorldCupMatch() {
           {teams.map((tm, i) => (
             <button
               key={tm.code}
+              ref={mapRef(countryRefs.current, tm.code)}
               type="button"
               onClick={() => assignToCountry(tm.code)}
               disabled={checked || !selected}
@@ -259,6 +345,7 @@ export default function WorldCupMatch() {
           {capitalOrder.map((code) => (
             <button
               key={code}
+              ref={mapRef(capRefs.current, code)}
               type="button"
               onClick={() => toggleSelect('capital', code)}
               disabled={checked}
@@ -268,6 +355,7 @@ export default function WorldCupMatch() {
               <LinkBadge countryCca2={capLink[code]} />
             </button>
           ))}
+        </div>
         </div>
       </div>
 
@@ -290,6 +378,7 @@ export default function WorldCupMatch() {
             {groupIndex + 1 >= worldCupGroups.length ? t('game.seeResult') : t('match.nextGroup')}
           </button>
         )}
+      </div>
       </div>
     </div>
   );
