@@ -136,7 +136,8 @@
     "nextLevel": "Livello successivo →",
     "chapterDone": "Capitolo completato! 🎉",
     "replay": "Rigioca questo livello",
-    "backToChapter": "← Torna al capitolo"
+    "backToChapter": "← Torna al capitolo",
+    "matchButton": "Abbinamento: collega bandiere e capitali"
   },
   "modes": {
     "capital-mc": { "label": "Capitale — Quiz", "description": "Scegli la capitale del paese tra 4 opzioni." },

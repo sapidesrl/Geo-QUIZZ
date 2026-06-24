@@ -136,7 +136,8 @@
     "nextLevel": "Volgend niveau →",
     "chapterDone": "Hoofdstuk voltooid! 🎉",
     "replay": "Dit niveau opnieuw spelen",
-    "backToChapter": "← Terug naar hoofdstuk"
+    "backToChapter": "← Terug naar hoofdstuk",
+    "matchButton": "Koppelen: vlaggen & hoofdsteden"
   },
   "modes": {
     "capital-mc": { "label": "Hoofdstad — Meerkeuze", "description": "Kies de hoofdstad van het land uit 4 opties." },

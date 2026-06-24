@@ -136,7 +136,8 @@
     "nextLevel": "Next level →",
     "chapterDone": "Chapter complete! 🎉",
     "replay": "Replay this level",
-    "backToChapter": "← Back to chapter"
+    "backToChapter": "← Back to chapter",
+    "matchButton": "Matching: link flags & capitals"
   },
   "modes": {
     "capital-mc": { "label": "Capital — MCQ", "description": "Choose the country's capital from 4 options." },
