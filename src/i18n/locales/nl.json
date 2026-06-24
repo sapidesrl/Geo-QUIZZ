@@ -150,7 +150,7 @@
     "largest-area-mc": { "label": "Grootste — Meerkeuze", "description": "Welk van de 4 landen heeft de grootste oppervlakte?" },
     "most-populated-mc": { "label": "Meeste inwoners — Meerkeuze", "description": "Welk van de 4 landen heeft de meeste inwoners?" },
     "least-populated-mc": { "label": "Minste inwoners — Meerkeuze", "description": "Welk van de 4 landen heeft de minste inwoners?" },
-    "locate-country": { "label": "Land lokaliseren", "description": "Selecteer het gevraagde land op de wereldkaart." },
+    "locate-country": { "label": "Land lokaliseren", "description": "Tik het gebied van het juiste land op de kaart aan." },
     "locate-city": { "label": "Stad lokaliseren", "description": "Plaats de gevraagde stad op de wereldkaart." },
     "worldcup-2026": { "label": "WK 2026", "description": "Lokaliseer de gaststeden van het WK 2026 (VS, Canada, Mexico)." },
     "mixed": { "label": "Gemengd — herhaling", "description": "Een mix van alle vragen, alle modi door elkaar." },

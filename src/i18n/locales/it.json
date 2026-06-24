@@ -150,7 +150,7 @@
     "largest-area-mc": { "label": "Il più esteso — Quiz", "description": "Tra 4 paesi, quale ha la superficie maggiore?" },
     "most-populated-mc": { "label": "Il più popoloso — Quiz", "description": "Tra 4 paesi, quale ha più abitanti?" },
     "least-populated-mc": { "label": "Il meno popoloso — Quiz", "description": "Tra 4 paesi, quale ha meno abitanti?" },
-    "locate-country": { "label": "Localizza un paese", "description": "Posiziona il paese richiesto sulla mappa del mondo." },
+    "locate-country": { "label": "Localizza un paese", "description": "Tocca il territorio del paese giusto sulla mappa." },
     "locate-city": { "label": "Localizza una città", "description": "Posiziona la città richiesta sulla mappa del mondo." },
     "worldcup-2026": { "label": "Mondiale 2026", "description": "Localizza le città ospitanti del Mondiale 2026 (USA, Canada, Messico)." },
     "mixed": { "label": "Modalità mista — ripasso", "description": "Un mix di tutte le domande, tutte le modalità insieme." },

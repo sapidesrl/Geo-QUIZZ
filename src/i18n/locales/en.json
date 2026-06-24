@@ -150,7 +150,7 @@
     "largest-area-mc": { "label": "Largest — MCQ", "description": "Among 4 countries, which has the largest area?" },
     "most-populated-mc": { "label": "Most populous — MCQ", "description": "Among 4 countries, which has the most inhabitants?" },
     "least-populated-mc": { "label": "Least populous — MCQ", "description": "Among 4 countries, which has the fewest inhabitants?" },
-    "locate-country": { "label": "Locate a country", "description": "Place the requested country on the world map." },
+    "locate-country": { "label": "Locate a country", "description": "Tap the correct country's territory on the map." },
     "locate-city": { "label": "Locate a city", "description": "Place the requested city on the world map." },
     "worldcup-2026": { "label": "2026 World Cup", "description": "Locate the 2026 World Cup host cities (USA, Canada, Mexico)." },
     "mixed": { "label": "Mixed — review", "description": "A mix of all questions, all modes combined." },
