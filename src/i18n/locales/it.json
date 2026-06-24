@@ -72,6 +72,14 @@
     "achievements": "Obiettivi",
     "achievementsTitle": "Obiettivi"
   },
+  "mastery": {
+    "title": "Mappa di padronanza",
+    "mastered": "Padroneggiati",
+    "learning": "In corso",
+    "toReview": "Da ripassare",
+    "unseen": "Non visti",
+    "link": "Mappa di padronanza"
+  },
   "continents": {
     "Africa": "Africa",
     "Americas": "America",

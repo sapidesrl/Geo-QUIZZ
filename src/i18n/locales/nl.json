@@ -72,6 +72,14 @@
     "achievements": "Prestaties",
     "achievementsTitle": "Prestaties"
   },
+  "mastery": {
+    "title": "Beheersingskaart",
+    "mastered": "Beheerst",
+    "learning": "Bezig",
+    "toReview": "Te herhalen",
+    "unseen": "Niet gezien",
+    "link": "Beheersingskaart"
+  },
   "continents": {
     "Africa": "Afrika",
     "Americas": "Amerika",
