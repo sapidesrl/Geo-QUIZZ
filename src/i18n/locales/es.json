@@ -27,7 +27,8 @@
   },
   "modeselect": {
     "title": "Elige un modo",
-    "record": "Récord {{n}}"
+    "record": "Récord {{n}}",
+    "toReview": "{{n}} países por repasar"
   },
   "scorebar": {
     "score": "Puntos {{n}}"
@@ -154,6 +155,7 @@
     "locate-city": { "label": "Ubicar una ciudad", "description": "Coloca la ciudad solicitada en el mapa del mundo." },
     "worldcup-2026": { "label": "Mundial 2026", "description": "Ubica las ciudades anfitrionas del Mundial 2026 (EE. UU., Canadá, México)." },
     "mixed": { "label": "Modo mixto — repaso", "description": "Una mezcla de todas las preguntas, todos los modos combinados." },
+    "review": { "label": "Repaso — mis errores", "description": "Repasa primero los países que peor dominas." },
     "daily": { "label": "Reto del día", "description": "Un cuestionario diario, igual para todos, una vez al día." }
   },
   "achievements": {

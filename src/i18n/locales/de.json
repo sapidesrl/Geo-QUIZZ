@@ -27,7 +27,8 @@
   },
   "modeselect": {
     "title": "Wähle einen Modus",
-    "record": "Rekord {{n}}"
+    "record": "Rekord {{n}}",
+    "toReview": "{{n}} Länder zu wiederholen"
   },
   "scorebar": {
     "score": "Punkte {{n}}"
@@ -154,6 +155,7 @@
     "locate-city": { "label": "Stadt verorten", "description": "Platziere die gesuchte Stadt auf der Weltkarte." },
     "worldcup-2026": { "label": "WM 2026", "description": "Verorte die Austragungsorte der WM 2026 (USA, Kanada, Mexiko)." },
     "mixed": { "label": "Gemischt — Wiederholung", "description": "Eine Mischung aus allen Fragen, alle Modi kombiniert." },
+    "review": { "label": "Wiederholung — meine Fehler", "description": "Übe zuerst die Länder, die du am wenigsten beherrschst." },
     "daily": { "label": "Tägliche Herausforderung", "description": "Ein tägliches Quiz, für alle gleich, einmal pro Tag." }
   },
   "achievements": {

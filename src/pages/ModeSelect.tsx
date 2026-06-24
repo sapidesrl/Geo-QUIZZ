@@ -1,7 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
+import { countries } from '../data/countries';
 import { CONTINENTS } from '../engine/pool';
 import { continentFilterLabel } from '../i18n/display';
+import { countriesToReview } from '../lib/review';
 import { gameModes } from '../modes';
 import { categoryOrder, modeCategory } from '../modes/categories';
 import type { Difficulty } from '../store/useGameStore';
@@ -26,6 +28,8 @@ export default function ModeSelect() {
   const setContinent = useGameStore((s) => s.setContinent);
   const difficulty = useGameStore((s) => s.difficulty);
   const setDifficulty = useGameStore((s) => s.setDifficulty);
+  const reviewStats = useGameStore((s) => s.reviewStats);
+  const reviewCount = countriesToReview(reviewStats, countries).length;
 
   return (
     <div className="py-4">
@@ -109,6 +113,11 @@ export default function ModeSelect() {
                     <span className="block text-sm text-slate-400">
                       {t(`modes.${mode.id}.description`, { defaultValue: mode.description })}
                     </span>
+                    {mode.id === 'review' && reviewCount > 0 && (
+                      <span className="mt-1 block text-xs font-semibold text-amber-400">
+                        {t('modeselect.toReview', { n: reviewCount })}
+                      </span>
+                    )}
                     {(bestScores[mode.id] != null || bestStreaks[mode.id] != null) && (
                       <span className="mt-1 block text-xs text-slate-400">
                         {bestScores[mode.id] != null && (

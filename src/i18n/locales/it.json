@@ -27,7 +27,8 @@
   },
   "modeselect": {
     "title": "Scegli una modalità",
-    "record": "Record {{n}}"
+    "record": "Record {{n}}",
+    "toReview": "{{n}} paesi da ripassare"
   },
   "scorebar": {
     "score": "Punti {{n}}"
@@ -154,6 +155,7 @@
     "locate-city": { "label": "Localizza una città", "description": "Posiziona la città richiesta sulla mappa del mondo." },
     "worldcup-2026": { "label": "Mondiale 2026", "description": "Localizza le città ospitanti del Mondiale 2026 (USA, Canada, Messico)." },
     "mixed": { "label": "Modalità mista — ripasso", "description": "Un mix di tutte le domande, tutte le modalità insieme." },
+    "review": { "label": "Ripasso — i miei errori", "description": "Ripassa prima i paesi che padroneggi meno." },
     "daily": { "label": "Sfida del giorno", "description": "Un quiz quotidiano, uguale per tutti, una volta al giorno." }
   },
   "achievements": {

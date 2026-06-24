@@ -27,7 +27,8 @@
   },
   "modeselect": {
     "title": "Choose a mode",
-    "record": "Best {{n}}"
+    "record": "Best {{n}}",
+    "toReview": "{{n}} countries to review"
   },
   "scorebar": {
     "score": "Score {{n}}"
@@ -154,6 +155,7 @@
     "locate-city": { "label": "Locate a city", "description": "Place the requested city on the world map." },
     "worldcup-2026": { "label": "2026 World Cup", "description": "Locate the 2026 World Cup host cities (USA, Canada, Mexico)." },
     "mixed": { "label": "Mixed — review", "description": "A mix of all questions, all modes combined." },
+    "review": { "label": "Review — my mistakes", "description": "Replay the countries you know least well, first." },
     "daily": { "label": "Daily challenge", "description": "A daily quiz, the same for everyone, once a day." }
   },
   "achievements": {

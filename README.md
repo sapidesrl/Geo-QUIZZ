@@ -24,6 +24,9 @@ Application de quizz géographique (PWA) jouable au navigateur et sur smartphone
 - **Coupe du monde — Association** : pour chacun des 12 groupes, relier chaque pays
   à son drapeau et à sa capitale (tirage officiel embarqué).
 - **Mode mixte — révision** : un mélange de toutes les questions, tous modes confondus.
+- **Révision — mes erreurs** : répétition espacée (boîtes de Leitner) ; re-quizze en
+  priorité les pays les moins maîtrisés. Toutes les parties (y compris la campagne)
+  alimentent ce suivi par pays (`src/lib/review.ts`).
 
 L'écran de sélection regroupe les modes par catégorie (Capitales, Drapeaux, Villes,
 Population & superficie, Monnaie, Géographie, Coupe du monde, Révision).

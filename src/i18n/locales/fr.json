@@ -27,7 +27,8 @@
   },
   "modeselect": {
     "title": "Choisis un mode",
-    "record": "Record {{n}}"
+    "record": "Record {{n}}",
+    "toReview": "{{n}} pays à réviser"
   },
   "scorebar": {
     "score": "Score {{n}}"

@@ -41,5 +41,6 @@ export const modeCategory: Record<string, ModeCategory> = {
   'language-mc': 'geography',
   'locate-country': 'geography',
   'worldcup-2026': 'worldcup',
+  review: 'review',
   mixed: 'review',
 };

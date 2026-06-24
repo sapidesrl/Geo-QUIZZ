@@ -23,6 +23,7 @@ export const locateCountry: GameMode = {
         code: country.cca2,
       },
       answerLabel: name,
+      subjectCode: country.cca2,
     };
   },
 };

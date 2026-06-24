@@ -28,6 +28,7 @@ export const continentMc: GameMode = {
       choices: options.map((r) => ({ id: r, label: continentLabel(r) })),
       correctChoiceId: country.region,
       answerLabel: continentLabel(country.region),
+      subjectCode: country.cca2,
     };
   },
 };

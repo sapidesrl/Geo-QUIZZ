@@ -27,7 +27,8 @@
   },
   "modeselect": {
     "title": "Kies een modus",
-    "record": "Beste {{n}}"
+    "record": "Beste {{n}}",
+    "toReview": "{{n}} landen om te herhalen"
   },
   "scorebar": {
     "score": "Score {{n}}"
@@ -154,6 +155,7 @@
     "locate-city": { "label": "Stad lokaliseren", "description": "Plaats de gevraagde stad op de wereldkaart." },
     "worldcup-2026": { "label": "WK 2026", "description": "Lokaliseer de gaststeden van het WK 2026 (VS, Canada, Mexico)." },
     "mixed": { "label": "Gemengd — herhaling", "description": "Een mix van alle vragen, alle modi door elkaar." },
+    "review": { "label": "Herhaling — mijn fouten", "description": "Oefen eerst de landen die je het minst beheerst." },
     "daily": { "label": "Dagelijkse uitdaging", "description": "Een dagelijkse quiz, voor iedereen hetzelfde, één keer per dag." }
   },
   "achievements": {

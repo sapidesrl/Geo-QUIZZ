@@ -21,6 +21,7 @@ export const flagMc: GameMode = {
       choices: options.map((c) => ({ id: c.cca2, label: '', flag: c.cca2 })),
       correctChoiceId: country.cca2,
       answerLabel: countryName(country),
+      subjectCode: country.cca2,
     };
   },
 };

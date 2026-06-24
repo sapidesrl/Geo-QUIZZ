@@ -64,6 +64,8 @@ export interface Question {
   target?: MapTarget;
   /** libellé de la bonne réponse, pour l'affichage après validation. */
   answerLabel: string;
+  /** pays « sujet » de la question (cca2) — alimente la révision espacée. */
+  subjectCode?: string;
 }
 
 /** Sous-ensemble de données dans lequel un mode tire ses questions (filtres UX). */
