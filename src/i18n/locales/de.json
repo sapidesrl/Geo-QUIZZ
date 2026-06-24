@@ -150,7 +150,7 @@
     "largest-area-mc": { "label": "Das größte — Auswahl", "description": "Welches von 4 Ländern hat die größte Fläche?" },
     "most-populated-mc": { "label": "Das bevölkerungsreichste — Auswahl", "description": "Welches von 4 Ländern hat die meisten Einwohner?" },
     "least-populated-mc": { "label": "Das bevölkerungsärmste — Auswahl", "description": "Welches von 4 Ländern hat die wenigsten Einwohner?" },
-    "locate-country": { "label": "Land verorten", "description": "Platziere das gesuchte Land auf der Weltkarte." },
+    "locate-country": { "label": "Land verorten", "description": "Tippe das Gebiet des richtigen Landes auf der Karte an." },
     "locate-city": { "label": "Stadt verorten", "description": "Platziere die gesuchte Stadt auf der Weltkarte." },
     "worldcup-2026": { "label": "WM 2026", "description": "Verorte die Austragungsorte der WM 2026 (USA, Kanada, Mexiko)." },
     "mixed": { "label": "Gemischt — Wiederholung", "description": "Eine Mischung aus allen Fragen, alle Modi kombiniert." },

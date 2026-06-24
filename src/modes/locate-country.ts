@@ -6,7 +6,7 @@ import { countryName } from '../i18n/display';
 export const locateCountry: GameMode = {
   id: 'locate-country',
   label: 'Situer un pays',
-  description: 'Place le pays demandé sur la carte du monde.',
+  description: 'Touche le territoire du bon pays sur la carte.',
   icon: '🌍',
   inputType: 'map-pin',
   generate(o = defaultGenerateOptions): Question {

@@ -150,7 +150,7 @@
     "largest-area-mc": { "label": "El más extenso — Opción múltiple", "description": "Entre 4 países, ¿cuál tiene mayor superficie?" },
     "most-populated-mc": { "label": "El más poblado — Opción múltiple", "description": "Entre 4 países, ¿cuál tiene más habitantes?" },
     "least-populated-mc": { "label": "El menos poblado — Opción múltiple", "description": "Entre 4 países, ¿cuál tiene menos habitantes?" },
-    "locate-country": { "label": "Ubicar un país", "description": "Coloca el país solicitado en el mapa del mundo." },
+    "locate-country": { "label": "Ubicar un país", "description": "Toca el territorio del país correcto en el mapa." },
     "locate-city": { "label": "Ubicar una ciudad", "description": "Coloca la ciudad solicitada en el mapa del mundo." },
     "worldcup-2026": { "label": "Mundial 2026", "description": "Ubica las ciudades anfitrionas del Mundial 2026 (EE. UU., Canadá, México)." },
     "mixed": { "label": "Modo mixto — repaso", "description": "Una mezcla de todas las preguntas, todos los modos combinados." },
