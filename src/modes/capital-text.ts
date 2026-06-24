@@ -20,6 +20,7 @@ export const capitalText: GameMode = {
       flag: country.cca2,
       acceptedAnswers: accepted,
       answerLabel: localized,
+      subjectCode: country.cca2,
     };
   },
 };

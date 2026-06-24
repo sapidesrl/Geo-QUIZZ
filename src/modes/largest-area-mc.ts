@@ -19,6 +19,7 @@ export const largestAreaMc: GameMode = {
       choices: options.map((c) => ({ id: c.cca2, label: countryName(c), flag: c.cca2 })),
       correctChoiceId: winner.cca2,
       answerLabel: countryName(winner),
+      subjectCode: winner.cca2,
     };
   },
 };

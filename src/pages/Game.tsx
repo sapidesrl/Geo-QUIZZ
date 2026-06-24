@@ -5,11 +5,13 @@ import FlagImage from '../components/FlagImage';
 import FreeTextInput from '../components/FreeTextInput';
 import MultipleChoice from '../components/MultipleChoice';
 import ScoreBar from '../components/ScoreBar';
+import { countries } from '../data/countries';
 import { checkAnswer } from '../engine/check';
 import { defaultGenerateOptions } from '../engine/generate';
 import { buildGenerateOptions } from '../engine/pool';
 import type { Answer, Question, QuestionRecap } from '../engine/types';
 import { dailyKey, dailySeed, withSeed } from '../lib/rng';
+import { selectReviewPool } from '../lib/review';
 import { playCorrect, playFinish, playWrong, vibrate } from '../lib/sound';
 import { getModeById } from '../modes';
 import { useGameStore } from '../store/useGameStore';
@@ -31,8 +33,16 @@ export default function Game() {
   const difficulty = useGameStore((s) => s.difficulty);
   const soundOn = useGameStore((s) => s.soundOn);
   const recordGame = useGameStore((s) => s.recordGame);
+  const recordAnswer = useGameStore((s) => s.recordAnswer);
+  const reviewStats = useGameStore((s) => s.reviewStats);
 
   const isDaily = mode?.id === 'daily';
+  const isReview = mode?.id === 'review';
+
+  // Lu via une ref pour que le tirage de révision soit figé au début de la
+  // session (sinon chaque réponse modifierait reviewStats et régénérerait le quiz).
+  const reviewStatsRef = useRef(reviewStats);
+  reviewStatsRef.current = reviewStats;
 
   const session = useMemo<Question[]>(() => {
     if (!mode) return [];
@@ -61,9 +71,15 @@ export default function Game() {
         buildSession(() => mode.generate(defaultGenerateOptions), DAILY_QUESTIONS),
       );
     }
+    // Révision : on restreint le pool aux pays les plus faibles (figés au départ).
+    if (isReview) {
+      const opts = { countries: selectReviewPool(reviewStatsRef.current, countries), cities: [] };
+      return buildSession(() => mode.generate(opts), questionsPerGame);
+    }
     const opts = buildGenerateOptions(continent, difficulty);
     return buildSession(() => mode.generate(opts), questionsPerGame);
-  }, [mode, isDaily, questionsPerGame, continent, difficulty]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mode, isDaily, isReview, questionsPerGame, continent, difficulty]);
 
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -124,6 +140,7 @@ export default function Game() {
   function submit(answer: Answer) {
     if (revealed) return;
     const result = checkAnswer(question, answer);
+    if (question.subjectCode) recordAnswer(question.subjectCode, result.correct);
     setLastCorrect(result.correct);
     setDistanceKm(result.distanceKm);
     if (result.correct) {

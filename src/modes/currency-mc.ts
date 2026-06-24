@@ -30,6 +30,7 @@ export const currencyMc: GameMode = {
       choices: options.map((code) => ({ id: code, label: currencyName(code) })),
       correctChoiceId: subject.currencyCode,
       answerLabel: currencyName(subject.currencyCode),
+      subjectCode: subject.cca2,
     };
   },
 };

@@ -19,6 +19,7 @@ export const capitalToCountryMc: GameMode = {
       choices: options.map((c) => ({ id: c.cca2, label: countryName(c), flag: c.cca2 })),
       correctChoiceId: country.cca2,
       answerLabel: countryName(country),
+      subjectCode: country.cca2,
     };
   },
 };

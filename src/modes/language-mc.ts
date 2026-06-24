@@ -30,6 +30,7 @@ export const languageMc: GameMode = {
       choices: options.map((code) => ({ id: code, label: languageName(code) })),
       correctChoiceId: subject.languageCode,
       answerLabel: languageName(subject.languageCode),
+      subjectCode: subject.cca2,
     };
   },
 };

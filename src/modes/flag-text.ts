@@ -18,6 +18,7 @@ export const flagText: GameMode = {
       // On accepte le nom dans la langue courante, plus français et anglais.
       acceptedAnswers: [...new Set([countryName(country), country.name, country.nameEn])],
       answerLabel: countryName(country),
+      subjectCode: country.cca2,
     };
   },
 };

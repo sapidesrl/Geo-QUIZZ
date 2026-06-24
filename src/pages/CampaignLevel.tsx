@@ -110,6 +110,7 @@ function QuizPhase({
   onFinish: (score: number) => void;
 }) {
   const { t } = useTranslation();
+  const recordAnswer = useGameStore((s) => s.recordAnswer);
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -126,6 +127,7 @@ function QuizPhase({
   function submit(answer: Answer) {
     if (revealed) return;
     const { correct, distanceKm: d } = checkAnswer(question, answer);
+    if (question.subjectCode) recordAnswer(question.subjectCode, correct);
     setLastCorrect(correct);
     setDistanceKm(d);
     if (correct) {

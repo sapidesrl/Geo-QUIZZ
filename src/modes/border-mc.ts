@@ -42,6 +42,7 @@ export const borderMc: GameMode = {
       choices: options.map((c) => ({ id: c.cca2, label: countryName(c), flag: c.cca2 })),
       correctChoiceId: neighbor.cca2,
       answerLabel: countryName(neighbor),
+      subjectCode: subject.cca2,
     };
   },
 };

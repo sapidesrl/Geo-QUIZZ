@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { CAMPAIGN_PASS_THRESHOLD } from '../data/campaign';
 import { evaluateAchievements } from '../lib/achievements';
+import { updateStat, type ReviewStats } from '../lib/review';
 
 export type Difficulty = 'facile' | 'moyen' | 'difficile';
 
@@ -43,6 +44,9 @@ interface GameState {
   campaignProgress: Record<string, CampaignLevelResult>;
   recordCampaignLevel: (key: string, score: number, total: number) => void;
 
+  reviewStats: ReviewStats;
+  recordAnswer: (code: string, correct: boolean) => void;
+
   recordGame: (summary: GameSummary) => string[];
 }
 
@@ -67,6 +71,12 @@ export const useGameStore = create<GameState>()(
       modesPlayed: [],
       unlocked: [],
       dailyHistory: {},
+
+      reviewStats: {},
+      recordAnswer: (code, correct) =>
+        set((s) => ({
+          reviewStats: { ...s.reviewStats, [code]: updateStat(s.reviewStats[code], correct) },
+        })),
 
       campaignProgress: {},
       recordCampaignLevel: (key, score, total) =>
