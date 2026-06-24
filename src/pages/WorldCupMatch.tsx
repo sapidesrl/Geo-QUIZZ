@@ -1,4 +1,4 @@
-import { useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { Fragment, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import FlagImage from '../components/FlagImage';
@@ -291,71 +291,68 @@ export default function WorldCupMatch() {
             />
           ))}
         </svg>
-        <div className="grid grid-cols-[1fr_auto_1fr] gap-2 sm:gap-3">
-        {/* Colonne gauche : drapeaux */}
-        <div className="flex flex-col gap-2">
+        {/* Grille en ordre rangée-par-rangée : chaque rangée aligne drapeau /
+            pays / capitale à la même hauteur (align-items: stretch). */}
+        <div className="grid grid-cols-[1fr_auto_1fr] items-stretch gap-2 sm:gap-3">
           <div className="mb-1 text-center text-xs font-semibold uppercase text-slate-500">
             {t('match.flags')}
           </div>
-          {flagOrder.map((code) => (
-            <button
-              key={code}
-              ref={mapRef(flagRefs.current, code)}
-              type="button"
-              onClick={() => toggleSelect('flag', code)}
-              disabled={checked}
-              className={`flex items-center gap-2 rounded-xl border-2 p-2 transition ${cardStateClass('flag', code)}`}
-            >
-              <FlagImage code={teamByCode.get(code)?.flag ?? code} className="text-3xl" />
-              <LinkBadge countryCca2={flagLink[code]} />
-            </button>
-          ))}
-        </div>
-
-        {/* Colonne centrale : pays */}
-        <div className="flex flex-col gap-2">
           <div className="mb-1 text-center text-xs font-semibold uppercase text-slate-500">
             {t('match.countries')}
           </div>
-          {teams.map((tm, i) => (
-            <button
-              key={tm.code}
-              ref={mapRef(countryRefs.current, tm.code)}
-              type="button"
-              onClick={() => assignToCountry(tm.code)}
-              disabled={checked || !selected}
-              className="flex min-w-[7rem] items-center gap-2 rounded-xl border-2 border-slate-600 bg-slate-900 p-2 text-left text-sm font-semibold transition enabled:hover:border-brand disabled:opacity-90"
-            >
-              <span
-                className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
-                style={{ backgroundColor: PALETTE[i] }}
-              >
-                {i + 1}
-              </span>
-              <span className="leading-tight">{tm.name}</span>
-            </button>
-          ))}
-        </div>
-
-        {/* Colonne droite : capitales */}
-        <div className="flex flex-col gap-2">
           <div className="mb-1 text-center text-xs font-semibold uppercase text-slate-500">
             {t('match.capitals')}
           </div>
-          {capitalOrder.map((code) => (
-            <button
-              key={code}
-              ref={mapRef(capRefs.current, code)}
-              type="button"
-              onClick={() => toggleSelect('capital', code)}
-              disabled={checked}
-              className={`flex items-center gap-2 rounded-xl border-2 p-2 text-left text-sm transition ${cardStateClass('capital', code)}`}
-            >
-              <span className="leading-tight">{teamByCode.get(code)?.capital}</span>
-              <LinkBadge countryCca2={capLink[code]} />
-            </button>
-          ))}
-        </div>
+
+          {group.teams.map((_, i) => {
+            const flagCode = flagOrder[i];
+            const tm = teams[i];
+            const capCode = capitalOrder[i];
+            return (
+              <Fragment key={i}>
+                {/* Drapeau */}
+                <button
+                  ref={mapRef(flagRefs.current, flagCode)}
+                  type="button"
+                  onClick={() => toggleSelect('flag', flagCode)}
+                  disabled={checked}
+                  className={`flex items-center gap-2 rounded-xl border-2 p-2 transition ${cardStateClass('flag', flagCode)}`}
+                >
+                  <FlagImage code={teamByCode.get(flagCode)?.flag ?? flagCode} className="text-3xl" />
+                  <LinkBadge countryCca2={flagLink[flagCode]} />
+                </button>
+
+                {/* Pays */}
+                <button
+                  ref={mapRef(countryRefs.current, tm.code)}
+                  type="button"
+                  onClick={() => assignToCountry(tm.code)}
+                  disabled={checked || !selected}
+                  className="flex min-w-[7rem] items-center gap-2 rounded-xl border-2 border-slate-600 bg-slate-900 p-2 text-left text-sm font-semibold transition enabled:hover:border-brand disabled:opacity-90"
+                >
+                  <span
+                    className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
+                    style={{ backgroundColor: PALETTE[i] }}
+                  >
+                    {i + 1}
+                  </span>
+                  <span className="leading-tight">{tm.name}</span>
+                </button>
+
+                {/* Capitale */}
+                <button
+                  ref={mapRef(capRefs.current, capCode)}
+                  type="button"
+                  onClick={() => toggleSelect('capital', capCode)}
+                  disabled={checked}
+                  className={`flex items-center justify-between gap-2 rounded-xl border-2 p-2 text-left text-sm transition ${cardStateClass('capital', capCode)}`}
+                >
+                  <span className="leading-tight">{teamByCode.get(capCode)?.capital}</span>
+                  <LinkBadge countryCca2={capLink[capCode]} />
+                </button>
+              </Fragment>
+            );
+          })}
         </div>
       </div>
 
