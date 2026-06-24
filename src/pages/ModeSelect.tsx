@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { CONTINENTS } from '../engine/pool';
 import { continentFilterLabel } from '../i18n/display';
 import { gameModes } from '../modes';
+import { categoryOrder, modeCategory } from '../modes/categories';
 import type { Difficulty } from '../store/useGameStore';
 import { useGameStore } from '../store/useGameStore';
 
@@ -81,40 +82,71 @@ export default function ModeSelect() {
 
       <h2 className="mb-4 text-2xl font-bold">{t('modeselect.title')}</h2>
 
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        {gameModes
-          .filter((mode) => mode.id !== 'daily')
-          .map((mode) => (
-            <button
-              key={mode.id}
-              type="button"
-              onClick={() => navigate(`/game/${mode.id}`)}
-              className="flex items-start gap-4 rounded-xl border-2 border-slate-700 bg-slate-800 p-4 text-left transition hover:border-brand hover:bg-slate-700"
-            >
-              <span className="text-3xl">{mode.icon}</span>
-              <span className="flex-1">
-                <span className="block font-semibold">
-                  {t(`modes.${mode.id}.label`, { defaultValue: mode.label })}
-                </span>
-                <span className="block text-sm text-slate-400">
-                  {t(`modes.${mode.id}.description`, { defaultValue: mode.description })}
-                </span>
-                {(bestScores[mode.id] != null || bestStreaks[mode.id] != null) && (
-                  <span className="mt-1 block text-xs text-slate-400">
-                    {bestScores[mode.id] != null && (
-                      <span className="text-emerald-400">
-                        {t('modeselect.record', { n: bestScores[mode.id] })}
+      {categoryOrder.map((cat) => {
+        const modes = gameModes.filter(
+          (m) => m.id !== 'daily' && modeCategory[m.id] === cat.id,
+        );
+        if (modes.length === 0 && cat.id !== 'worldcup') return null;
+        return (
+          <section key={cat.id} className="mb-7">
+            <h3 className="mb-3 flex items-center gap-2 text-lg font-bold text-slate-200">
+              <span>{cat.icon}</span>
+              {t(`categories.${cat.id}`)}
+            </h3>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {modes.map((mode) => (
+                <button
+                  key={mode.id}
+                  type="button"
+                  onClick={() => navigate(`/game/${mode.id}`)}
+                  className="flex items-start gap-4 rounded-xl border-2 border-slate-700 bg-slate-800 p-4 text-left transition hover:border-brand hover:bg-slate-700"
+                >
+                  <span className="text-3xl">{mode.icon}</span>
+                  <span className="flex-1">
+                    <span className="block font-semibold">
+                      {t(`modes.${mode.id}.label`, { defaultValue: mode.label })}
+                    </span>
+                    <span className="block text-sm text-slate-400">
+                      {t(`modes.${mode.id}.description`, { defaultValue: mode.description })}
+                    </span>
+                    {(bestScores[mode.id] != null || bestStreaks[mode.id] != null) && (
+                      <span className="mt-1 block text-xs text-slate-400">
+                        {bestScores[mode.id] != null && (
+                          <span className="text-emerald-400">
+                            {t('modeselect.record', { n: bestScores[mode.id] })}
+                          </span>
+                        )}
+                        {bestStreaks[mode.id] ? (
+                          <span className="ml-2 text-amber-400">🔥 {bestStreaks[mode.id]}</span>
+                        ) : null}
                       </span>
                     )}
-                    {bestStreaks[mode.id] ? (
-                      <span className="ml-2 text-amber-400">🔥 {bestStreaks[mode.id]}</span>
-                    ) : null}
                   </span>
-                )}
-              </span>
-            </button>
-          ))}
-      </div>
+                </button>
+              ))}
+
+              {/* Mode spécial « association » (hors moteur de questions). */}
+              {cat.id === 'worldcup' && (
+                <Link
+                  to="/worldcup-match"
+                  className="flex items-start gap-4 rounded-xl border-2 border-slate-700 bg-slate-800 p-4 text-left transition hover:border-brand hover:bg-slate-700"
+                >
+                  <span className="text-3xl">🔗</span>
+                  <span className="flex-1">
+                    <span className="block font-semibold">{t('match.label')}</span>
+                    <span className="block text-sm text-slate-400">{t('match.description')}</span>
+                    {bestScores['worldcup-match'] != null && (
+                      <span className="mt-1 block text-xs text-emerald-400">
+                        {t('modeselect.record', { n: bestScores['worldcup-match'] })}
+                      </span>
+                    )}
+                  </span>
+                </Link>
+              )}
+            </div>
+          </section>
+        );
+      })}
     </div>
   );
 }

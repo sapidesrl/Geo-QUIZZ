@@ -36,6 +36,9 @@
     "yourAnswer": "Deine Antwort…",
     "validate": "Bestätigen",
     "placePin": "Tippe auf die Karte, um deine Markierung zu setzen",
+    "selectCountry": "Tippe das Land auf der Karte an",
+    "rightCountry": "✅ Richtiges Land!",
+    "wrongCountry": "❌ Nicht das richtige Land.",
     "wellPlaced": "✅ Gut platziert!",
     "tooFar": "❌ Zu weit weg.",
     "distance": "{{km}} km vom Ziel entfernt.",
@@ -77,6 +80,29 @@
   },
   "labels": {
     "cityCountry": "{{city}} ({{country}})"
+  },
+  "categories": {
+    "capital": "Hauptstädte",
+    "flag": "Flaggen",
+    "cities": "Städte",
+    "population": "Bevölkerung & Fläche",
+    "currency": "Währung",
+    "geography": "Geografie",
+    "worldcup": "Weltmeisterschaft",
+    "review": "Wiederholung"
+  },
+  "match": {
+    "label": "WM — Zuordnen",
+    "description": "Ordne jedem Land jeder Gruppe seine Flagge und Hauptstadt zu.",
+    "instructions": "Tippe auf eine Flagge oder Hauptstadt und dann auf das passende Land.",
+    "flags": "Flaggen",
+    "countries": "Länder",
+    "capitals": "Hauptstädte",
+    "groupOf": "Gruppe {{id}} — {{n}} / {{total}}",
+    "validate": "Gruppe prüfen",
+    "nextGroup": "Nächste Gruppe →",
+    "finalScore": "{{score}} / {{total}}",
+    "replay": "Nochmal spielen"
   },
   "prompts": {
     "capital": "Was ist die Hauptstadt von {{country}}?",

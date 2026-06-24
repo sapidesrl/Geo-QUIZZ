@@ -6,6 +6,7 @@ import { populations } from './populations';
 interface RawCountry {
   cca2: string;
   cca3: string;
+  ccn3: string;
   independent: boolean | null;
   unMember: boolean;
   capital: string[];
@@ -59,6 +60,7 @@ export const countries: Country[] = raw
     const languageCode = Object.keys(c.languages ?? {})[0] ?? '';
     return {
       cca2: c.cca2.toLowerCase(),
+      ccn3: c.ccn3,
       name: c.translations?.fra?.common ?? c.name.common,
       nameEn: c.name.common,
       capital: CAPITAL_OVERRIDES[c.cca2.toUpperCase()] ?? c.capital[0],
@@ -78,3 +80,18 @@ export const countries: Country[] = raw
     };
   })
   .sort((a, b) => a.name.localeCompare(b.name, 'fr'));
+
+/**
+ * Correspondances entre le code ISO numérique (porté par les polygones
+ * `world-atlas`) et le code cca2 (utilisé par le jeu). Sert au mode « situer un
+ * pays » par sélection de polygone : résoudre le pays cliqué et surligner la cible.
+ */
+export const cca2ByCcn3 = new Map<number, string>();
+export const ccn3ByCca2 = new Map<string, number>();
+for (const c of countries) {
+  const n = Number(c.ccn3);
+  if (Number.isFinite(n) && n > 0) {
+    cca2ByCcn3.set(n, c.cca2);
+    ccn3ByCca2.set(c.cca2, n);
+  }
+}

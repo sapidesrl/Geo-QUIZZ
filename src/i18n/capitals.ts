@@ -30,6 +30,7 @@ export const capitalExonyms: Record<string, Partial<Record<Lang, string>>> = {
   Bern: { fr: 'Berne', es: 'Berna', it: 'Berna' },
   Kyiv: { fr: 'Kiev', es: 'Kiev', de: 'Kiew', it: 'Kiev' },
   London: { fr: 'Londres', es: 'Londres', it: 'Londra' },
+  Edinburgh: { fr: 'Édimbourg', es: 'Edimburgo', it: 'Edimburgo' },
 
   // ─── Amériques ──────────────────────────────────────────────────────────────
   Havana: { fr: 'La Havane', es: 'La Habana', de: 'Havanna', it: "L'Avana" },
@@ -69,6 +70,24 @@ export const capitalExonyms: Record<string, Partial<Record<Lang, string>>> = {
   Tashkent: { fr: 'Tachkent', es: 'Taskent', de: 'Taschkent' },
   Kathmandu: { fr: 'Katmandou', es: 'Katmandú', it: 'Katmandu' },
   Manila: { fr: 'Manille' },
+  'New Delhi': { es: 'Nueva Delhi', de: 'Neu-Delhi', it: 'Nuova Delhi' },
+  Hanoi: { fr: 'Hanoï', es: 'Hanói' },
+  Sanaa: { es: 'Saná' },
+  Vientiane: { es: 'Vientián' },
+  Thimphu: { fr: 'Thimphou', es: 'Timbu' },
+  Bishkek: { fr: 'Bichkek', es: 'Biskek', de: 'Bischkek' },
+  Ashgabat: { fr: 'Achgabat', es: 'Asjabad', de: 'Aschgabat' },
+  Dushanbe: { fr: 'Douchanbé', es: 'Dusambé' },
+  'Abu Dhabi': { fr: 'Abou Dabi', es: 'Abu Dabi' },
+
+  // ─── Europe (compléments) ──────────────────────────────────────────────────
+  Nicosia: { fr: 'Nicosie', de: 'Nikosia' },
+  'Vatican City': {
+    fr: 'Cité du Vatican',
+    es: 'Ciudad del Vaticano',
+    de: 'Vatikanstadt',
+    it: 'Città del Vaticano',
+  },
 
   // ─── Afrique ────────────────────────────────────────────────────────────────
   Algiers: { fr: 'Alger', es: 'Argel', de: 'Algier', it: 'Algeri' },
@@ -78,6 +97,7 @@ export const capitalExonyms: Record<string, Partial<Record<Lang, string>>> = {
   Mogadishu: { fr: 'Mogadiscio', es: 'Mogadiscio', de: 'Mogadischu', it: 'Mogadiscio' },
   Tripoli: { es: 'Trípoli', de: 'Tripolis' },
   Tunis: { es: 'Túnez', it: 'Tunisi' },
+  "N'Djamena": { es: 'Yamena' },
 };
 
 /** Nom de capitale localisé : exonyme si connu, sinon le nom source (anglais). */

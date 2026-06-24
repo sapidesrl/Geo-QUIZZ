@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import ModeSelect from './pages/ModeSelect';
 import Results from './pages/Results';
 import Stats from './pages/Stats';
+import WorldCupMatch from './pages/WorldCupMatch';
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/campaign" element={<Campaign />} />
           <Route path="/campaign/:chapterId" element={<CampaignChapter />} />
           <Route path="/campaign/:chapterId/:levelIndex" element={<CampaignLevel />} />
+          <Route path="/worldcup-match" element={<WorldCupMatch />} />
         </Routes>
       </div>
     </HashRouter>

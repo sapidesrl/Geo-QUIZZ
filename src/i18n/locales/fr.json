@@ -36,6 +36,9 @@
     "yourAnswer": "Ta réponse…",
     "validate": "Valider",
     "placePin": "Touche la carte pour placer ton repère",
+    "selectCountry": "Touche le pays sur la carte",
+    "rightCountry": "✅ Bon pays !",
+    "wrongCountry": "❌ Ce n'est pas le bon pays.",
     "wellPlaced": "✅ Bien situé !",
     "tooFar": "❌ Trop loin.",
     "distance": "À {{km}} km de la cible.",
@@ -94,6 +97,29 @@
     "chapterDone": "Chapitre terminé ! 🎉",
     "replay": "Rejouer ce niveau",
     "backToChapter": "← Retour au chapitre"
+  },
+  "categories": {
+    "capital": "Capitales",
+    "flag": "Drapeaux",
+    "cities": "Villes",
+    "population": "Population & superficie",
+    "currency": "Monnaie",
+    "geography": "Géographie",
+    "worldcup": "Coupe du monde",
+    "review": "Révision"
+  },
+  "match": {
+    "label": "Coupe du monde — Association",
+    "description": "Relie chaque pays de chaque groupe à son drapeau et à sa capitale.",
+    "instructions": "Touche un drapeau ou une capitale, puis le pays correspondant.",
+    "flags": "Drapeaux",
+    "countries": "Pays",
+    "capitals": "Capitales",
+    "groupOf": "Groupe {{id}} — {{n}} / {{total}}",
+    "validate": "Valider le groupe",
+    "nextGroup": "Groupe suivant →",
+    "finalScore": "{{score}} / {{total}}",
+    "replay": "Rejouer"
   },
   "prompts": {
     "capital": "Quelle est la capitale de {{country}} ?",

@@ -1,6 +1,7 @@
 /** Un pays normalisé pour le jeu (issu de world-countries). */
 export interface Country {
   cca2: string; // ISO 3166-1 alpha-2 en minuscules (utilisé par flag-icons)
+  ccn3: string; // ISO 3166-1 numérique (ex. "250") — clé des polygones world-atlas
   name: string; // nom commun en français
   nameEn: string; // nom commun en anglais
   capital: string;
@@ -41,6 +42,9 @@ export interface MapTarget {
   lng: number;
   toleranceKm: number;
   label: string;
+  /** En mode « sélection de polygone » : code cca2 du pays à désigner.
+   * Présent ⇒ la carte attend un clic sur le bon pays (pas de distance). */
+  code?: string;
 }
 
 /** Une question prête à afficher, indépendante du mode qui l'a produite. */
@@ -95,4 +99,5 @@ export interface QuestionRecap {
 export type Answer =
   | { kind: 'choice'; choiceId: string }
   | { kind: 'text'; value: string }
-  | { kind: 'point'; lat: number; lng: number };
+  | { kind: 'point'; lat: number; lng: number }
+  | { kind: 'region'; code: string };

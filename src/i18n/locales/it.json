@@ -36,6 +36,9 @@
     "yourAnswer": "La tua risposta…",
     "validate": "Conferma",
     "placePin": "Tocca la mappa per posizionare il segnaposto",
+    "selectCountry": "Tocca il paese sulla mappa",
+    "rightCountry": "✅ Paese giusto!",
+    "wrongCountry": "❌ Non è il paese giusto.",
     "wellPlaced": "✅ Ben posizionato!",
     "tooFar": "❌ Troppo lontano.",
     "distance": "A {{km}} km dal bersaglio.",
@@ -77,6 +80,29 @@
   },
   "labels": {
     "cityCountry": "{{city}} ({{country}})"
+  },
+  "categories": {
+    "capital": "Capitali",
+    "flag": "Bandiere",
+    "cities": "Città",
+    "population": "Popolazione e superficie",
+    "currency": "Moneta",
+    "geography": "Geografia",
+    "worldcup": "Mondiali",
+    "review": "Ripasso"
+  },
+  "match": {
+    "label": "Mondiali — Abbinamento",
+    "description": "Collega ogni paese di ogni girone alla sua bandiera e alla sua capitale.",
+    "instructions": "Tocca una bandiera o una capitale, poi il paese corrispondente.",
+    "flags": "Bandiere",
+    "countries": "Paesi",
+    "capitals": "Capitali",
+    "groupOf": "Girone {{id}} — {{n}} / {{total}}",
+    "validate": "Verifica girone",
+    "nextGroup": "Girone successivo →",
+    "finalScore": "{{score}} / {{total}}",
+    "replay": "Gioca di nuovo"
   },
   "prompts": {
     "capital": "Qual è la capitale di {{country}}?",

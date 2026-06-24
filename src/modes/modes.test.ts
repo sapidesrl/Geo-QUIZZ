@@ -28,9 +28,16 @@ describe('gameModes', () => {
           );
         } else {
           expect(q.target).toBeTruthy();
-          expect(
-            checkAnswer(q, { kind: 'point', lat: q.target!.lat, lng: q.target!.lng }).correct,
-          ).toBe(true);
+          // Mode « sélection de polygone » : la cible porte un code cca2.
+          if (q.target!.code != null) {
+            expect(
+              checkAnswer(q, { kind: 'region', code: q.target!.code }).correct,
+            ).toBe(true);
+          } else {
+            expect(
+              checkAnswer(q, { kind: 'point', lat: q.target!.lat, lng: q.target!.lng }).correct,
+            ).toBe(true);
+          }
         }
       }
     }
