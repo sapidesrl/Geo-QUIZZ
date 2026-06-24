@@ -285,15 +285,15 @@ export default function WorldCupMatch() {
               x2={l.x2}
               y2={l.y2}
               stroke={l.color}
-              strokeWidth={3}
+              strokeWidth={4}
               strokeLinecap="round"
-              opacity={0.9}
+              opacity={0.95}
             />
           ))}
         </svg>
         {/* Grille en ordre rangée-par-rangée : chaque rangée aligne drapeau /
             pays / capitale à la même hauteur (align-items: stretch). */}
-        <div className="grid grid-cols-[1fr_auto_1fr] items-stretch gap-2 sm:gap-3">
+        <div className="grid grid-cols-[1fr_auto_1fr] items-stretch gap-y-2 gap-x-8 sm:gap-x-14">
           <div className="mb-1 text-center text-xs font-semibold uppercase text-slate-500">
             {t('match.flags')}
           </div>
