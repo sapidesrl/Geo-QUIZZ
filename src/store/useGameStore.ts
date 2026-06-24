@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { CAMPAIGN_PASS_THRESHOLD } from '../data/campaign';
+import { campaignChapters, CAMPAIGN_PASS_THRESHOLD } from '../data/campaign';
 import { evaluateAchievements } from '../lib/achievements';
-import { updateStat, type ReviewStats } from '../lib/review';
+import { REVIEW_MAX_BOX, updateStat, type ReviewStats } from '../lib/review';
 
 export type Difficulty = 'facile' | 'moyen' | 'difficile';
 
@@ -50,6 +50,18 @@ interface GameState {
   recordGame: (summary: GameSummary) => string[];
 }
 
+/** Nombre de pays maîtrisés (boîte de révision au maximum). */
+function masteredCount(reviewStats: ReviewStats): number {
+  return Object.values(reviewStats).filter((s) => s.box >= REVIEW_MAX_BOX).length;
+}
+
+/** Vrai si au moins un chapitre de campagne est entièrement réussi. */
+function anyChapterDone(progress: Record<string, CampaignLevelResult>): boolean {
+  return campaignChapters.some((ch) =>
+    ch.levels.every((_, i) => progress[`${ch.id}-${i}`]?.completed),
+  );
+}
+
 export const useGameStore = create<GameState>()(
   persist(
     (set, get) => ({
@@ -80,16 +92,33 @@ export const useGameStore = create<GameState>()(
 
       campaignProgress: {},
       recordCampaignLevel: (key, score, total) =>
-        set((s) => ({
-          campaignProgress: {
+        set((s) => {
+          const campaignProgress = {
             ...s.campaignProgress,
             [key]: {
               completed: total > 0 && score / total >= CAMPAIGN_PASS_THRESHOLD,
               bestScore: Math.max(score, s.campaignProgress[key]?.bestScore ?? 0),
               total,
             },
-          },
-        })),
+          };
+          // Succès de progression (chapitre terminé, pays maîtrisés) débloqués ici aussi.
+          const passing = evaluateAchievements({
+            modeId: '',
+            score: 0,
+            total: 0,
+            bestStreak: 0,
+            isDaily: false,
+            gamesPlayed: s.gamesPlayed,
+            totalCorrect: s.totalCorrect,
+            modesPlayed: s.modesPlayed,
+            dailyDone: Object.keys(s.dailyHistory).length > 0,
+            masteredCount: masteredCount(s.reviewStats),
+            campaignChapterDone: anyChapterDone(campaignProgress),
+            matchPerfect: false,
+          });
+          const newlyUnlocked = passing.filter((id) => !s.unlocked.includes(id));
+          return { campaignProgress, unlocked: [...s.unlocked, ...newlyUnlocked] };
+        }),
 
       recordGame: (summary) => {
         const s = get();
@@ -111,6 +140,8 @@ export const useGameStore = create<GameState>()(
             : s.dailyHistory;
         const dailyDone = Object.keys(dailyHistory).length > 0;
 
+        const isMatch =
+          summary.modeId === 'worldcup-match' || summary.modeId.startsWith('match-');
         const passing = evaluateAchievements({
           modeId: summary.modeId,
           score: summary.score,
@@ -121,6 +152,9 @@ export const useGameStore = create<GameState>()(
           totalCorrect,
           modesPlayed,
           dailyDone,
+          masteredCount: masteredCount(s.reviewStats),
+          campaignChapterDone: anyChapterDone(s.campaignProgress),
+          matchPerfect: isMatch && summary.total > 0 && summary.score === summary.total,
         });
         const newlyUnlocked = passing.filter((id) => !s.unlocked.includes(id));
 

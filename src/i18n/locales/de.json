@@ -70,7 +70,8 @@
     "modesTried": "Getestete Modi",
     "dailies": "Tägliche Herausforderungen",
     "achievements": "Erfolge",
-    "achievementsTitle": "Erfolge"
+    "achievementsTitle": "Erfolge",
+    "byMode": "Bestwerte pro Modus"
   },
   "mastery": {
     "title": "Beherrschungskarte",
@@ -175,6 +176,11 @@
     "globe-trotter": { "label": "Weltenbummler", "description": "Spiele 10 verschiedene Modi." },
     "centurion": { "label": "Zenturio", "description": "Erreiche insgesamt 100 richtige Antworten." },
     "veteran": { "label": "Veteran", "description": "Spiele 25 Spiele." },
-    "daily": { "label": "Herausforderung gemeistert", "description": "Beende eine tägliche Herausforderung." }
+    "daily": { "label": "Herausforderung gemeistert", "description": "Beende eine tägliche Herausforderung." },
+    "campaign-chapter": { "label": "Kontinent erobert", "description": "Schließe ein Kampagnen-Kapitel ab." },
+    "match-perfect": { "label": "Perfekte Zuordnung", "description": "Schließe eine Zuordnung fehlerfrei ab." },
+    "mastery-25": { "label": "Geografie-Lehrling", "description": "Beherrsche 25 Länder (Wiederholung)." },
+    "mastery-50": { "label": "Geograf", "description": "Beherrsche 50 Länder (Wiederholung)." },
+    "mastery-100": { "label": "Weltmeister", "description": "Beherrsche 100 Länder (Wiederholung)." }
   }
 }

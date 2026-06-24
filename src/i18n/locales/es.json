@@ -70,7 +70,8 @@
     "modesTried": "Modos probados",
     "dailies": "Retos del día",
     "achievements": "Logros",
-    "achievementsTitle": "Logros"
+    "achievementsTitle": "Logros",
+    "byMode": "Récords por modo"
   },
   "mastery": {
     "title": "Mapa de dominio",
@@ -175,6 +176,11 @@
     "globe-trotter": { "label": "Trotamundos", "description": "Juega 10 modos diferentes." },
     "centurion": { "label": "Centurión", "description": "Acumula 100 aciertos en total." },
     "veteran": { "label": "Veterano", "description": "Juega 25 partidas." },
-    "daily": { "label": "Reto superado", "description": "Termina un reto del día." }
+    "daily": { "label": "Reto superado", "description": "Termina un reto del día." },
+    "campaign-chapter": { "label": "Continente conquistado", "description": "Completa un capítulo de campaña." },
+    "match-perfect": { "label": "Asociación perfecta", "description": "Termina una asociación sin errores." },
+    "mastery-25": { "label": "Geógrafo aprendiz", "description": "Domina 25 países (repaso)." },
+    "mastery-50": { "label": "Geógrafo", "description": "Domina 50 países (repaso)." },
+    "mastery-100": { "label": "Maestro del mundo", "description": "Domina 100 países (repaso)." }
   }
 }

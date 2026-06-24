@@ -1,6 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { getChapterById } from '../data/campaign';
+import { continentLabel } from '../i18n/display';
 import { achievements } from '../lib/achievements';
+import { getModeById } from '../modes';
 import { useGameStore } from '../store/useGameStore';
 
 function Tile({ value, label }: { value: string | number; label: string }) {
@@ -20,9 +23,27 @@ export default function Stats() {
   const modesPlayed = useGameStore((s) => s.modesPlayed);
   const unlocked = useGameStore((s) => s.unlocked);
   const dailyHistory = useGameStore((s) => s.dailyHistory);
+  const bestScores = useGameStore((s) => s.bestScores);
+  const bestStreaks = useGameStore((s) => s.bestStreaks);
 
   const accuracy = totalAnswered ? Math.round((totalCorrect / totalAnswered) * 100) : 0;
   const dailyCount = Object.keys(dailyHistory).length;
+
+  /** Libellé d'un modeId, y compris les modes spéciaux (association, par continent). */
+  function modeLabel(id: string): string {
+    const mode = getModeById(id);
+    if (mode) return t(`modes.${id}.label`, { defaultValue: mode.label });
+    if (id === 'worldcup-match') return t('match.label');
+    if (id.startsWith('match-')) {
+      const chapter = getChapterById(id.slice('match-'.length));
+      if (chapter) return `🔗 ${continentLabel(chapter.region)}`;
+    }
+    return id;
+  }
+
+  const modeRecords = Object.keys(bestScores)
+    .map((id) => ({ id, label: modeLabel(id), best: bestScores[id], streak: bestStreaks[id] ?? 0 }))
+    .sort((a, b) => a.label.localeCompare(b.label));
 
   return (
     <div className="py-4">
@@ -50,6 +71,26 @@ export default function Stats() {
         <span className="text-2xl">🗺️</span>
         <span>{t('mastery.link')}</span>
       </Link>
+
+      {modeRecords.length > 0 && (
+        <>
+          <h3 className="mb-3 text-lg font-semibold">{t('stats.byMode')}</h3>
+          <ul className="mb-6 flex flex-col gap-2">
+            {modeRecords.map((r) => (
+              <li
+                key={r.id}
+                className="flex items-center justify-between rounded-xl bg-slate-800 px-4 py-2 text-sm"
+              >
+                <span className="min-w-0 truncate font-medium">{r.label}</span>
+                <span className="ml-3 shrink-0 text-slate-300">
+                  <span className="text-emerald-400">{t('modeselect.record', { n: r.best })}</span>
+                  {r.streak > 0 && <span className="ml-2 text-amber-400">🔥 {r.streak}</span>}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
 
       <h3 className="mb-3 text-lg font-semibold">{t('stats.achievementsTitle')}</h3>
       <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
