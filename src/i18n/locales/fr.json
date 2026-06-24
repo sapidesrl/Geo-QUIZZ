@@ -70,7 +70,8 @@
     "modesTried": "Modes essayés",
     "dailies": "Défis du jour",
     "achievements": "Succès",
-    "achievementsTitle": "Succès"
+    "achievementsTitle": "Succès",
+    "byMode": "Records par mode"
   },
   "mastery": {
     "title": "Carte de maîtrise",

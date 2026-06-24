@@ -53,8 +53,11 @@ D'autres modes s'ajoutent facilement (voir « Ajouter un mode »).
   (`src/lib/rng.ts` ; `withSeed` enveloppe la génération de la partie). Même quiz pour
   tout le monde un jour donné.
 - **Succès / trophées** : catalogue dans `src/lib/achievements.ts`, évalué à la fin de
-  chaque partie ; les succès débloqués s'affichent sur l'écran de résultats et la page
-  **Trophées** (`/stats`) qui récapitule aussi parties jouées, précision, modes essayés.
+  chaque partie (et à la fin d'un niveau de campagne) ; inclut des paliers de progression
+  (chapitre de campagne terminé, association sans-faute, 25/50/100 pays maîtrisés). Les
+  succès débloqués s'affichent sur l'écran de résultats et la page **Trophées** (`/stats`),
+  qui récapitule aussi parties jouées, précision, modes essayés, les **records par mode**
+  et un lien vers la **carte de maîtrise**.
 - **Sons de feedback** : synthétisés via l'API Web Audio (`src/lib/sound.ts`, aucun
   fichier audio → hors-ligne), activables/désactivables depuis l'accueil.
 - **Retour haptique** : vibration légère sur réponse (API Vibration web, surtout Android).

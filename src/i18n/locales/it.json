@@ -70,7 +70,8 @@
     "modesTried": "Modalità provate",
     "dailies": "Sfide del giorno",
     "achievements": "Obiettivi",
-    "achievementsTitle": "Obiettivi"
+    "achievementsTitle": "Obiettivi",
+    "byMode": "Record per modalità"
   },
   "mastery": {
     "title": "Mappa di padronanza",
@@ -175,6 +176,11 @@
     "globe-trotter": { "label": "Giramondo", "description": "Gioca a 10 modalità diverse." },
     "centurion": { "label": "Centurione", "description": "Accumula 100 risposte corrette in totale." },
     "veteran": { "label": "Veterano", "description": "Gioca 25 partite." },
-    "daily": { "label": "Sfida superata", "description": "Termina una sfida del giorno." }
+    "daily": { "label": "Sfida superata", "description": "Termina una sfida del giorno." },
+    "campaign-chapter": { "label": "Continente conquistato", "description": "Completa un capitolo della campagna." },
+    "match-perfect": { "label": "Abbinamento perfetto", "description": "Completa un abbinamento senza errori." },
+    "mastery-25": { "label": "Geografo apprendista", "description": "Padroneggia 25 paesi (ripasso)." },
+    "mastery-50": { "label": "Geografo", "description": "Padroneggia 50 paesi (ripasso)." },
+    "mastery-100": { "label": "Maestro del mondo", "description": "Padroneggia 100 paesi (ripasso)." }
   }
 }

@@ -70,7 +70,8 @@
     "modesTried": "Geprobeerde modi",
     "dailies": "Dagelijkse uitdagingen",
     "achievements": "Prestaties",
-    "achievementsTitle": "Prestaties"
+    "achievementsTitle": "Prestaties",
+    "byMode": "Records per modus"
   },
   "mastery": {
     "title": "Beheersingskaart",
@@ -175,6 +176,11 @@
     "globe-trotter": { "label": "Globetrotter", "description": "Speel 10 verschillende modi." },
     "centurion": { "label": "Centurion", "description": "Behaal in totaal 100 goede antwoorden." },
     "veteran": { "label": "Veteraan", "description": "Speel 25 spellen." },
-    "daily": { "label": "Uitdaging volbracht", "description": "Voltooi een dagelijkse uitdaging." }
+    "daily": { "label": "Uitdaging volbracht", "description": "Voltooi een dagelijkse uitdaging." },
+    "campaign-chapter": { "label": "Continent veroverd", "description": "Voltooi een campagnehoofdstuk." },
+    "match-perfect": { "label": "Perfecte koppeling", "description": "Voltooi een koppeling zonder fouten." },
+    "mastery-25": { "label": "Leerling-geograaf", "description": "Beheers 25 landen (herhaling)." },
+    "mastery-50": { "label": "Geograaf", "description": "Beheers 50 landen (herhaling)." },
+    "mastery-100": { "label": "Meester van de wereld", "description": "Beheers 100 landen (herhaling)." }
   }
 }

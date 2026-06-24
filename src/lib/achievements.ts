@@ -9,6 +9,12 @@ export interface AchievementContext {
   totalCorrect: number;
   modesPlayed: string[];
   dailyDone: boolean;
+  /** Nombre de pays maîtrisés (révision espacée). */
+  masteredCount: number;
+  /** Au moins un chapitre de campagne entièrement réussi. */
+  campaignChapterDone: boolean;
+  /** La dernière partie était une association terminée sans faute. */
+  matchPerfect: boolean;
 }
 
 export interface Achievement {
@@ -76,6 +82,41 @@ export const achievements: Achievement[] = [
     description: 'Termine un défi du jour.',
     icon: '📅',
     test: (c) => c.dailyDone,
+  },
+  {
+    id: 'campaign-chapter',
+    label: 'Continent conquis',
+    description: 'Termine un chapitre de campagne.',
+    icon: '🗺️',
+    test: (c) => c.campaignChapterDone,
+  },
+  {
+    id: 'match-perfect',
+    label: 'Association parfaite',
+    description: 'Termine une association sans aucune faute.',
+    icon: '🔗',
+    test: (c) => c.matchPerfect,
+  },
+  {
+    id: 'mastery-25',
+    label: 'Apprenti géographe',
+    description: 'Maîtrise 25 pays (révision).',
+    icon: '📗',
+    test: (c) => c.masteredCount >= 25,
+  },
+  {
+    id: 'mastery-50',
+    label: 'Géographe',
+    description: 'Maîtrise 50 pays (révision).',
+    icon: '📘',
+    test: (c) => c.masteredCount >= 50,
+  },
+  {
+    id: 'mastery-100',
+    label: 'Maître du monde',
+    description: 'Maîtrise 100 pays (révision).',
+    icon: '🌍',
+    test: (c) => c.masteredCount >= 100,
   },
 ];
 

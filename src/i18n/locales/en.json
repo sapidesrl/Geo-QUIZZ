@@ -70,7 +70,8 @@
     "modesTried": "Modes tried",
     "dailies": "Daily challenges",
     "achievements": "Achievements",
-    "achievementsTitle": "Achievements"
+    "achievementsTitle": "Achievements",
+    "byMode": "Best by mode"
   },
   "mastery": {
     "title": "Mastery map",
@@ -175,6 +176,11 @@
     "globe-trotter": { "label": "Globetrotter", "description": "Play 10 different modes." },
     "centurion": { "label": "Centurion", "description": "Reach 100 correct answers in total." },
     "veteran": { "label": "Veteran", "description": "Play 25 games." },
-    "daily": { "label": "Challenge met", "description": "Finish a daily challenge." }
+    "daily": { "label": "Challenge met", "description": "Finish a daily challenge." },
+    "campaign-chapter": { "label": "Continent conquered", "description": "Complete a campaign chapter." },
+    "match-perfect": { "label": "Perfect match", "description": "Finish a matching round with no mistakes." },
+    "mastery-25": { "label": "Apprentice geographer", "description": "Master 25 countries (review)." },
+    "mastery-50": { "label": "Geographer", "description": "Master 50 countries (review)." },
+    "mastery-100": { "label": "Master of the world", "description": "Master 100 countries (review)." }
   }
 }
