@@ -72,6 +72,14 @@
     "achievements": "Erfolge",
     "achievementsTitle": "Erfolge"
   },
+  "mastery": {
+    "title": "Beherrschungskarte",
+    "mastered": "Beherrscht",
+    "learning": "In Arbeit",
+    "toReview": "Zu wiederholen",
+    "unseen": "Nicht gesehen",
+    "link": "Beherrschungskarte"
+  },
   "continents": {
     "Africa": "Afrika",
     "Americas": "Amerika",

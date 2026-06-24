@@ -72,6 +72,14 @@
     "achievements": "Succès",
     "achievementsTitle": "Succès"
   },
+  "mastery": {
+    "title": "Carte de maîtrise",
+    "mastered": "Maîtrisés",
+    "learning": "En cours",
+    "toReview": "À revoir",
+    "unseen": "Non vus",
+    "link": "Carte de maîtrise"
+  },
   "continents": {
     "Africa": "Afrique",
     "Americas": "Amériques",

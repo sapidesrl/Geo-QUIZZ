@@ -72,6 +72,14 @@
     "achievements": "Logros",
     "achievementsTitle": "Logros"
   },
+  "mastery": {
+    "title": "Mapa de dominio",
+    "mastered": "Dominados",
+    "learning": "En curso",
+    "toReview": "Por repasar",
+    "unseen": "Sin ver",
+    "link": "Mapa de dominio"
+  },
   "continents": {
     "Africa": "África",
     "Americas": "América",

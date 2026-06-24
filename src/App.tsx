@@ -5,6 +5,7 @@ import CampaignLevel from './pages/CampaignLevel';
 import ContinentMatch from './pages/ContinentMatch';
 import Game from './pages/Game';
 import Home from './pages/Home';
+import MasteryMapPage from './pages/MasteryMapPage';
 import ModeSelect from './pages/ModeSelect';
 import Results from './pages/Results';
 import Stats from './pages/Stats';
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/modes" element={<ModeSelect />} />
           <Route path="/stats" element={<Stats />} />
+          <Route path="/mastery" element={<MasteryMapPage />} />
           <Route path="/game/:modeId" element={<Game />} />
           <Route path="/results/:modeId" element={<Results />} />
           <Route path="/campaign" element={<Campaign />} />

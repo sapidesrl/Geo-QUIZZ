@@ -72,6 +72,14 @@
     "achievements": "Achievements",
     "achievementsTitle": "Achievements"
   },
+  "mastery": {
+    "title": "Mastery map",
+    "mastered": "Mastered",
+    "learning": "Learning",
+    "toReview": "To review",
+    "unseen": "Not seen",
+    "link": "Mastery map"
+  },
   "continents": {
     "Africa": "Africa",
     "Americas": "Americas",

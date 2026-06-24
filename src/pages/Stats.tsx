@@ -43,6 +43,14 @@ export default function Stats() {
         <Tile value={`${unlocked.length}/${achievements.length}`} label={t('stats.achievements')} />
       </div>
 
+      <Link
+        to="/mastery"
+        className="mb-6 flex items-center gap-3 rounded-xl border border-slate-600 p-4 font-semibold transition hover:bg-slate-800"
+      >
+        <span className="text-2xl">🗺️</span>
+        <span>{t('mastery.link')}</span>
+      </Link>
+
       <h3 className="mb-3 text-lg font-semibold">{t('stats.achievementsTitle')}</h3>
       <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         {achievements.map((a) => {

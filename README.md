@@ -30,6 +30,9 @@ Application de quizz géographique (PWA) jouable au navigateur et sur smartphone
 - **Révision — mes erreurs** : répétition espacée (boîtes de Leitner) ; re-quizze en
   priorité les pays les moins maîtrisés. Toutes les parties (y compris la campagne)
   alimentent ce suivi par pays (`src/lib/review.ts`).
+- **Carte de maîtrise** (depuis la page Trophées) : carte du monde colorée selon la
+  maîtrise par pays (vert = maîtrisé, jaune = en cours, rouge = à revoir), rendue par
+  MapLibre via `feature-state` (`src/components/MasteryMap.tsx`).
 
 L'écran de sélection regroupe les modes par catégorie (Capitales, Drapeaux, Villes,
 Population & superficie, Monnaie, Géographie, Coupe du monde, Révision).
