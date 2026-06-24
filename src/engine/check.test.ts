@@ -51,4 +51,17 @@ describe('checkAnswer', () => {
     const far = checkAnswer(q, { kind: 'point', lat: 51.5, lng: -0.12 });
     expect(far.correct).toBe(false);
   });
+
+  it('valide une sélection de polygone selon le code pays', () => {
+    const q: Question = {
+      inputType: 'map-pin',
+      prompt: '?',
+      target: { lat: 46.2, lng: 2.2, toleranceKm: 700, label: 'France', code: 'fr' },
+      answerLabel: 'France',
+    };
+    expect(checkAnswer(q, { kind: 'region', code: 'fr' }).correct).toBe(true);
+    expect(checkAnswer(q, { kind: 'region', code: 'de' }).correct).toBe(false);
+    // Un placement par repère n'est pas une réponse valide en mode polygone.
+    expect(checkAnswer(q, { kind: 'point', lat: 46.2, lng: 2.2 }).correct).toBe(false);
+  });
 });

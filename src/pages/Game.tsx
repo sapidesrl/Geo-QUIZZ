@@ -73,6 +73,7 @@ export default function Game() {
   const [lastCorrect, setLastCorrect] = useState(false);
   const [selectedChoiceId, setSelectedChoiceId] = useState<string>();
   const [picked, setPicked] = useState<{ lat: number; lng: number }>();
+  const [pickedCode, setPickedCode] = useState<string>();
   const [distanceKm, setDistanceKm] = useState<number>();
   const [history, setHistory] = useState<QuestionRecap[]>([]);
 
@@ -178,6 +179,7 @@ export default function Game() {
     setLastCorrect(false);
     setSelectedChoiceId(undefined);
     setPicked(undefined);
+    setPickedCode(undefined);
     setDistanceKm(undefined);
   }
 
@@ -237,12 +239,34 @@ export default function Game() {
           >
             <MapPicker
               picked={picked}
+              pickedCode={pickedCode}
               target={question.target}
               revealed={revealed}
               onPick={setPicked}
+              onPickRegion={setPickedCode}
             />
           </Suspense>
-          {!revealed ? (
+          {question.target?.code != null ? (
+            !revealed ? (
+              <button
+                type="button"
+                disabled={!pickedCode}
+                onClick={() => pickedCode && submit({ kind: 'region', code: pickedCode })}
+                className="w-full rounded-xl bg-brand p-4 text-lg font-semibold transition hover:bg-brand-dark disabled:opacity-50"
+              >
+                {pickedCode ? t('game.validate') : t('game.selectCountry')}
+              </button>
+            ) : (
+              <div
+                className={`animate-pop rounded-xl p-4 text-center font-semibold ${
+                  lastCorrect ? 'bg-emerald-500/20 text-emerald-200' : 'bg-rose-500/20 text-rose-200'
+                }`}
+              >
+                {lastCorrect ? t('game.rightCountry') : t('game.wrongCountry')}{' '}
+                {!lastCorrect && `${t('game.answer')} ${question.answerLabel}`}
+              </div>
+            )
+          ) : !revealed ? (
             <button
               type="button"
               disabled={!picked}

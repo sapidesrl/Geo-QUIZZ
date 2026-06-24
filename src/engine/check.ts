@@ -39,7 +39,14 @@ export function checkAnswer(
       return { correct: isTextCorrect(answer.value, question.acceptedAnswers ?? []) };
 
     case 'map-pin': {
-      if (answer.kind !== 'point' || !question.target) return { correct: false };
+      if (!question.target) return { correct: false };
+      // Mode « sélection de polygone » : on compare le pays désigné à la cible.
+      if (question.target.code != null) {
+        if (answer.kind !== 'region') return { correct: false };
+        return { correct: answer.code === question.target.code };
+      }
+      // Mode « placement au repère » : distance à la cible.
+      if (answer.kind !== 'point') return { correct: false };
       const distanceKm = haversineKm(answer, question.target);
       return { correct: distanceKm <= question.target.toleranceKm, distanceKm };
     }

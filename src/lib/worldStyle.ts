@@ -9,7 +9,14 @@ import topology from 'world-atlas/countries-50m.json';
 const countriesGeo = feature(
   topology as unknown as Topology,
   (topology as unknown as Topology).objects.countries,
-);
+) as GeoJSON.FeatureCollection;
+
+// Les polygones portent un identifiant ISO numérique (ex. "250"). On le normalise
+// en nombre pour que `feature-state` et `queryRenderedFeatures` (surlignage et
+// résolution du pays cliqué en mode « situer un pays ») soient cohérents.
+for (const f of countriesGeo.features) {
+  if (f.id != null) f.id = Number(f.id);
+}
 
 /** Fond de carte vectoriel hors-ligne : océan + pays + frontières. */
 export const offlineWorldStyle: StyleSpecification = {

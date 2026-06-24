@@ -20,6 +20,7 @@ export const locateCountry: GameMode = {
         lng: country.lng,
         toleranceKm: 700,
         label: name,
+        code: country.cca2,
       },
       answerLabel: name,
     };
